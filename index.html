@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
     
@@ -14,3 +15,120 @@
 
 
 
+=======
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel de Entrada</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <style>
+        /* Forçar o HTML e o Body a ocuparem 100% da altura da tela e remover margens */
+        html, body, .carousel, .carousel-inner, .carousel-item {
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* Fazer com que as imagens cubram todo o espaço estilo 'background-size: cover' */
+        .carousel-item img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* Ajuste opcional para dar destaque aos botões e links no fundo da imagem */
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 10px;
+            bottom: 20%; /* Sobe um pouco a legenda para não sumir em telas menores */
+        }
+
+        .btn-link-custom {
+            margin: 5px;
+            min-width: 150px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
+  
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleControls" data-slide-to="0" class="active" style="width: 10px; height: 10px; border-radius: 50%; margin: 0 6px;"></li>
+    <li data-target="#carouselExampleControls" data-slide-to="1" style="width: 10px; height: 10px; border-radius: 50%; margin: 0 6px;"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    
+    <div class="carousel-item active">
+      <img src="imagens/Fundo_Slide1.jpg" alt="Primeiro Slide">
+      <div class="carousel-caption d-none d-md-block" style="background: transparent; box-shadow: none;">
+        <h2>O mundo real,</h2>
+        <h3 style="color: #E6D443;">Adaptado a si.</h3>
+    </div>
+    </div>
+
+<div class="carousel-item">
+  <img class="d-block w-100" src="imagens/Fundo_Slide2.jpg" alt="Segundo Slide" style="height: 100vh; object-fit: cover;">
+  <div class="carousel-caption" style="background: transparent; box-shadow: none; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 20px;">
+    <div style="margin-bottom: 25px;">
+      <img src="imagens/logo_croma.png" alt="Croma Logo" style="max-width: 140px; height: auto;">
+    </div>
+
+    <p style="color: #ffffff; font-size: 1rem; max-width: 320px; line-height: 1.5; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">
+      Aprende a reconhecer padrões cromáticos e ganha autonomia de forma interativa.
+    </p>
+
+    <div style="display: flex; gap: 15px; margin-bottom: 35px;">
+      <a href="https://facebook.com" target="_blank">
+        <img src="imagens/facebookIcon.png" alt="Facebook" style="width: 35px; height: 35px;">
+      </a>
+      <a href="https://google.com" target="_blank">
+        <img src="imagens/googleIcon.png" alt="Google" style="width: 35px; height: 35px;">
+      </a>
+      <a href="https://apple.com" target="_blank">
+        <img src="imagens/appleIcon.png" alt="Apple" style="width: 35px; height: 35px;">
+      </a>
+    </div>
+
+    <div style="display: flex; gap: 15px; width: 100%; max-width: 320px; margin-bottom: 25px;">
+      <a href="html" class="btn btn-link-custom" style="flex: 1; background-color: #1c1f26; color: white; border-radius: 25px; padding: 10px 0; font-size: 0.95rem; font-weight: 500; border: none;">
+        Log-in
+      </a>
+      <a href="/registar" class="btn btn-link-custom" style="flex: 1; background-color: transparent; color: white; border: 1px solid white; border-radius: 25px; padding: 10px 0; font-size: 0.95rem; font-weight: 500;">
+        Registar-se
+      </a>
+    </div>
+
+    <a href="/convidado" style="color: #E6D443; text-decoration: none; font-size: 0.9rem; font-weight: 500;">
+      Entrar como convidado
+    </a>
+  </div>
+</div>
+
+  </div>
+
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Próximo</span>
+  </a>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+
+</body>
+</html>
+>>>>>>> 17e41e44b69143f34fb7899f3f37a553026dee7f

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Daltonismo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/info_daltonismo.css">
+</head>
+<body>
+
+<div class="teste-fullscreen">
+    
+    <a href="#" class="btn-fechar">&times;</a>
+
+    <div class="conteudo-distribuido">
+        <h1 class="titulo-principal">Teste de Daltonismo</h1>
+
+        <form action="etapa1.html" method="GET">
+            <div class="row"> 
+                
+                <div class="col-md-6 pr-md-5 mb-5 mb-md-0">
+                    
+                    <h3 class="subtitulo-seccao">Conhecer a sua visão!</h3>
+
+                    <div class="bloco-pergunta">
+                        <span class="pergunta-label">É daltónico ou suspeita que seja?</span>
+                        <div class="opcoes-grupo">
+                            <div class="opcao-item">
+                                <input type="radio" id="suspeita-sim" name="suspeita" value="sim">
+                                <label for="suspeita-sim">Sim</label>
+                            </div>
+                            <div class="opcao-item">
+                                <input type="radio" id="suspeita-nao" name="suspeita" value="nao">
+                                <label for="suspeita-nao">Não</label>
+                            </div>
+                            <div class="opcao-item">
+                                <input type="radio" id="suspeita-talvez" name="suspeita" value="talvez">
+                                <label for="suspeita-talvez">Talvez</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bloco-pergunta">
+                        <span class="pergunta-label">Já fez algum teste de daltonismo?</span>
+                        <div class="opcoes-grupo">
+                            <div class="opcao-item">
+                                <input type="radio" id="ja-fez-nunca" name="ja_fez" value="nunca">
+                                <label for="ja-fez-nunca">Nunca</label>
+                            </div>
+                            <div class="opcao-item">
+                                <input type="radio" id="ja-fez-naosei" name="ja_fez" value="naosei">
+                                <label for="ja-fez-naosei">Não sei</label>
+                            </div>
+                            <div class="opcao-item">
+                                <input type="radio" id="ja-fez-sim" name="ja_fez" value="sim">
+                                <label for="ja-fez-sim">Sim</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bloco-pergunta">
+                        <span class="pergunta-label">Sabe qual o tipo?</span>
+                        <div>
+                            <div class="radio-lista-item">
+                                <input type="radio" id="tipo-protanopia" name="tipo_daltonismo" value="protanopia">
+                                <label class="m-0" for="tipo-protanopia">Protanopia (vermelho)</label>
+                            </div>
+                            <div class="radio-lista-item">
+                                <input type="radio" id="tipo-tritanopia" name="tipo_daltonismo" value="tritanopia">
+                                <label class="m-0" for="tipo-tritanopia">Tritanopia (azul)</label>
+                            </div>
+                            <div class="radio-lista-item">
+                                <input type="radio" id="tipo-deuteranopia" name="tipo_daltonismo" value="deuteranopia">
+                                <label class="m-0" for="tipo-deuteranopia">Deuteranopia (verde)</label>
+                            </div>
+                            <div class="radio-lista-item">
+                                <input type="radio" id="tipo-naosei" name="tipo_daltonismo" value="naosei">
+                                <label class="m-0" for="tipo-naosei">Não sei</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 pl-md-5 pt-md-5">
+                    
+                    <p class="texto-explicativo">
+                        Este teste ajuda a identificar possíveis dificuldades na perceção de cores.
+                    </p>
+
+                    <p class="texto-secundario">
+                        Tem de inserir o(s) número(s) de cada placa que consegue ver.<br>
+                        Se não vir nada, basta clicar no botão seguinte.<br>
+                        Haverá 10 placas.
+                    </p>
+
+                    <div>
+                        <button type="submit" class="btn btn-iniciar">Iniciar</button>
+                        <a href="#" class="link-ja-fiz">Já fiz</a>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <a href="#" class="link-resultados">Ver resultados anteriores</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

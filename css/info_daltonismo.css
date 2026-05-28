@@ -1,0 +1,174 @@
+
+        /* Reset para página inteira ocupando 100% da tela */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+            background-color: #ffffff;
+            font-family: sans-serif;
+        }
+
+        /* Container principal que centraliza o bloco inteiro na tela */
+        .teste-fullscreen {
+            width: 100vw;
+            min-height: 100vh;
+            padding: 60px 80px;
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza o bloco na vertical */
+            align-items: center;     /* Centraliza o bloco na horizontal */
+        }
+
+        /* Define a largura máxima do conteúdo para respirar bem em desktops */
+        .conteudo-distribuido {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        /* Botão de Fechar (X) */
+        .btn-fechar {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            font-size: 1.8rem;
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .titulo-principal {
+            font-weight: 700;
+            font-size: 2.6rem;
+            margin-bottom: 60px; /* Grande espaçamento abaixo do título principal */
+            color: #000000;
+        }
+
+        .subtitulo-seccao {
+            font-weight: 700;
+            font-size: 1.7rem;
+            margin-bottom: 35px; /* Espaço confortável abaixo do subtítulo */
+        }
+
+        /* Blocos de perguntas espaçados entre si */
+        .bloco-pergunta {
+            margin-bottom: 35px;
+        }
+
+        .pergunta-label {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 14px;
+            color: #000000;
+            display: block;
+        }
+
+        /* Grupos de Botões Redondos (Pílula) */
+        .opcoes-grupo {
+            display: flex;
+            gap: 12px;
+        }
+
+        .opcao-item {
+            position: relative;
+        }
+
+        .opcao-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .opcao-item label {
+            border: 1px solid #999999;
+            border-radius: 20px;
+            padding: 8px 24px; /* Mais espaço interno no botão */
+            font-size: 0.9rem;
+            cursor: pointer;
+            user-select: none;
+            margin: 0;
+            transition: all 0.2s ease;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .opcao-item input[type="radio"]:checked + label {
+            background-color: #1c1f26;
+            color: #ffffff;
+            border-color: #1c1f26;
+        }
+
+        /* Coluna Direita - Textos Explicativos */
+        .texto-explicativo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            max-width: 380px;
+        }
+
+        .texto-secundario {
+            font-size: 0.85rem;
+            color: #555555;
+            line-height: 1.6;
+            margin-bottom: 50px; /* Empurra a zona de botões bem para baixo */
+            max-width: 380px;
+        }
+
+        /* Botões de Ação do Teste */
+        .btn-iniciar {
+            background-color: #1c1f26;
+            color: #ffffff;
+            border-radius: 25px;
+            padding: 12px 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            width: 100%;
+            max-width: 220px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .btn-iniciar:hover {
+            background-color: #333333;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .link-ja-fiz {
+            font-size: 0.85rem;
+            color: #000000;
+            text-decoration: underline;
+            margin-left: 95px; /* Alinhamento do Figma em relação ao botão */
+            display: inline-block;
+            margin-bottom: 45px;
+        }
+
+        .link-resultados {
+            font-size: 0.95rem;
+            color: #1c1f26;
+            text-decoration: underline;
+            font-weight: 500;
+            display: block;
+        }
+
+        /* Radio Buttons de Lista Tradicional */
+        .radio-lista-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .radio-lista-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #666666;
+        }

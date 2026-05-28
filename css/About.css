@@ -1,0 +1,4 @@
+.carousel-item img {
+    min-height: 300px; /* Força a imagem a ter uma altura mínima */
+    background-color: gray; /* Se ficar cinza, o carrossel existe, mas a imagem sumiu */
+}

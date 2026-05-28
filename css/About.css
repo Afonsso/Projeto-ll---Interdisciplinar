@@ -1,6 +1,8 @@
-body {
-    background-color: #EBEBEB;
+#body-container {
+    background: #EBEBEB;
 }
+
+/* Container Principal  */
 
 #nomePag {
     font-size: 40pt;
@@ -33,9 +35,8 @@ body {
 }
 
 .button-secundario {
-    background-color: #EBEBEB;
     color: #7F7F7F;
-    border: none;
+    border: 2px solid #7F7F7F;
     padding: 10px 20px;
     margin-right: 10px;
     border-radius: 50px;
@@ -48,10 +49,79 @@ body {
     width: 100%;
 }
 
+.container {
+    max-width: 100% !important;
+    padding-left: 56px !important;
+    padding-right: 56px !important;
+}
 
-/* Ajuste para mobile */
-@media (max-width: 768px) {
+/* RESPONSIVIDADE */
+
+@media (max-width: 992px) {
+    #nomePag {
+        font-size: 30pt;
+    }
+    #daltonismo {
+        font-size: 38pt;
+    }
+
+    .container {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+    
+    .row {
+        flex-direction: column-reverse; 
+        gap: 30px;
+    }
+
+    .col-md-6 {
+        width: 100% !important;
+    }
+
+    .container-titulo, #container-principal-texto {
+        text-align: center;
+        align-items: center;
+    }
+
+    .container-principal-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .button-principal, .button-secundario {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    #nomePag {
+        font-size: 24pt;
+        margin-bottom: -5px;
+    }
+    #daltonismo {
+        font-size: 30pt;
+    }
+
     .carousel-item img {
-        height: 250px; 
+        height: 250px;
+    }
+
+    .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .container-principal-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .button-principal, .button-secundario {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px; 
     }
 }

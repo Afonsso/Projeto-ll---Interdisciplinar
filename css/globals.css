@@ -1,0 +1,42 @@
+/* Importação de fontes locais  */
+
+/* Juana Demo */
+@font-face {
+  font-family: 'Juana Demo';
+  src: url('../fontes/FontspringDemo/Fontspring-DEMO-juana-regular.woff2') format('woff2');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Juana Demo';
+  src: url('../fontes/FontspringDemo/Fontspring-DEMO-juanaalt-medium.woff2') format('woff2');
+  font-weight: 500; /* Medium */
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* Helvetica Now Display */
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fontes/Helvetica/HelveticaNowDisplay-Regular.woff2') format('woff2');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fontes/Helvetica/HelveticaNowDisplay-Medium.woff2') format('woff2');
+  font-weight: 500; /* Medium */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fontes/Helvetica/HelveticaNowDisplay-Bold.woff2') format('woff2');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+  font-display: swap;
+}

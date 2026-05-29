@@ -8,13 +8,19 @@
     font-size: 40pt;
     margin-bottom: -15px;
 }
+
 #daltonismo {
     font-size: 50pt;
     font-weight: 700; 
 }
+
 .container-titulo {
     display: flex;
     flex-direction: column;
+}
+
+#container-principal {
+    padding: 90px;
 }
 
 #container-principal-texto {
@@ -22,6 +28,9 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    max-width: 600px;
+    line-height: 1.5;
+    margin-right: 150px;
 }
 
 .button-principal {
@@ -32,6 +41,7 @@
     margin-right: 10px;
     border-radius: 50px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .button-secundario {
@@ -41,6 +51,7 @@
     margin-right: 10px;
     border-radius: 50px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .carousel-item img {
@@ -55,9 +66,113 @@
     padding-right: 56px !important;
 }
 
+/* Container tipos  */
+#container-tipos {
+    background-color: #F2F4F8;
+    margin-top: 100px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+    gap: 20px;
+}
+#titulo-container-tipos {
+    font-size: 30pt;
+    margin-bottom: 20px;
+}
+#container-tipos p {
+    max-width: 800px;
+    text-align: center;
+    color: #252E4A;
+    line-height: 1.5;
+}
+
+/* Container causas  */
+#container-causas {
+    background-color: white;
+    padding: 60px 0px 60px 60px;
+    margin-top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.lista-causas {
+    border-radius: 10px;
+    margin: 30px 0px 0px -40px;
+}
+.lista-causas li {
+    background-color: #D7D7D7;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    color: #7F7F7F;
+}
+#diagnostico {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 600px;
+    justify-content: center;
+}
+.container-causas-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+/* Container Impacto */
+#container-impacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    background-color: #F2F4F8;
+}
+#container-impacto h2 {
+    text-align: center;
+}
+#container-impacto p {
+    font-size: 13pt;
+    margin-top: -10px;
+    margin-bottom: 50px;
+    color: #001D6C;
+    text-align: center;
+}
+
+/* Container Soluções */
+#container-solucoes {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px;
+    gap: 30px;
+}
+.cards-solucoes {
+    display: flex;
+    gap: 30px;
+    flex-direction: row;
+    justify-content: center;
+}
+.cards-solucoes .card .card-body {
+    background-color: #E7E7E7;
+    border-radius: 20px;
+}
+.cards-solucoes .card{
+    border-radius: 20px;
+}
+
 /* RESPONSIVIDADE */
 
 @media (max-width: 992px) {
+    #container-principal {
+        padding: 0px;
+    }
     #nomePag {
         font-size: 30pt;
     }
@@ -82,6 +197,7 @@
     .container-titulo, #container-principal-texto {
         text-align: center;
         align-items: center;
+        margin-right: 0px;
     }
 
     .container-principal-buttons {
@@ -123,5 +239,55 @@
         width: 100%;
         text-align: center;
         padding: 12px 20px; 
+    }
+
+    #container-tipos {
+        margin-top: 0px;
+        text-align: center;
+    }
+    #titulo-container-tipos {
+        font-size: 20pt;
+        margin-bottom: 20px;
+    }
+    #container-tipos p {
+        max-width: 800px;
+        text-align: center;
+        color: #252E4A;
+        line-height: 1.5;
+    }
+    #container-causas {
+        margin: 0px;
+        padding: 60px 16px; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #diagnostico {
+        margin-top: -50px;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        padding: 20px;
+    }
+    .container-causas-buttons {
+        width: 100%;
+    }
+    #container-impacto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 0px;
+    }
+    .card-title {
+        text-align: center;
+    }
+    #container-solucoes {
+        padding: 20px;
+        gap: 30px;
+    }
+    .cards-solucoes {
+        gap: 10px;
+        flex-direction: column;
+        padding: 20px;
     }
 }

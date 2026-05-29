@@ -55,6 +55,34 @@ h1 {
   font-family: 'Helvetica Now Display', sans-serif;
   font-weight: 700;
 }
+h2 {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-weight: 500;
+}
+h3 {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-weight: 400;
+}
+h4 {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-weight: 400;
+}
+h5 {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-weight: 400;
+}
+p {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-weight: 400;
+}
+a {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-weight: 400;
+}
+li {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-weight: 400;
+}
 
 /* Navbar */
 

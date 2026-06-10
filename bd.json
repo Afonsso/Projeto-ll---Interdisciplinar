@@ -1,0 +1,480 @@
+{
+  "users": [
+    {
+      "id": "user_1",
+      "name": "Utilizador Demo",
+      "email": "demo@croma.app",
+      "password": "demo123",
+      "avatar": "property 1=cão.png",
+      "birthDate": "1990-01-01",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "colorBlindnessType": null,
+      "ishiharaCompleted": false,
+      "xp": 0,
+      "streak": 0,
+      "lastLoginDate": "2026-06-10T12:20:53.504Z",
+      "progress": {
+        "worlds": {
+          "transito": {
+            "name": "Trânsito",
+            "emoji": "🚦",
+            "unlocked": true,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          },
+          "roupas": {
+            "name": "Roupas & Estilo",
+            "emoji": "👚",
+            "unlocked": false,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          },
+          "cozinha": {
+            "name": "Cozinha & Alimentação",
+            "emoji": "🏡",
+            "unlocked": false,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          },
+          "desporto": {
+            "name": "Desporto",
+            "emoji": "⚽",
+            "unlocked": false,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          },
+          "reflexo": {
+            "name": "Reflexo",
+            "emoji": "🏁",
+            "unlocked": false,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          }
+        },
+        "totalStars": 0,
+        "completedLevels": [],
+        "recentActivity": []
+      }
+    },
+    {
+      "name": "Afonso Duarte",
+      "email": "afonsoduart070@gmail.com",
+      "password": "Afonso2006",
+      "avatar": "property 1=cão.png",
+      "birthDate": "2005-01-01",
+      "createdAt": "2026-06-10T12:21:29.407Z",
+      "colorBlindnessType": null,
+      "ishiharaCompleted": false,
+      "xp": 0,
+      "streak": 1,
+      "lastLoginDate": "Wed Jun 10 2026",
+      "progress": {
+        "worlds": {
+          "transito": {
+            "name": "Trânsito",
+            "emoji": "🚦",
+            "unlocked": true,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          },
+          "roupas": {
+            "name": "Roupas & Estilo",
+            "emoji": "👚",
+            "unlocked": false,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          },
+          "cozinha": {
+            "name": "Cozinha & Alimentação",
+            "emoji": "🏡",
+            "unlocked": false,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          },
+          "desporto": {
+            "name": "Desporto",
+            "emoji": "⚽",
+            "unlocked": false,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          },
+          "reflexo": {
+            "name": "Reflexo",
+            "emoji": "🏁",
+            "unlocked": false,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          }
+        },
+        "totalStars": 0,
+        "completedLevels": [],
+        "recentActivity": []
+      },
+      "id": "s-S0Uji"
+    }
+  ],
+  "sessions": [
+    {
+      "userId": "user_1",
+      "createdAt": "2026-06-10T12:20:53.476Z",
+      "expiresAt": "2026-06-17T12:20:53.476Z",
+      "id": 1
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-10T12:21:29.426Z",
+      "expiresAt": "2026-06-17T12:21:29.426Z",
+      "id": 2
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-10T15:04:26.684Z",
+      "expiresAt": "2026-06-17T15:04:26.684Z",
+      "id": 3
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-10T15:08:01.041Z",
+      "expiresAt": "2026-06-17T15:08:01.041Z",
+      "id": 4
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-10T15:09:28.365Z",
+      "expiresAt": "2026-06-17T15:09:28.365Z",
+      "id": 5
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-10T15:10:18.117Z",
+      "expiresAt": "2026-06-17T15:10:18.117Z",
+      "id": 6
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-10T15:14:26.831Z",
+      "expiresAt": "2026-06-17T15:14:26.832Z",
+      "id": 7
+    }
+  ]
+}

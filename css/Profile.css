@@ -1,0 +1,379 @@
+
+.profile-top-header {
+    width: 100%;
+    background-color: var(--branco);
+    padding: 50px 0;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+/* Bloco de Identidade do Utilizador */
+.user-identity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-shrink: 0;
+    min-width: 160px;
+}
+
+.avatar-interactive-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.avatar-click-zone {
+    position: relative;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.avatar-circle {
+    width: 120px;
+    height: 120px;
+    background-color: #00ca72;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.avatar-click-zone:hover .avatar-circle {
+    transform: scale(1.03);
+}
+
+.avatar-circle img {
+    width: 75%;
+    height: auto;
+}
+
+.edit-overlay-icon {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background: var(--branco);
+    border: 2px solid #ebebeb;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.btn-arrow-avatar {
+    background: transparent;
+    border: none;
+    color: var(--azul);
+    font-size: 2.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    user-select: none;
+}
+
+.btn-arrow-avatar.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#user-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--azul);
+    margin-bottom: 4px;
+}
+
+#user-email {
+    font-size: 0.75rem;
+    color: var(--texto-suave);
+    margin-bottom: 14px;
+}
+
+.btn-edit {
+    background-color: #a5a5a5;
+    color: var(--branco);
+    border: none;
+    border-radius: 8px;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.points-card, .info-status-card {
+    flex: 1;
+    min-width: 160px;
+    background-color: var(--branco);
+    border: 1px solid #e8e8e8;
+    border-radius: 24px;
+    padding: 20px 16px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+}
+
+.points-card {
+    justify-content: space-between;
+}
+
+.points-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.points-label, .status-title-top {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--azul);
+}
+
+.settings-icon { 
+    font-size: 1.1rem; 
+    color: #8a8a8a; 
+    cursor: pointer; 
+}
+
+.xp-pill { 
+    background-color: #fbc02d; 
+    border-radius: 20px; 
+    padding: 10px 0; 
+    text-align: center; 
+    width: 100%;
+}
+
+#total-xp { 
+    font-size: 1.1rem; 
+    font-weight: 700; 
+    color: var(--azul); 
+}
+
+.fire-icon { 
+    font-size: 2.2rem; 
+    margin-bottom: 4px; 
+}
+
+.status-title { 
+    font-size: 0.8rem; 
+    color: var(--texto-suave); 
+}
+
+.status-value { 
+    font-size: 1.1rem; 
+    font-weight: 700; 
+    color: var(--azul); 
+}
+
+.progress-ring-container { 
+    width: 65px; 
+    height: 65px; 
+    margin-top: 8px; 
+}
+
+.progress-ring {
+    width: 100%; 
+    height: 100%; 
+    border-radius: 50%;
+    border: 7px solid #ebebeb; 
+    border-top-color: var(--azul); 
+    border-right-color: var(--azul);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+#progress-text { 
+    font-size: 0.85rem; 
+    font-weight: 700; 
+    color: var(--azul); 
+}
+
+/* Card de Troféus Interativo */
+.trophy-clickable-card {
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trophy-clickable-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--azul);
+    box-shadow: 0 6px 20px rgba(37, 46, 74, 0.08);
+}
+
+.trophy-icon {
+    font-size: 2.2rem;
+    margin-bottom: 4px;
+}
+
+.trophy-navigation-arrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--azul);
+    margin-top: 6px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.trophy-clickable-card:hover .trophy-navigation-arrow {
+    opacity: 1;
+}
+
+
+.profile-dark-bg-area {
+    width: 100%;
+    background-color: var(--cinza-bg);
+    padding: 60px 0;
+}
+
+.main-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 56px;
+}
+
+.main-section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--azul);
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.recent-section, .tests-section {
+    margin-bottom: 60px;
+}
+
+.recent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.recent-item-card {
+    background-color: var(--azul);
+    border: 2px solid #1f263d;
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.item-icon-bg { font-size: 1.6rem; }
+.item-info h4 { color: var(--branco); font-size: 1.1rem; font-weight: 700; }
+.item-info p { color: var(--branco); font-size: 0.7rem; opacity: 0.6; }
+
+.btn-action-replay, .btn-test-replay {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--branco); border: none; border-radius: 50%;
+    width: 32px; height: 32px; font-size: 0.9rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; margin-left: auto;
+}
+
+.tests-white-panel {
+    background-color: var(--branco);
+    border-radius: 28px;
+    padding: 40px;
+}
+
+.tests-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.test-item-card {
+    background-color: var(--azul);
+    border-radius: 20px;
+    padding: 20px;
+    color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 155px;
+}
+
+.test-header-info { display: flex; justify-content: space-between; align-items: flex-start; }
+.test-item-card h4 { font-size: 1.05rem; font-weight: 700; }
+.test-card-icon { font-size: 1.3rem; }
+.test-level { font-size: 0.75rem; opacity: 0.7; margin-top: -15px; }
+.test-footer-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.test-stars { color: #fbc02d; font-size: 0.9rem; letter-spacing: 2px; }
+.btn-test-replay { margin-left: 0; width: 28px; height: 28px; font-size: 0.8rem; }
+
+/* MODAL DE EDIÇÃO */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(37, 46, 74, 0.5);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; z-index: 2000;
+    transition: opacity 0.25s, visibility 0.25s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    background-color: var(--branco);
+    width: 460px; max-width: 90%;
+    border-radius: 24px; padding: 32px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 24px; border-bottom: 1px solid #ebebeb; padding-bottom: 12px;
+}
+
+.modal-header h3 { font-size: 1.4rem; color: var(--azul); font-weight: 700; }
+
+.btn-close-modal {
+    background: transparent; border: none; font-size: 1.8rem;
+    color: var(--texto-suave); cursor: pointer; line-height: 1;
+}
+
+.modal-form { display: flex; flex-direction: column; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 0.85rem; font-weight: 700; color: var(--azul); }
+
+.form-group input {
+    width: 100%; height: 42px; border-radius: 8px; border: 1px solid #cccccc;
+    padding: 0 14px; font-size: 0.9rem; color: var(--azul); outline: none;
+}
+
+.btn-submit-modal {
+    background-color: var(--azul); color: var(--branco);
+    border: none; border-radius: 50px; height: 46px; font-size: 0.95rem;
+    font-weight: 600; cursor: pointer; margin-top: 10px; transition: background 0.2s;
+}
+
+.btn-submit-modal:hover { background-color: #1a2136; }

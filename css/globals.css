@@ -1,6 +1,4 @@
-/* FONTES*/
-
-/* Juana Demo */
+/* FONTES OFICIAIS */
 @font-face {
   font-family: 'Juana Demo';
   src: url('../fontes/FontspringDemo/Fontspring-DEMO-juana-regular.woff2') format('woff2');
@@ -8,7 +6,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: 'Juana Demo';
   src: url('../fontes/FontspringDemo/Fontspring-DEMO-juanaalt-medium.woff2') format('woff2');
@@ -16,8 +13,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-/* Helvetica Now Display */
 @font-face {
   font-family: 'Helvetica Now Display';
   src: url('../fontes/Helvetica/HelveticaNowDisplay-Regular.woff2') format('woff2');
@@ -25,7 +20,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: 'Helvetica Now Display';
   src: url('../fontes/Helvetica/HelveticaNowDisplay-Medium.woff2') format('woff2');
@@ -33,7 +27,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: 'Helvetica Now Display';
   src: url('../fontes/Helvetica/HelveticaNowDisplay-Bold.woff2') format('woff2');
@@ -41,7 +34,8 @@
   font-style: normal;
   font-display: swap;
 }
-/* Configurações Globais */
+
+
 :root {
   --azul: #252e4a;
   --cinza-bg: #ebebeb;
@@ -51,142 +45,308 @@
   --texto-suave: #5c5c5c;
 }
 
-h1 {
-  font-family: 'Helvetica Now Display', sans-serif;
-  font-weight: 700;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Navbar */
-
-.navbar {
-  width: 100%;
-  height: 96px;
-  background-color: var(--branco);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #e2e2e2;
-  
+html {
+  scroll-behavior: smooth;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0px 56px;
+html, body, button, input, textarea, select, optgroup, option {
+  font-family: 'Helvetica Now Display', Arial, Helvetica, sans-serif !important;
 }
 
-.cone,
-.cone-2 {
-  width: 54px;
-  height: 54px;
-  object-fit: contain;
+body {
+  color: var(--texto);
+  background-color: var(--cinza-bg);
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-.nome,
-.nome-2 {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.text-wrapper-6,
-.text-wrapper-10 {
-  font-family: 'Helvetica Now Display', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--texto-suave);
-}
-
-.text-wrapper-7,
-.text-wrapper-11 {
-  font-family: 'Helvetica Now Display', sans-serif;
-  font-size: 10px;
-  color: var(--texto-suave);
-}
-
-/* Links e Itens do Menu à direita */
-.menu-3 {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 22px;
-  padding: 0px 56px;
-}
-
-.incio,
-.div-3 {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-}
-
-.vector-7,
-.vector-8,
-.vector-9 {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-}
-.navbar a {
+a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Texto dos links (Início, Sobre, Quizzes, Perfil)*/
-.text-wrapper-12,
-.text-wrapper-13 {
-  font-family: 'Helvetica Now Display', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--texto);
-  transition: color 0.2s ease;
+/* Navar global */
+nav.navbar, 
+nav.navbar *, 
+nav.navbar a, 
+nav.navbar div {
+  font-family: 'Helvetica Now Display', Arial, sans-serif !important;
 }
 
-/* Efeito Hover nos links do menu */
-.incio:hover .text-wrapper-12,
-.div-3:hover .text-wrapper-12,
-.div-3:hover .text-wrapper-13 {
-  color: var(--texto-suave);
+.navbar {
+  width: 100%;
+  height: 80px;
+  background: var(--branco);
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Balão de Notificação (10+) */
-.badge {
-  border-radius: 30px !important;
-  background: var(--texto-suave);
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar .cone-2 {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.navbar .nome-2 {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.navbar .text-wrapper-10 {
+  color: var(--azul);
+  font-family: "Juana Demo", Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.navbar .text-wrapper-11 {
+  color: var(--azul);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.navbar .menu-3 {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar .incio,
+.navbar .div-3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 4px;
+}
+
+.navbar .vector-7,
+.navbar .vector-8,
+.navbar .vector-9 {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.navbar .text-wrapper-12,
+.navbar .text-wrapper-13 {
+  color: var(--azul);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Estados de Hover e Página Ativa */
+.navbar .incio:hover .text-wrapper-12,
+.navbar .div-3:hover .text-wrapper-12,
+.navbar .div-3:hover .text-wrapper-13,
+.navbar .active-nav .text-wrapper-12,
+.navbar .active-nav .text-wrapper-13 {
+  color: var(--texto-suave) !important;
+  opacity: 0.8;
+}
+
+.navbar .badge {
+  background: var(--azul);
+  border-radius: 10px;
   padding: 2px 6px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.text-3 {
-  font-family: 'Helvetica Now Display', sans-serif;
+.navbar .text-3 {
   color: var(--branco);
-  font-size: 9px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* rodape global */
+footer.footer,
+footer.footer *,
+footer.footer div {
+  font-family: 'Helvetica Now Display', Arial, Helvetica, sans-serif !important;
+}
+
+.footer {
+  width: 100%;
+  background: var(--cinza-footer);
+  color: var(--branco);
+  padding: 60px 80px 40px;
+}
+
+.footer-2 {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.footer .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer .cone {
+  display: flex;
+  align-items: center;
+}
+
+.footer .vector-6 {
+  height: 28px;
+  object-fit: contain;
+}
+
+.footer .nome {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.footer .text-wrapper-6 {
+  font-family: "Juana Demo", Georgia, serif;
+  font-size: 24px;
   font-weight: 400;
+  line-height: 1;
 }
 
-/* RESPONSIVIDADE DA NAVBAR */
+.footer .text-wrapper-7 {
+  font-size: 12px;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.footer .rectangle {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.footer .div-2 {
+  width: 100%;
+  display: flex;
+  gap: 48px;
+}
+
+.footer .menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer .menu-item-2 {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.footer .menu-item-4 {
+  color: #d0d0d0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.footer .text-wrapper-9 {
+  font-size: 11px;
+  color: #d0d0d0;
+  margin-top: 20px;
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+.button,
+.button-principal,
+.button-secundario,
+.btn-random-mode,
+.btn,
+.btn-link {
+  font-family: 'Helvetica Now Display', Arial, Helvetica, sans-serif !important;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+button {
+  height: 42px;
+  border-radius: 50px;
+  border: 0;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer .form-field-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer .form-field-button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer .field,
+.footer .button {
+  height: 42px;
+  border-radius: 50px;
+  border: 0;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer .field {
+  background: #ffffff;
+  color: var(--texto);
+}
+
+.footer .button {
+  background: #323232;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.footer .button-text {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.footer .separator-left {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+
+
+/* Responsividade a trablhar*/
 @media (max-width: 900px) {
-  .navbar {
-    padding: 0 24px;
-  }
-  .menu-3 {
-    gap: 12px;
-  }
-}
-
-@media (max-width: 560px) {
-  .navbar {
-    height: auto;
-    padding: 16px;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .menu-3 {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  .navbar { padding: 0 24px; }
+  .navbar .menu-3 { gap: 16px; }
+  .footer { padding: 40px 24px; }
+  .footer .div-2 { flex-direction: column; gap: 24px; }
 }

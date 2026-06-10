@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sessão</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/accounts.css">
+    <script type="module" src="../../js/init.js"></script>
+</head>
+<body>
+
+<div class="registo-fullscreen d-flex flex-column justify-content-center" style="gap: 50px;">
+    
+    <a href="#" class="btn-fechar">&times;</a>
+
+    <div class="text-center">
+        <h2 class="titulo-formulario" style="margin-bottom: 5px;">Bem-vindo de volta!</h2>
+        <p style="font-size: 1.1rem; color: #555555; margin: 0;">Inicie sessão para continuar</p>
+    </div>
+
+    <form id="login-form" class="form-bloco-central">
+
+        <div id="login-error" class="alert alert-danger" style="display: none;"></div>
+        <div id="login-success" class="alert alert-success" style="display: none;"></div>
+
+        <div class="form-group mb-4">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control input-custom" autocomplete="off" required>
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="password">Palavra-passe</label>
+            <input type="password" id="password" class="form-control input-custom" required>
+        </div>
+
+        <a href="recover_password.html" class="link-esqueceu">Esqueceu-se da palavra-passe?</a>
+
+        <button type="submit" class="btn btn-croma-escuro btn-centralizado" id="login-btn">Entrar</button>
+
+    </form>
+
+    <div class="d-flex justify-content-between mx-auto" style="max-width: 450px; width: 100%; font-size: 0.95rem; margin-top: 20px;">
+        <span style="color: #000;">Ainda não tem conta?</span>
+        <a href="create_account.html" style="color: #000; font-weight: 500; text-decoration: underline;">Criar conta</a>
+    </div>
+
+</div>
+
+<script>
+    // Login handler
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const errorDiv = document.getElementById('login-error');
+        const successDiv = document.getElementById('login-success');
+        const loginBtn = document.getElementById('login-btn');
+
+        // Hide previous messages
+        errorDiv.style.display = 'none';
+        successDiv.style.display = 'none';
+
+        // Disable button
+        loginBtn.disabled = true;
+        loginBtn.textContent = 'A entrar...';
+
+        try {
+            // Wait for the app to initialize
+            if (window.CromaApp) {
+                const authService = window.CromaApp.getController('auth');
+                
+                if (authService) {
+                    const result = await authService.login(email, password);
+
+                    if (result.success) {
+                        successDiv.textContent = 'Login realizado com sucesso! A redirecionar...';
+                        successDiv.style.display = 'block';
+
+                        // Redirect to home after successful login
+                        window.location.replace('../Home.html');
+                    } else {
+                        errorDiv.textContent = result.error || 'Erro ao fazer login';
+                        errorDiv.style.display = 'block';
+                        loginBtn.disabled = false;
+                        loginBtn.textContent = 'Entrar';
+                    }
+                } else {
+                    throw new Error('Serviço de autenticação não disponível');
+                }
+            } else {
+                // Fallback if app not initialized yet
+                throw new Error('Aplicação não inicializada. Por favor, recarregue a página.');
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            errorDiv.textContent = error.message || 'Erro ao fazer login. Tente novamente.';
+            errorDiv.style.display = 'block';
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'Entrar';
+        }
+    });
+
+    // Close button handler
+    document.querySelector('.btn-fechar').addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = '../../index.html';
+    });
+</script>
+
+</body>
+</html>

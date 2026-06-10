@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Começar agora!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/accounts.css">
+    <script type="module" src="../../js/init.js"></script>
+
+</head>
+<body>
+
+<div class="registo-fullscreen">
+    <h2 class="titulo-formulario">Começar agora!</h2>
+
+    <div id="register-error" class="alert alert-danger" style="display: none;"></div>
+    <div id="register-success" class="alert alert-success" style="display: none;"></div>
+
+    <form id="register-form">
+        <div class="row">
+
+            <div class="col-md-6 pr-md-5">
+
+                <div class="form-group mb-4">
+                    <label for="nome">Qual é o seu nome?</label>
+                    <input type="text" id="nome" class="form-control input-custom" autocomplete="off" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="email">Qual é o seu email?</label>
+                    <input type="email" id="email" class="form-control input-custom" autocomplete="off" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="idade">Qual a sua idade?</label>
+                    <div class="idade-container">
+                        <input type="number" id="idade" class="form-control input-custom input-idade" min="0" max="120" required>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6 pl-md-5">
+
+                <div class="form-group mb-1">
+                    <label for="password">Crie uma Palavra-Passe</label>
+                    <input type="password" id="password" class="form-control input-custom" required>
+                </div>
+
+                <ul class="validacao-lista">
+                    <li><span class="visto-icon">✓</span> Deve conter um caracter especial (por exemplo: !, @, #, $).</li>
+                    <li><span class="visto-icon">✓</span> Deve conter um caracter em maiúscula.</li>
+                    <li><span class="visto-icon">✓</span> Deve conter um tamanho igual ou superior a 8 caracteres.</li>
+                </ul>
+
+                <div class="form-group mb-1">
+                    <label for="confirm-password">Confirme a Palavra-passe</label>
+                    <input type="password" id="confirm-password" class="form-control input-custom" required>
+                </div>
+
+                <ul class="validacao-lista">
+                    <li><span class="visto-icon">✓</span> As palavras-passe coincidem.</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12 text-right pr-md-5">
+                <button type="submit" class="btn btn-criar-conta" id="register-btn">Criar conta</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    // Register handler
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const idade = document.getElementById('idade').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+
+        const errorDiv = document.getElementById('register-error');
+        const successDiv = document.getElementById('register-success');
+        const registerBtn = document.getElementById('register-btn');
+
+        // Hide previous messages
+        errorDiv.style.display = 'none';
+        successDiv.style.display = 'none';
+
+        // Validate passwords match
+        if (password !== confirmPassword) {
+            errorDiv.textContent = 'As palavras-passe não coincidem';
+            errorDiv.style.display = 'block';
+            return;
+        }
+
+        // Validate password strength
+        if (password.length < 6) {
+            errorDiv.textContent = 'A palavra-passe deve ter pelo menos 6 caracteres';
+            errorDiv.style.display = 'block';
+            return;
+        }
+
+        // Calculate birth date from age
+        const currentYear = new Date().getFullYear();
+        const birthYear = currentYear - parseInt(idade);
+        const birthDate = `${birthYear}-01-01`;
+
+        // Disable button
+        registerBtn.disabled = true;
+        registerBtn.textContent = 'A criar conta...';
+
+        try {
+            // Wait for the app to initialize
+            if (window.CromaApp) {
+                const authService = window.CromaApp.getController('auth');
+
+                if (authService) {
+                    const userData = {
+                        name: nome,
+                        email: email,
+                        password: password,
+                        birthDate: birthDate
+                    };
+
+                    const result = await authService.register(userData);
+
+                    if (result.success) {
+                        successDiv.textContent = 'Conta criada com sucesso! A redirecionar...';
+                        successDiv.style.display = 'block';
+
+                        // Redirect to home after successful registration
+                        setTimeout(() => {
+                            window.location.href = '../home.html';
+                        }, 1500);
+                    } else {
+                        errorDiv.textContent = result.error || 'Erro ao criar conta';
+                        errorDiv.style.display = 'block';
+                        registerBtn.disabled = false;
+                        registerBtn.textContent = 'Criar conta';
+                    }
+                } else {
+                    throw new Error('Serviço de autenticação não disponível');
+                }
+            } else {
+                // Fallback if app not initialized yet
+                throw new Error('Aplicação não inicializada. Por favor, recarregue a página.');
+            }
+        } catch (error) {
+            console.error('Register error:', error);
+            errorDiv.textContent = error.message || 'Erro ao criar conta. Tente novamente.';
+            errorDiv.style.display = 'block';
+            registerBtn.disabled = false;
+            registerBtn.textContent = 'Criar conta';
+        }
+    });
+</script>
+
+</body>
+</html>

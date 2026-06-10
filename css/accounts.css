@@ -1,0 +1,202 @@
+/* ==========================================================================
+   1. ESTRUTURA GLOBAL (FULLSCREEN)
+   ========================================================================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #ffffff;
+    font-family: sans-serif;
+}
+
+.registo-fullscreen {
+    width: 100vw;
+    height: 100vh;
+    padding: 60px 80px;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Botão de Fechar (X) comum a todas as telas */
+.btn-fechar {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    font-size: 1.8rem;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   2. TIPOGRAFIA E TEXTOS
+   ========================================================================== */
+.titulo-formulario {
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #000000;
+    line-height: 1.1;
+    margin-bottom: 5px;
+}
+
+.subtitulo-formulario {
+    font-size: 1.1rem;
+    color: #555555;
+    margin-bottom: 40px;
+}
+
+.texto-instrucao {
+    font-size: 0.95rem;
+    color: #000000;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   3. FORMULÁRIOS, INPUTS E VALIDAÇÕES
+   ========================================================================== */
+/* Contentor para estreitar formulários verticais (Login e Recuperar) */
+.form-bloco-central {
+    max-width: 380px;
+    width: 100%;
+    margin: auto;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+/* Inputs arredondados estilo pílula */
+.input-custom {
+    border: 1px solid #999999;
+    border-radius: 20px;
+    padding: 12px 20px;
+    height: auto;
+    font-size: 1rem;
+}
+
+.input-custom:focus {
+    border-color: #666;
+    box-shadow: none;
+}
+
+/* Campo de Idade (Exclusivo do Registo) */
+.idade-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-idade {
+    width: 80px;
+    text-align: center;
+}
+
+.setas-idade {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    color: #333;
+    cursor: pointer;
+    line-height: 1.1;
+}
+
+/* Listas de Validação de Password */
+.validacao-lista {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.validacao-lista li {
+    font-size: 0.8rem;
+    color: #555555;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.visto-icon {
+    color: #666666;
+    font-weight: bold;
+}
+
+/* BOTÕES E LINKS DE NAVEGAÇÃO
+
+/* Botão Principal Cinzento */
+.btn-principal-croma,
+.btn-criar-conta {
+    background-color: #7a7a7a;
+    color: white;
+    border-radius: 25px;
+    padding: 11px 40px;
+    font-size: 1rem;
+    border: none;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.btn-principal-croma:hover,
+.btn-criar-conta:hover {
+    background-color: #5a5a5a;
+    color: white;
+    text-decoration: none;
+}
+
+/* Forçar centralização do botão em layouts de uma coluna */
+.btn-centralizado {
+    display: block;
+    margin: 30px auto 0 auto;
+}
+
+/* Links Úteis */
+.link-esqueceu {
+    font-size: 0.85rem;
+    color: #000000;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 8px;
+}
+
+.link-voltar {
+    color: #000000;
+    font-size: 0.95rem;
+    text-decoration: underline;
+    font-weight: 500;
+    display: block;
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+/* Rodapé de Links Alternativos (Fundo da página) */
+.zona-inferior-links {
+    display: flex;
+    justify-content: space-between;
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto 20px auto;
+    font-size: 0.95rem;
+}
+
+.link-alternativo {
+    color: #000000;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.link-alternativo-sublinhado {
+    color: #000000;
+    font-weight: 500;
+    text-decoration: underline;
+}

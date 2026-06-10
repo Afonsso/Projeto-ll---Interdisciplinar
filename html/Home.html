@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> CROMA </title>
+    <link rel="stylesheet" href="../css/globals.css">
     <link rel="stylesheet" href="../css/Home.css">
+    <script type="module" src="../js/init.js"></script>
 </head>
 <body>
 <div class="pg-inicial">
 
     <!-- NAVBAR -->
     <nav class="navbar">
-      <a href="index.html">
+      <a href="../index.html">
         <div class="logo">
           <img class="cone-2" src="../imagens/logo.svg" alt="Logo Croma" />
           <div class="nome-2">
@@ -20,96 +22,50 @@
           </div>
         </div>
       </a>
-
       <div class="menu-3">
+        <a href="home.html">
           <div class="incio">
             <img class="vector-7" src="../imagens/inicio.svg" alt="" />
             <div class="text-wrapper-12">Início</div>
-        </div>
-        
-
-        <div class="div-3">
-          <img class="vector-8" src="../imagens/sobre.svg" alt="" />
-          <div class="text-wrapper-12">Sobre</div>
-        </div>
-
-        <div class="div-3">
-          <img class="vector-7" src="../imagens/quizzes.svg" alt="" />
-          <div class="text-wrapper-12">Quizzes</div>
-        </div>
-
-        <div class="div-3">
-          <img class="vector-9" src="../imagens/perfil.svg" alt="" />
-          <div class="text-wrapper-13">Perfil</div>
-          <div class="badge">
-            <div class="text-3">10+</div>
           </div>
-        </div>
+        </a>
+        <a href="about.html">
+          <div class="div-3">
+            <img class="vector-8" src="../imagens/sobre.svg" alt="" />
+            <div class="text-wrapper-12">Sobre</div>
+          </div>
+        </a>
+        <a href="training.html">
+          <div class="div-3">
+            <img class="vector-7" src="../imagens/quizzes.svg" alt="" />
+            <div class="text-wrapper-12">Quizzes</div>
+          </div>
+        </a>
+        <a href="profile.html">
+          <div class="div-3">
+            <img class="vector-9" src="../imagens/perfil.svg" alt="" />
+            <div class="text-wrapper-13">Perfil</div>
+            <div class="badge">
+              <div class="text-3">10+</div>
+            </div>
+          </div>
+        </a>
       </div>
     </nav>
 
     <main class="landingpage">
 
-      <!-- SECÇÃO APRESENTAÇÃO -->
-      <section class="apresentao">
-        <img class="imagem" src="../imagens/eye.png" alt="Imagem de apresentação" />
+      <!-- MVC Container - Welcome Message -->
+      <div id="welcome-message" class="welcome-section"></div>
 
-        <div class="content">
-          <div class="section-text">
-            <div class="top">
-              <div class="t-tulo">CROMA</div>
-              <p class="subt-tulo">O mundo real, adaptado a ti.</p>
-            </div>
+      <!-- MVC Container - Quick Stats -->
+      <div id="quick-stats" class="stats-section"></div>
 
-            <p class="paragraph">
-              O CROMA ajuda-te a identificar, treinar e adaptar a tua visão.
-              Uma ponte digital entre o que vês e a realidade, desenhada para a tua autonomia.
-            </p>
-          </div>
+      <!-- MVC Container - Training Suggestions -->
+      <div id="training-suggestions" class="suggestions-section"></div>
 
-          <div class="buttons">
-            <div class="saber-mais">
-              <div class="text-container">
-                <div class="text-wrapper">Saber Mais</div>
-              </div>
-
-              <div class="icon-jam-icons">
-                <img class="vector" src="../imagens/arrow.svg" alt="" />
-              </div>
-            </div>
-
-            <div class="log-in">
-              <div class="text-container">
-                <div class="div">Começar</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECÇÃO CHATBOT -->
-      <section class="chatbot">
-        <div class="card">
-          <div class="content-2">
-            <div class="text">
-              <div class="text-wrapper-2">Olá, Maria!</div>
-
-              <div class="title">
-                <div class="text-wrapper-3">Chat Bot</div>
-                <p class="p">Ajuda para o seu cotidiano e mais...</p>
-              </div>
-            </div>
-
-            <div class="icon">
-              <img class="img" src="../imagens/icon_chat.png" alt="Ícone chatbot" />
-            </div>
-          </div>
-        </div>
-
-        <div class="type">
-          <div class="text-wrapper-4">Como posso ajudar?</div>
-        </div>
-      </section>
+      <!-- MVC Container - Ishihara Test -->
+      <div id="ishihara-section" class="ishihara-section"></div>
 
       <!-- SECÇÃO SERVIÇOS -->
       <section class="servicos">

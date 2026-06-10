@@ -1,0 +1,10 @@
+{
+  "name": "croma-auth",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "json-server --watch bd.json --port 3000"
+  },
+  "devDependencies": {
+    "json-server": "0.17.4"
+  }
+}

@@ -1,4 +1,4 @@
-        /* Reset para página inteira ocupando 100% da tela */
+
         html, body {
             margin: 0;
             padding: 0;
@@ -9,7 +9,7 @@
             font-family: sans-serif;
         }
 
-        /* Container principal que centraliza o bloco inteiro na tela */
+
         .teste-fullscreen {
             width: 100vw;
             min-height: 100vh;
@@ -18,17 +18,17 @@
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centraliza o bloco na vertical */
-            align-items: center;     /* Centraliza o bloco na horizontal */
+            justify-content: center; 
+            align-items: center;     
         }
 
-        /* Define a largura máxima do conteúdo para respirar bem em desktops */
+       
         .conteudo-distribuido {
             width: 100%;
             max-width: 1000px;
         }
 
-        /* Botão de Fechar (X) */
+       
         .btn-fechar {
             position: absolute;
             top: 40px;
@@ -42,17 +42,17 @@
         .titulo-principal {
             font-weight: 700;
             font-size: 2.6rem;
-            margin-bottom: 60px; /* Grande espaçamento abaixo do título principal */
+            margin-bottom: 60px; 
             color: #000000;
         }
 
         .subtitulo-seccao {
             font-weight: 700;
             font-size: 1.7rem;
-            margin-bottom: 35px; /* Espaço confortável abaixo do subtítulo */
+            margin-bottom: 35px;
         }
 
-        /* Blocos de perguntas espaçados entre si */
+       
         .bloco-pergunta {
             margin-bottom: 35px;
         }
@@ -65,7 +65,7 @@
             display: block;
         }
 
-        /* Grupos de Botões Redondos (Pílula) */
+       
         .opcoes-grupo {
             display: flex;
             gap: 12px;
@@ -84,7 +84,7 @@
         .opcao-item label {
             border: 1px solid #999999;
             border-radius: 20px;
-            padding: 8px 24px; /* Mais espaço interno no botão */
+            padding: 8px 24px; 
             font-size: 0.9rem;
             cursor: pointer;
             user-select: none;
@@ -100,7 +100,7 @@
             border-color: #1c1f26;
         }
 
-        /* Coluna Direita - Textos Explicativos */
+        
         .texto-explicativo {
             font-size: 1.3rem;
             font-weight: 600;
@@ -113,7 +113,7 @@
             font-size: 0.85rem;
             color: #555555;
             line-height: 1.6;
-            margin-bottom: 50px; /* Empurra a zona de botões bem para baixo */
+            margin-bottom: 50px; 
             max-width: 380px;
         }
 
@@ -144,7 +144,7 @@
             font-size: 0.85rem;
             color: #000000;
             text-decoration: underline;
-            margin-left: 95px; /* Alinhamento do Figma em relação ao botão */
+            margin-left: 95px; 
             display: inline-block;
             margin-bottom: 45px;
         }
@@ -157,7 +157,7 @@
             display: block;
         }
 
-        /* Radio Buttons de Lista Tradicional */
+      
         .radio-lista-item {
             display: flex;
             align-items: center;

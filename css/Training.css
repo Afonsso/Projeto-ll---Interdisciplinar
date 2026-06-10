@@ -1,0 +1,112 @@
+.training-main-bg {
+    width: 100%;
+    padding: 60px 0 100px 0;
+}
+
+.training-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 56px;
+}
+
+.training-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--azul);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.training-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 40px;
+    align-items: start;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.left-column {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+
+.btn-random-mode {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #64748b;
+    color: var(--branco);
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-random-mode:hover {
+    transform: translateY(-2px);
+    background-color: #475569;
+}
+
+.category-panel-header {
+    background-color: #64748b;
+    color: var(--branco);
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 16px 24px;
+    border-radius: 14px 14px 0 0;
+}
+
+.categories-list-container {
+    background-color: var(--branco);
+    border-radius: 0 0 24px 24px;
+    padding: 10px 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.category-row-item {
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
+    color: var(--azul);
+    border-bottom: 1px solid #f1f5f9;
+    transition: background-color 0.15s ease;
+}
+
+.category-row-item:last-child {
+    border-bottom: none;
+}
+
+.category-row-item:hover {
+    background-color: #f8fafc;
+}
+
+.category-emoji {
+    font-size: 1.3rem;
+    margin-right: 18px;
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+}
+
+.category-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #334155;
+    flex: 1;
+}
+
+.category-arrow {
+    font-size: 1.5rem;
+    color: #94a3b8;
+    line-height: 1;
+    transition: transform 0.2s;
+}
+
+.category-row-item:hover .category-arrow {
+    transform: translateX(3px);
+    color: var(--azul);
+}

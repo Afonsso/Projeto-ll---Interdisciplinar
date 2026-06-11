@@ -2,17 +2,17 @@
   "users": [
     {
       "id": "user_1",
-      "name": "Utilizador Demo",
+      "name": "Arroz",
       "email": "demo@croma.app",
       "password": "demo123",
-      "avatar": "property 1=cão.png",
+      "avatar": "property%201=c%C3%A3o.png",
       "birthDate": "1990-01-01",
       "createdAt": "2026-01-01T00:00:00.000Z",
       "colorBlindnessType": null,
       "ishiharaCompleted": false,
       "xp": 0,
       "streak": 0,
-      "lastLoginDate": "2026-06-10T12:20:53.504Z",
+      "lastLoginDate": "2026-06-11T09:47:48.890Z",
       "progress": {
         "worlds": {
           "transito": {
@@ -217,17 +217,17 @@
       }
     },
     {
-      "name": "Afonso Duarte",
+      "name": "Afonso ",
       "email": "afonsoduart070@gmail.com",
       "password": "Afonso2006",
-      "avatar": "property 1=cão.png",
+      "avatar": "property%201=c%C3%A3o.png",
       "birthDate": "2005-01-01",
       "createdAt": "2026-06-10T12:21:29.407Z",
       "colorBlindnessType": null,
       "ishiharaCompleted": false,
       "xp": 0,
       "streak": 1,
-      "lastLoginDate": "Wed Jun 10 2026",
+      "lastLoginDate": "2026-06-11T13:15:47.915Z",
       "progress": {
         "worlds": {
           "transito": {
@@ -475,6 +475,48 @@
       "createdAt": "2026-06-10T15:14:26.831Z",
       "expiresAt": "2026-06-17T15:14:26.832Z",
       "id": 7
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-11T09:37:09.172Z",
+      "expiresAt": "2026-06-18T09:37:09.172Z",
+      "id": 8
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-11T09:40:00.368Z",
+      "expiresAt": "2026-06-18T09:40:00.368Z",
+      "id": 9
+    },
+    {
+      "userId": "user_1",
+      "createdAt": "2026-06-11T09:42:10.912Z",
+      "expiresAt": "2026-06-18T09:42:10.912Z",
+      "id": 10
+    },
+    {
+      "userId": "user_1",
+      "createdAt": "2026-06-11T09:47:48.839Z",
+      "expiresAt": "2026-06-18T09:47:48.839Z",
+      "id": 11
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-11T11:38:29.274Z",
+      "expiresAt": "2026-06-18T11:38:29.274Z",
+      "id": 12
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-11T11:59:08.868Z",
+      "expiresAt": "2026-06-18T11:59:08.868Z",
+      "id": 13
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-11T13:12:29.772Z",
+      "expiresAt": "2026-06-18T13:12:29.772Z",
+      "id": 14
     }
   ]
 }

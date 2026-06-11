@@ -377,6 +377,9 @@ th {
 .btn-already:hover { 
     background: rgba(0,0,0,0.05); 
 }   
+#already-did-btn {
+    font-size: 12px;
+}
 
 .history-link { 
     color: #555; 

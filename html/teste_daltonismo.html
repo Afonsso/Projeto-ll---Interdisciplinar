@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CromaApp - Teste de Daltonismo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/globals.css">
+    <link rel="stylesheet" href="../css/teste_daltonismo.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <section id="screen-intro" class="screen active">
+            <header class="header">
+                <h1>Teste de Daltonismo</h1>
+                <div class="close-icon" onclick="window.location.href='Home.html'">&times;</div>
+            </header>
+
+            <div class="intro-layout">
+                <div class="intro-questions">
+                    <h2>Conhecer a sua visão!</h2>
+                    
+                    <div class="question-group" id="main-daltonismo-question">
+                        <p>É daltónico ou suspeita que seja?</p>
+                        <div class="options-row">
+                            <button class="opt-btn" data-value="sim">Sim</button>
+                            <button class="opt-btn" data-value="nao">Não</button>
+                            <button class="opt-btn" data-value="talvez">Talvez</button>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <p>Já fez algum teste de daltonismo?</p>
+                        <div class="options-row">
+                            <button class="opt-btn">Nunca</button>
+                            <button class="opt-btn">Não sei</button>
+                            <button class="opt-btn">Sim</button>
+                        </div>
+                    </div>
+
+                    <div class="question-group" id="type-question-group" style="display: none;">
+                        <p>Sabe qual o tipo?</p>
+                        <div class="options-list">
+                            <label><input type="radio" name="type-select" value="Protanopia"> Protanopia (vermelho)</label>
+                            <label><input type="radio" name="type-select" value="Tritanopia"> Tritanopia (azul)</label>
+                            <label><input type="radio" name="type-select" value="Deuteranopia"> Deuteranopia (verde)</label>
+                            <label><input type="radio" name="type-select" value="NaoSei"> Não sei</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="intro-info">
+                    <div class="info-card">
+                        <h3>Este teste ajuda a identificar possíveis dificuldades na perceção de cores.</h3>
+                        <p>Tem de inserir o(s) número(s) de cada placa que consegue ver. Se não vir nenhum número, avance sem selecionar. Haverá um total de 10 placas.</p>
+                    </div>
+                    
+                    <div class="intro-actions">
+                        <button class="btn-start" id="start-quiz-btn">Iniciar</button>
+                        <button class="btn-already" id="already-did-btn">Já fiz</button>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="#" class="history-link" id="view-history-btn">Ver resultados anteriores</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-quiz" class="screen">
+            <header class="header">
+                <h1>Teste de daltonismo</h1>
+                <div class="close-icon" onclick="window.location.href='Home.html'">&times;</div>
+            </header>
+
+            <div class="quiz-content">
+                <div class="plate-container">
+                    <img id="current-plate-img" src="" alt="Placa Ishihara" class="plate-image">
+                    <div id="plate-progress" class="plate-info">A carregar teste...</div>
+                </div>
+
+                <div class="keypads-wrapper">
+                    <div class="keypad-section">
+                        <p class="keypad-label">1º número:</p>
+                        <div class="keypad-grid" id="keypad-left"></div>
+                        <button class="backspace-btn" onclick="window.quizController.handleClear('left')">
+                            <i class="fa-solid fa-delete-left"></i>
+                        </button>
+                    </div>
+
+                    <div class="keypad-section" id="keypad-section-right">
+                        <p class="keypad-label">2º número:</p>
+                        <div class="keypad-grid" id="keypad-right"></div>
+                        <button class="backspace-btn" onclick="window.quizController.handleClear('right')">
+                            <i class="fa-solid fa-delete-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="footer-actions">
+                    <button class="btn-next" id="next-plate-btn" onclick="window.quizController.handleNextClick()" disabled>Próxima página</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-history" class="screen">
+            <header class="header">
+                <h1>Resultados Anteriores</h1>
+                <div class="close-icon" onclick="location.reload()">&times;</div>
+            </header>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data / Hora</th>
+                            <th>Pontuação</th>
+                            <th>Diagnóstico qualitativo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-table-body">
+                        </tbody>
+                </table>
+            </div>
+            <div class="footer-actions" style="margin-top: 30px;">
+                <button class="btn-improve" onclick="location.reload()">Voltar ao Início</button>
+            </div>
+        </section>
+
+        <section id="screen-result" class="screen">
+            <header class="header">
+                <h1>Diagnóstico:</h1>
+                <div class="close-icon" onclick="location.reload()">&times;</div>
+            </header>
+
+            <div class="result-layout">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Placa:</th>
+                                <th>As suas respostas:</th>
+                                <th>Correta:</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-table-body"></tbody>
+                    </table>
+                </div>
+
+                <div class="result-details">
+                    <p id="diagnosis-label" class="diagnosis-text">A processar...</p>
+                    <p id="final-score" class="score-text"></p>
+                    <button class="btn-improve" onclick="window.location.href='Home.html'" style="background-color: #767676;">Vamos Melhorar</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="../js/model/components/ishiharatest.js"></script>
+    <script src="../js/view/ishiharatestView.js"></script>
+    <script src="../js/controller/ishiharatestController.js"></script>
+</body>
+</html>

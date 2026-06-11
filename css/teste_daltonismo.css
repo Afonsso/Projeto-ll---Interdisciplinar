@@ -1,0 +1,397 @@
+/* ==========================================================================
+   1. VARIÁVEIS DO SISTEMA DE DESIGN (INSPIRADO NO MOCKUP)
+   ========================================================================== */
+:root {
+    --bg-color: #EBEBEB;          /* Cinza de fundo solicitado */
+    --text-main: #1a1a1a;         /* Preto do cabeçalho */
+    --text-muted: #666666;        /* Cinza das legendas e info */
+    --accent-btn: #707070;        /* Cinza escuro do botão "Próxima página" */
+    --accent-hover: #4d4d4d;
+    --border-color: #cccccc;      /* Contorno dos botões numéricos */
+    --transition: all 0.2s ease-in-out;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1100px; /* Alargado para caber os dois teclados confortavelmente */
+    position: relative;
+}
+
+/* Controlo de visibilidade dos ecrãs */
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO DO APP
+   ========================================================================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.header h1 {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.close-icon {
+    font-size: 40px;
+    cursor: pointer;
+    line-height: 1;
+    user-select: none;
+    transition: var(--transition);
+}
+
+.close-icon:hover {
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   3. ÁREA DA PLACA ISHIHARA (CENTRO)
+   ========================================================================== */
+.quiz-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.plate-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.plate-image {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 50%; /* Garante o círculo perfeito */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+.plate-info {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   4. DISTRIBUIÇÃO E DESIGN DOS TECLADOS
+   ========================================================================== */
+.keypads-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* Espaçamento generoso entre o teclado esquerdo e direito */
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.keypad-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 260px;
+}
+
+.keypad-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+/* Grelha fluida de 5 colunas para organizar de 0 a 9 */
+.keypad-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    width: 100%;
+}
+
+/* Estilização pílula/ovalada para os botões do teclado */
+.key-btn {
+    width: 100%;
+    height: 44px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 22px; /* Metade da altura para criar as extremidades arredondadas */
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.key-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estado ativo do botão quando selecionado */
+.key-btn.active {
+    background-color: var(--text-main) !important;
+    color: #ffffff !important;
+    border-color: var(--text-main);
+}
+
+/* Botão de Limpar/Backspace posicionado logo abaixo da grelha */
+.backspace-btn {
+    margin-top: 15px;
+    width: 60px;
+    height: 32px;
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.backspace-btn:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+/* ==========================================================================
+   5. BOTÕES DE AÇÃO PRINCIPAL (RODAPÉ)
+   ========================================================================== */
+.footer-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.btn-next {
+    background-color: var(--accent-btn);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 50px;
+    border: none;
+    border-radius: 30px; /* Botão oval largo */
+    cursor: pointer;
+    transition: var(--transition);
+}
+#next-plate-btn {
+    margin-top: -30px;
+}
+
+.btn-next:hover:not(:disabled) {
+    background-color: var(--accent-hover);
+}
+
+.btn-next:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   6. TELA DE DIAGNÓSTICO (AJUSTES FINAIS)
+   ========================================================================== */
+.result-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.table-container {
+    background: #D9D9D9;
+    border-radius: 24px;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+th {
+    color: #252E4A;
+    font-weight: 600;
+}
+
+.result-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.diagnosis-text {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.score-text {
+    font-size: 18px;
+    color: var(--text-muted);
+}
+
+.btn-improve {
+    background-color: var(--text-main);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: var(--transition);
+}
+
+.btn-improve:hover {
+    opacity: 0.9;
+}
+
+/* Intro Layout */
+.intro-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 40px;
+    align-items: start;
+}
+
+.intro-questions h2 {
+    font-size: 28px; margin-bottom: 30px; 
+}
+.question-group { 
+    margin-bottom: 25px; 
+}
+.question-group p { 
+    font-size: 14px; 
+    font-weight: 600; 
+    margin-bottom: 12px; 
+}
+
+.options-row { 
+    display: flex; 
+    gap: 10px; 
+}
+.opt-btn {
+    background: white; 
+    border: 1px solid #ccc; 
+    padding: 10px 25px;
+    border-radius: 20px; 
+    cursor: pointer; 
+    transition: 0.2s;
+}
+.opt-btn.active { 
+    background: #1a1a1a; 
+    color: white; 
+    border-color: #1a1a1a; 
+}
+
+.options-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px; 
+    font-size: 14px; 
+}
+
+.info-card { 
+    background: white; 
+    padding: 30px; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.info-card p { 
+    font-size: 15px; 
+    line-height: 1.6; 
+    color: #444; 
+    margin-bottom: 15px; 
+}
+
+.intro-actions {
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+    align-items: center; 
+}
+.btn-start { 
+    background: #1a1a1a; 
+    color: white; 
+    padding: 18px; 
+    display: flex;
+    justify-content: center;
+    border-radius: 40px; 
+    border: none; 
+    font-weight: 600; 
+    cursor: pointer; 
+    width: 200px; 
+}
+.btn-already { 
+    background: none; 
+    border: 1px solid #ccc;
+    border-radius: 30px; 
+    cursor: pointer; 
+    width: 100px; 
+    display: flex;
+    justify-content: center;
+}
+.btn-already:hover { 
+    background: rgba(0,0,0,0.05); 
+}   
+
+.history-link { 
+    color: #555; 
+    text-decoration: underline; 
+    font-size: 13px; 
+    margin-top: 15px; 
+    cursor: pointer; 
+}
+.history-link:hover { 
+    color: #1a1a1a; 
+}
+
+/* History Screen */
+.history-table { 
+    margin-top: 40px;
+    max-height: 400px; 
+    overflow-y: auto; 
+}

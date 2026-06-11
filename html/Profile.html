@@ -1,16 +1,268 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-    
+    <title>Croma - Perfil</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/globals.css">
     <link rel="stylesheet" href="../css/profile.css">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script type="module" src="../js/init.js"></script>
+
 </head>
 <body>
-  
+
+    <nav class="navbar">
+      <a href="../index.html">
+        <div class="logo">
+          <img class="cone-2" src="../imagens/logo.svg" alt="Logo Croma" />
+          <div class="nome-2">
+            <div class="text-wrapper-10">Croma</div>
+            <div class="text-wrapper-11">app</div>
+          </div>
+        </div>
+      </a>
+      <div class="menu-3">
+        <a href="home.html">
+          <div class="incio">
+            <img class="vector-7" src="../imagens/inicio.svg" alt="" />
+            <div class="text-wrapper-12">Início</div>
+          </div>
+        </a>
+        <a href="about.html">
+          <div class="div-3">
+            <img class="vector-8" src="../imagens/sobre.svg" alt="" />
+            <div class="text-wrapper-12">Sobre</div>
+          </div>
+        </a>
+        <a href="training.html">
+          <div class="div-3">
+            <img class="vector-7" src="../imagens/quizzes.svg" alt="" />
+            <div class="text-wrapper-12">Quizzes</div>
+          </div>
+        </a>
+        <a href="profile.html">
+          <div class="div-3">
+            <img class="vector-9" src="../imagens/perfil.svg" alt="" />
+            <div class="text-wrapper-13">Perfil</div>
+            <div class="badge">
+              <div class="text-3">10+</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </nav>
+
+<header class="profile-top-header">
+    <div class="header-inner">
+        
+        <div class="user-identity">
+            <div class="avatar-interactive-wrapper">
+                <button class="btn-arrow-avatar btn-prev" id="prev-avatar">‹</button>
+                <div class="avatar-click-zone" id="avatar-toggle-trigger">
+                    <div class="avatar-circle">
+                        <img src="../imagens/property 1=cão.png" id="user-avatar" alt="Avatar">
+                    </div>
+                    <div class="edit-overlay-icon">✏️</div>
+                </div>
+                <button class="btn-arrow-avatar btn-next" id="next-avatar">›</button>
+            </div>
+            <h2 id="user-name">Maria Inês</h2>
+            <p id="user-email">mariaines892@gmail.com</p>
+            <button class="btn-edit" id="open-modal-btn">Editar Dados <span class="arrow-btn">></span></button>
+        </div>
+
+        <div class="points-card">
+            <div class="points-header">
+                <span class="points-label">Total de pontos</span>
+                <span class="settings-icon">⚙️</span>
+            </div>
+            <div class="xp-pill"><span id="total-xp">2000 XP</span></div>
+        </div>
+
+        <div class="info-status-card">
+            <div class="fire-icon">🔥</div>
+            <span class="status-title">Sequência de</span>
+            <span class="status-value" id="current-streak">5 dias</span>
+        </div>
+
+        <div class="info-status-card">
+            <span class="status-title-top">Progresso</span>
+            <div class="progress-ring-container">
+                <div class="progress-ring"><span id="progress-text">75%</span></div>
+            </div>
+        </div>
+
+        <a href="trophies.html" class="info-status-card trophy-clickable-card">
+            <div class="trophy-icon">🏆</div>
+            <span class="status-title">Troféus</span>
+            <div class="trophy-navigation-arrow">Ver todos ›</div>
+        </a>
+
+    </div>
+</header>
+
+    <main class="profile-dark-bg-area">
+        <div class="main-inner">
+            
+            <section class="recent-section">
+                <h3 class="main-section-title">Recentes</h3>
+                <div class="recent-grid" id="recent-worlds-container">
+                    <div class="recent-item-card">
+                        <div class="item-icon-bg">👕</div>
+                        <div class="item-info"><h4>Roupas</h4><p>Combinações, Camisolas, Sapatos...</p></div>
+                        <button class="btn-action-replay">↻</button>
+                    </div>
+                    <div class="recent-item-card">
+                        <div class="item-icon-bg">🍏</div>
+                        <div class="item-info"><h4>Alimentos</h4><p>Frutas, Pratos, Bebidas...</p></div>
+                        <button class="btn-action-replay">↻</button>
+                    </div>
+                    <div class="recent-item-card">
+                        <div class="item-icon-bg">🚗</div>
+                        <div class="item-info"><h4>Trânsito</h4><p>Sinais Semafóricos, Cores de carros...</p></div>
+                        <button class="btn-action-replay">↻</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tests-section">
+                <h3 class="main-section-title">Testes Feitos</h3>
+                <div class="tests-white-panel">
+                    <div class="tests-grid" id="completed-tests-container">
+                        <div class="test-item-card">
+                            <div class="test-header-info"><h4>Trânsito</h4><span class="test-card-icon">🚗</span></div>
+                            <p class="test-level">Nível 5</p>
+                            <div class="test-footer-row"><div class="test-stars">★★★</div><button class="btn-test-replay">↻</button></div>
+                        </div>
+                        <div class="test-item-card">
+                            <div class="test-header-info"><h4>Alimentos</h4><span class="test-card-icon">🍏</span></div>
+                            <p class="test-level">Nível 3</p>
+                            <div class="test-footer-row"><div class="test-stars">★★★</div><button class="btn-test-replay">↻</button></div>
+                        </div>
+                        <div class="test-item-card">
+                            <div class="test-header-info"><h4>Roupas</h4><span class="test-card-icon">👕</span></div>
+                            <p class="test-level">Nível 1</p>
+                            <div class="test-footer-row"><div class="test-stars">★★★</div><button class="btn-test-replay">↻</button></div>
+                        </div>
+                        <div class="test-item-card">
+                            <div class="test-header-info"><h4>Desporto</h4><span class="test-card-icon">⚽</span></div>
+                            <p class="test-level">Nível 7</p>
+                            <div class="test-footer-row"><div class="test-stars">★★★</div><button class="btn-test-replay">↻</button></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="edit-profile-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Editar Dados</h3>
+                <button class="btn-close-modal" id="close-modal-btn">&times;</button>
+            </div>
+            <form class="modal-form" id="form-edit-profile">
+                <div class="form-group">
+                    <label for="input-name">Nome</label>
+                    <input type="text" id="input-name" value="Maria Inês" required>
+                </div>
+                <div class="form-group">
+                    <label for="input-email">Email</label>
+                    <input type="email" id="input-email" value="mariaines892@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="input-birth">Data de Nascimento</label>
+                    <input type="date" id="input-birth" required>
+                </div>
+                <div class="form-group">
+                    <label for="input-password">Palavra-passe</label>
+                    <input type="password" id="input-password" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-submit-modal">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-2">
+        <div class="top-3">
+          <a href="index.html">
+            <div class="logo">
+              <div class="cone"><img class="vector-6" src="../imagens/logofooter.png" alt="Logo Croma" /></div>
+              <div class="nome"><div class="text-wrapper-6">Croma</div><div class="text-wrapper-7">app</div></div>
+            </div>
+          </a>
+          <div class="form-field-button-wrapper">
+            <div class="form-field-button">
+              <div class="field"><div class="text-2">Log In</div><img class="icon-jam-icons-2" src="../imagens/seta.png" alt="" /></div>
+              <button class="button">
+                <img class="icon-jam-icons-2" src="../imagens/plus.svg" alt="" />
+                <div class="separator-left"></div>
+                <div class="text-container"><div class="button-text">Criar Conta</div></div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="rectangle"></div>
+        <div class="div-2">
+          <div class="menu">
+            <div class="menu-item-2">Diagnóstico</div>
+            <div class="menu-item-4">Teste de Ishihara digital</div>
+            <div class="text-wrapper-8">Tipo de daltonismo</div>
+            <div class="text-wrapper-8">Configuração de acessibilidade</div>
+          </div>
+          <div class="menu">
+            <div class="menu-item-2">Treino</div>
+            <div class="menu-item-4">Reconhecimento de cores</div>
+            <div class="text-wrapper-8">Desafios de perceção visual</div>
+            <div class="text-wrapper-8">Biblioteca de símbolos ColorADD</div>
+          </div>
+          <div class="menu">
+            <div class="menu-item-2">Progressão e Perfil</div>
+            <div class="menu-item-4">Sistema de pontuação (XP)</div>
+            <div class="text-wrapper-8">Histórico de desempenho</div>
+            <div class="text-wrapper-8">Conquistas e medalhas</div>
+          </div>
+          <div class="menu">
+            <div class="menu-item-2">Configurações</div>
+            <div class="menu-item-4">Centro de Ajuda / FAQ</div>
+            <div class="text-wrapper-8">Sobre</div>
+            <div class="text-wrapper-8">Terminar Sessão</div>
+          </div>
+        </div>
+        <div class="rectangle"></div>
+        <div class="div-2">
+          <div class="text-wrapper-9">© 2026 CROMA.</div>
+          <div class="menu-2">
+            <div class="menu-item-5">Modos de Daltonismo</div>
+            <div class="menu-item-5">Meta Diária</div>
+            <div class="menu-item-5">Nível de Dificuldade</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+        // Lógica de Mostrar/Ocultar Setas do Avatar ao Clicar
+        const avatarTrigger = document.getElementById('avatar-toggle-trigger');
+        const prevBtn = document.getElementById('prev-avatar');
+        const nextBtn = document.getElementById('next-avatar');
+        
+        avatarTrigger.addEventListener('click', () => {
+            prevBtn.classList.toggle('visible');
+            nextBtn.classList.toggle('visible');
+        });
+
+        // Lógica de Abrir/Fechar Modal
+        const modal = document.getElementById('edit-profile-modal');
+        const openModalBtn = document.getElementById('open-modal-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        openModalBtn.addEventListener('click', () => modal.classList.add('active'));
+        closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
+    </script>
 </body>
 </html>

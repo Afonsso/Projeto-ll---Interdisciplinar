@@ -28,16 +28,25 @@ class App {
         this.views = {};
         this.controllers = {};
         this.currentPage = null;
+        this.isGuest = false;
     }
 
     // Inicializar a aplicação
     async init() {
+        this.checkGuestMode();
         await this.initializeServices();
         this.initializeModels();
         this.initializeViews();
         this.initializeControllers();
         this.detectCurrentPage();
         await this.initializeCurrentPage();
+    }
+
+    // Verificar se é modo convidado
+    checkGuestMode() {
+        const urlParams = new URLSearchParams(window.location.search);
+        this.isGuest = urlParams.get('guest') === 'true';
+        console.log('Guest mode:', this.isGuest);
     }
 
     // Inicializar Serviços
@@ -96,6 +105,7 @@ class App {
     // Detectar a página atual baseado na URL
     detectCurrentPage() {
         const path = window.location.pathname;
+        console.log('Current path:', path);
 
         if (path.includes('login_account.html')) {
             this.currentPage = 'login';
@@ -116,10 +126,14 @@ class App {
         } else {
             this.currentPage = 'home';
         }
+
+        console.log('Detected page:', this.currentPage);
     }
 
     // Inicializar a página atual
     async initializeCurrentPage() {
+        console.log('Initializing page. isGuest:', this.isGuest, 'currentPage:', this.currentPage);
+
         // Verificar autenticação para páginas protegidas
         if (this.isProtectedPage() && !this.services.auth.isAuthenticated()) {
             window.location.href = 'auth/login_account.html';
@@ -136,6 +150,7 @@ class App {
                 this.controllers.home.init();
                 break;
             case 'about':
+                console.log('Initializing about page');
                 this.controllers.about.init();
                 break;
             case 'training':

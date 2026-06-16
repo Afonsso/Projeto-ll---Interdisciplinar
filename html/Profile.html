@@ -69,7 +69,10 @@
             </div>
             <h2 id="user-name">Maria Inês</h2>
             <p id="user-email">mariaines892@gmail.com</p>
-            <button class="btn-edit" id="open-modal-btn">Editar Dados <span class="arrow-btn">></span></button>
+            <div class="profile-buttons">
+                <button class="btn-edit" id="open-modal-btn">Editar Dados <span class="arrow-btn">></span></button>
+                <button class="btn-logout" id="logout-btn">Terminar Sessão</button>
+            </div>
         </div>
 
         <div class="points-card">
@@ -263,6 +266,18 @@
         openModalBtn.addEventListener('click', () => modal.classList.add('active'));
         closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
         modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
+
+        // Lógica de Logout
+        const logoutBtn = document.getElementById('logout-btn');
+        logoutBtn.addEventListener('click', async () => {
+            if (window.CromaApp) {
+                const authService = window.CromaApp.getService('auth');
+                if (authService) {
+                    await authService.logout();
+                    window.location.href = '../index.html';
+                }
+            }
+        });
     </script>
 </body>
 </html>

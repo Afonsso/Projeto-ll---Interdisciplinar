@@ -3,45 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurante</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Croma - Comida & Alimentação</title>
+    <link rel="stylesheet" href="../../css/globals.css">
+    <link rel="stylesheet" href="../../css/world.css">
+    <script type="module" src="../../js/init.js"></script>
+    <script type="module" src="../../js/controller/worldPageController.js"></script>
+    <script src="../../js/guestGuard.js"></script>
 </head>
-<body>
+<body data-world="comida">
 
 <header>
-    <h1>Comida e alimentação</h1>
+    <h1>Comida e Alimentação</h1>
     <p>Identifique elementos da comida e mais...</p>
-
-    <button class="btn-reset">
+    <button class="btn-reset" type="button">
         <span class="bola-reset">
-            <img src="recomeçar.png" alt="Reiniciar">
+            <img src="../../imagens/recomeçar.png" alt="Reiniciar">
+            
         </span>
     </button>
 </header>
 
-<div class="cenario">
-    <button class="ponto p1">
-        <img src="start.png" alt="">
+<div class="cenario" style="background-image: url('../../imagens/comida.png');">
+    <button class="ponto p1" data-level="1">
+        <img src="../../imagens/start.png" alt="Nível 1">
     </button>
-    <button class="ponto p2 bloqueado">
-        <img src="pordesbloquear.png" alt="">
+    <button class="ponto p2 bloqueado" data-level="2">
+        <img src="../../imagens/pordesbloquear.png" alt="Nível 2">
     </button>
-
-    <button class="ponto p3 bloqueado">
-        <img src="pordesbloquear.png" alt="">
+    <button class="ponto p3 bloqueado" data-level="3">
+        <img src="../../imagens/pordesbloquear.png" alt="Nível 3">
     </button>
-
-    <button class="ponto p4 bloqueado">
-        <img src="pordesbloquear.png" alt="">
+    <button class="ponto p4 bloqueado" data-level="4">
+        <img src="../../imagens/pordesbloquear.png" alt="Nível 4">
     </button>
-    <button class="ponto p5 bloqueado">
-        <img src="pordesbloquear.png" alt="">
+    <button class="ponto p5 bloqueado" data-level="5">
+        <img src="../../imagens/pordesbloquear.png" alt="Nível 5">
     </button>
-    <button class="ponto p6 bloqueado">
-        <img src="pordesbloquear.png" alt="">
-    </button>
-
 </div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+        <button class="modal-close" type="button">&times;</button>
+        <div class="modal-level-badge" id="modal-numero">1</div>
+        <h2 id="modal-titulo">Nível 1</h2>
+        <p id="modal-descricao">Inicia o teu desafio de cores!</p>
+        <div class="modal-stars" id="modal-stars">☆☆☆</div>
+        <div id="modal-dynamic-content"></div>
+        <button class="btn-jogar" id="modal-btn" type="button">Jogar</button>
+    </div>
 </div>
 
 </body>

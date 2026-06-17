@@ -7,6 +7,9 @@ class GameLevelLogic {
         this.currentGame = null;
         this.timer = null;
         this.timeLeft = 0;
+        this.onGameComplete = null;
+        this.gameFinished = false;
+        this.draggedItemId = null;
     }
 
     // Obter jogo de um mundo e nível específico
@@ -22,12 +25,9 @@ class GameLevelLogic {
             return null;
         }
 
+        this.stopTimer();
+        this.gameFinished = false;
         this.currentGame = game;
-        
-        // Iniciar timer se o jogo tiver limite de tempo
-        if (game.timeLimit) {
-            this.startTimer(game.timeLimit);
-        }
 
         return game;
     }
@@ -95,7 +95,7 @@ class GameLevelLogic {
         gameArea.innerHTML = `
             <div class="drag-drop-container">
                 <div class="items-pool">
-                    ${items.map(item => `<div class="draggable-item" draggable="true">${item}</div>`).join('')}
+                    ${items.map((item, index) => `<div class="draggable-item" draggable="true" data-item-id="drag-${index}" data-item-value="${item}">${item}</div>`).join('')}
                 </div>
                 <div class="drop-zones">
                     ${game.correctOrder.map((item, index) => `
@@ -105,21 +105,82 @@ class GameLevelLogic {
                     `).join('')}
                 </div>
             </div>
+            <button class="game-submit-btn" type="button" id="game-submit-btn">Validar</button>
         `;
 
         this.setupDragDropEvents();
+
+        const submitBtn = document.getElementById('game-submit-btn');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', () => {
+                const zones = [...document.querySelectorAll('.drop-zone')];
+                const isCorrect = zones.every((zone) => {
+                    const currentValue = zone.dataset.current || '';
+                    return currentValue === zone.dataset.answer;
+                });
+                this.endGame(isCorrect);
+            });
+        }
     }
 
     // Configurar eventos de drag & drop
     setupDragDropEvents() {
         const draggables = document.querySelectorAll('.draggable-item');
         const dropZones = document.querySelectorAll('.drop-zone');
+        const pool = document.querySelector('.items-pool');
+
+        const clearItemFromCurrentZone = (itemEl) => {
+            const parentZone = itemEl.closest('.drop-zone');
+            if (!parentZone) {
+                return;
+            }
+
+            delete parentZone.dataset.current;
+            if (!parentZone.querySelector('.draggable-item')) {
+                parentZone.classList.remove('filled');
+            }
+        };
+
+        const placeItemInZone = (itemEl, zone) => {
+            if (!itemEl || !zone) {
+                return;
+            }
+
+            clearItemFromCurrentZone(itemEl);
+
+            const existingItem = zone.querySelector('.draggable-item');
+            if (existingItem && pool) {
+                clearItemFromCurrentZone(existingItem);
+                pool.appendChild(existingItem);
+            }
+
+            zone.appendChild(itemEl);
+            zone.dataset.current = itemEl.dataset.itemValue || '';
+            zone.classList.add('filled');
+        };
 
         draggables.forEach(draggable => {
             draggable.addEventListener('dragstart', (e) => {
-                e.dataTransfer.setData('text', e.target.textContent);
+                this.draggedItemId = e.target.dataset.itemId;
+                e.dataTransfer.setData('text/plain', e.target.dataset.itemId);
             });
         });
+
+        if (pool) {
+            pool.addEventListener('dragover', (e) => {
+                e.preventDefault();
+            });
+
+            pool.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const itemId = e.dataTransfer.getData('text/plain') || this.draggedItemId;
+                const itemEl = document.querySelector(`.draggable-item[data-item-id="${itemId}"]`);
+                if (itemEl) {
+                    clearItemFromCurrentZone(itemEl);
+                    pool.appendChild(itemEl);
+                }
+            });
+        }
 
         dropZones.forEach(zone => {
             zone.addEventListener('dragover', (e) => {
@@ -128,9 +189,31 @@ class GameLevelLogic {
 
             zone.addEventListener('drop', (e) => {
                 e.preventDefault();
-                const item = e.dataTransfer.getData('text');
-                zone.textContent = item;
-                zone.classList.add('filled');
+                const itemId = e.dataTransfer.getData('text/plain') || this.draggedItemId;
+                const itemEl = document.querySelector(`.draggable-item[data-item-id="${itemId}"]`);
+                if (!itemEl) {
+                    return;
+                }
+
+                placeItemInZone(itemEl, zone);
+            });
+
+            // Fallback para dispositivos/gestos em que drag-and-drop falha
+            zone.addEventListener('click', () => {
+                const selected = document.querySelector('.draggable-item.selected-drag-item');
+                if (!selected) {
+                    return;
+                }
+
+                selected.classList.remove('selected-drag-item');
+                placeItemInZone(selected, zone);
+            });
+        });
+
+        draggables.forEach((draggable) => {
+            draggable.addEventListener('click', () => {
+                draggables.forEach((item) => item.classList.remove('selected-drag-item'));
+                draggable.classList.add('selected-drag-item');
             });
         });
     }
@@ -206,8 +289,8 @@ class GameLevelLogic {
         gameArea.innerHTML = `
             <div class="sorting-container">
                 <div class="items-to-sort">
-                    ${items.map(item => `
-                        <div class="sortable-item" data-state="${item.state}">${item.name}</div>
+                    ${items.map((item, index) => `
+                        <div class="sortable-item" draggable="true" data-item-id="sort-${index}" data-state="${item.state}">${item.name}</div>
                     `).join('')}
                 </div>
                 <div class="sort-bins">
@@ -219,23 +302,52 @@ class GameLevelLogic {
                     </div>
                 </div>
             </div>
+            <button class="game-submit-btn" type="button" id="sorting-submit-btn">Validar</button>
         `;
 
         this.setupSortingEvents();
+
+        const submitBtn = document.getElementById('sorting-submit-btn');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', () => {
+                const allItems = [...document.querySelectorAll('.sortable-item')];
+                const allPlacedInBins = allItems.every((item) => item.closest('.sort-bin'));
+                const isCorrect = allPlacedInBins && allItems.every((item) => {
+                    const bin = item.closest('.sort-bin');
+                    return bin && item.dataset.state === bin.dataset.type;
+                });
+
+                this.endGame(isCorrect);
+            });
+        }
     }
 
     // Configurar eventos de sorting
     setupSortingEvents() {
         const items = document.querySelectorAll('.sortable-item');
         const bins = document.querySelectorAll('.sort-bin');
-        let sortedCount = 0;
+        const pool = document.querySelector('.items-to-sort');
 
         items.forEach(item => {
-            item.draggable = true;
             item.addEventListener('dragstart', (e) => {
-                e.dataTransfer.setData('text', e.target.dataset.state);
+                e.dataTransfer.setData('item-id', e.target.dataset.itemId);
             });
         });
+
+        if (pool) {
+            pool.addEventListener('dragover', (e) => {
+                e.preventDefault();
+            });
+
+            pool.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const itemId = e.dataTransfer.getData('item-id');
+                const itemEl = document.querySelector(`.sortable-item[data-item-id="${itemId}"]`);
+                if (itemEl) {
+                    pool.appendChild(itemEl);
+                }
+            });
+        }
 
         bins.forEach(bin => {
             bin.addEventListener('dragover', (e) => {
@@ -244,27 +356,22 @@ class GameLevelLogic {
 
             bin.addEventListener('drop', (e) => {
                 e.preventDefault();
-                const itemState = e.dataTransfer.getData('text');
-                const binType = bin.dataset.type;
-
-                if (itemState === binType) {
-                    sortedCount++;
-                    bin.classList.add('correct');
-                    
-                    if (sortedCount === 4) {
-                        this.endGame(true);
-                    }
-                } else {
-                    bin.classList.add('incorrect');
-                    setTimeout(() => bin.classList.remove('incorrect'), 1000);
+                const itemId = e.dataTransfer.getData('item-id');
+                const itemEl = document.querySelector(`.sortable-item[data-item-id="${itemId}"]`);
+                if (!itemEl) {
+                    return;
                 }
+
+                bin.appendChild(itemEl);
             });
         });
     }
 
     // Inicializar jogo de memória
     initMemoryGame(game, gameArea) {
-        const colors = ['Vermelho', 'Azul', 'Verde', 'Amarelo', 'Roxo', 'Laranja'];
+        const pairCount = Number(game.pairs) || 6;
+        const sourceColors = ['Vermelho', 'Azul', 'Verde', 'Amarelo', 'Roxo', 'Laranja', 'Ciano', 'Rosa'];
+        const colors = sourceColors.slice(0, Math.min(pairCount, sourceColors.length));
         const cards = [...colors, ...colors].sort(() => Math.random() - 0.5);
 
         gameArea.innerHTML = `
@@ -280,11 +387,11 @@ class GameLevelLogic {
             </div>
         `;
 
-        this.setupMemoryEvents();
+        this.setupMemoryEvents(colors.length);
     }
 
     // Configurar eventos de memória
-    setupMemoryEvents() {
+    setupMemoryEvents(targetPairs) {
         const cards = document.querySelectorAll('.memory-card');
         let firstCard = null;
         let matchedPairs = 0;
@@ -306,7 +413,7 @@ class GameLevelLogic {
                         card.classList.add('matched');
                         matchedPairs++;
 
-                        if (matchedPairs === 6) {
+                        if (matchedPairs === targetPairs) {
                             this.endGame(true);
                         }
                     } else {
@@ -326,6 +433,7 @@ class GameLevelLogic {
     initSpeedGame(game, gameArea) {
         gameArea.innerHTML = `
             <div class="speed-container">
+                <div class="score-display">Tempo: <span id="game-timer">${this.timeLeft}</span>s</div>
                 <div class="color-display" id="color-display">
                     <div class="color-box" id="current-color"></div>
                 </div>
@@ -363,6 +471,10 @@ class GameLevelLogic {
                 if (selectedColor === currentColor) {
                     score += 10;
                     scoreDisplay.textContent = score;
+                    if (score >= 50) {
+                        this.endGame(true);
+                        return;
+                    }
                     showNextColor();
                 }
             });
@@ -384,15 +496,26 @@ class GameLevelLogic {
 
     // Finalizar jogo
     endGame(success) {
+        if (this.gameFinished) {
+            return null;
+        }
+
+        this.gameFinished = true;
         this.stopTimer();
         const score = success ? 100 : 0;
         const stars = success ? 3 : 0;
 
-        return {
+        const result = {
             success,
             score,
             stars
         };
+
+        if (typeof this.onGameComplete === 'function') {
+            this.onGameComplete(result);
+        }
+
+        return result;
     }
 
     // Obter jogo atual
@@ -405,11 +528,77 @@ class GameLevelLogic {
         this.stopTimer();
         this.currentGame = null;
         this.timeLeft = 0;
+        this.gameFinished = false;
     }
 
     // Verificar se há jogo ativo
     hasActiveGame() {
         return this.currentGame !== null;
+    }
+
+    renderGameModal(worldId, gameId, options = {}) {
+        const game = this.startGame(worldId, gameId);
+        if (!game) {
+            return;
+        }
+
+        const titleEl = document.getElementById('modal-titulo');
+        const descriptionEl = document.getElementById('modal-descricao');
+        const starsEl = document.getElementById('modal-stars');
+        const buttonEl = document.getElementById('modal-btn');
+        const contentEl = document.getElementById('modal-dynamic-content');
+
+        if (!titleEl || !descriptionEl || !starsEl || !buttonEl || !contentEl) {
+            return;
+        }
+
+        titleEl.textContent = game.title || `Nivel ${gameId} - Jogo`;
+        descriptionEl.textContent = game.description || 'Completa este desafio para ganhar estrelas e XP.';
+        starsEl.textContent = game.timeLimit ? `Tempo: ${game.timeLimit}s` : '';
+
+        contentEl.innerHTML = '<div id="game-play-area" class="game-modal-content"></div>';
+
+        const freshButton = buttonEl.cloneNode(true);
+        freshButton.id = 'modal-btn';
+        freshButton.type = 'button';
+        freshButton.textContent = 'Fechar';
+        freshButton.disabled = false;
+        buttonEl.parentNode.replaceChild(freshButton, buttonEl);
+        freshButton.addEventListener('click', () => {
+            this.resetGame();
+            const overlay = document.getElementById('modal-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+        });
+
+        this.onGameComplete = async (result) => {
+            if (!result) {
+                return;
+            }
+
+            descriptionEl.textContent = result.success
+                ? 'Desafio concluido com sucesso!'
+                : 'Desafio terminado. Podes tentar novamente.';
+            starsEl.textContent = '⭐'.repeat(result.stars) + '☆'.repeat(3 - result.stars);
+
+            if (typeof options.onComplete === 'function') {
+                await options.onComplete({
+                    worldId,
+                    levelId: gameId,
+                    correctAnswers: result.success ? 1 : 0,
+                    totalQuestions: 1,
+                    stars: result.stars,
+                    score: result.score
+                });
+            }
+        };
+
+        this.initGameLogic(game, document.getElementById('game-play-area'));
+
+        if (game.timeLimit) {
+            this.startTimer(game.timeLimit);
+        }
     }
 }
 

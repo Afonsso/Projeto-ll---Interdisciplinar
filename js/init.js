@@ -36,6 +36,36 @@ class App {
         this.initializeControllers();
         this.detectCurrentPage();
         await this.initializeCurrentPage();
+        this.updateAdminNavbar();
+    }
+
+    updateAdminNavbar() {
+        const isAdmin = Boolean(this.services.auth?.isAdminUser?.());
+        const navMenus = document.querySelectorAll('.menu-3');
+
+        navMenus.forEach((menu) => {
+            if (!isAdmin) {
+                const existingAdminLink = menu.querySelector('.admin-nav-link');
+                if (existingAdminLink) {
+                    existingAdminLink.remove();
+                }
+                return;
+            }
+
+            // Para o admin, mostrar apenas o item de menu Admin.
+            menu.innerHTML = '';
+
+            const adminAnchor = document.createElement('a');
+            adminAnchor.href = '/html/Admin.html';
+            adminAnchor.className = 'admin-nav-link';
+            adminAnchor.innerHTML = `
+                <div class="div-3">
+                    <div class="text-wrapper-12">Admin</div>
+                </div>
+            `;
+
+            menu.appendChild(adminAnchor);
+        });
     }
 
     // Inicializar Serviços

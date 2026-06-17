@@ -1,6 +1,8 @@
 /**
  * Auth Service - Gerencia autenticação de utilizadores
  */
+const ADMIN_EMAIL = 'demo@croma.app';
+
 class AuthService {
     constructor(storageService) {
         this.storageService = storageService;
@@ -158,6 +160,16 @@ class AuthService {
     // Verificar se está autenticado
     isAuthenticated() {
         return this.currentUser !== null;
+    }
+
+    // Verificar se o email pertence ao admin principal
+    isAdminEmail(email) {
+        return String(email || '').trim().toLowerCase() === ADMIN_EMAIL;
+    }
+
+    // Verificar se o utilizador atual é admin
+    isAdminUser() {
+        return this.isAdminEmail(this.currentUser?.email);
     }
 
     // Obter utilizador atual

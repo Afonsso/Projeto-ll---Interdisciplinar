@@ -102,10 +102,27 @@ class ProgressModel {
             }
         }
 
+        this.syncWorldUnlocksByCompletion(progress);
+
         this.progressData = progress;
         this.calculateTotalStars();
 
         return progress;
+    }
+
+    syncWorldUnlocksByCompletion(progress) {
+        const worldOrder = ['transito', 'roupas', 'cozinha', 'desporto'];
+
+        for (let index = 0; index < worldOrder.length - 1; index += 1) {
+            const currentWorldId = worldOrder[index];
+            const nextWorldId = worldOrder[index + 1];
+            const currentWorld = progress.worlds[currentWorldId];
+            const nextWorld = progress.worlds[nextWorldId];
+
+            if (currentWorld?.completed && nextWorld) {
+                nextWorld.unlocked = true;
+            }
+        }
     }
 
     createDefaultLevels() {
@@ -319,7 +336,7 @@ class ProgressModel {
             const nextWorldId = worldOrder[currentIndex + 1];
             const currentWorld = this.progressData.worlds[completedWorldId];
 
-            if (currentWorld.completed && currentWorld.bossDefeated) {
+            if (currentWorld.completed) {
                 const nextWorld = this.progressData.worlds[nextWorldId];
 
                 if (nextWorld) {

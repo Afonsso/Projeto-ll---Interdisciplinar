@@ -163,4 +163,67 @@ class LevelLogic {
     }
 }
 
+export function setupWorldLevelModal(levels, options = {}) {
+    const overlay = document.getElementById('modal-overlay');
+    const numberEl = document.getElementById('modal-numero');
+    const titleEl = document.getElementById('modal-titulo');
+    const descriptionEl = document.getElementById('modal-descricao');
+    const starsEl = document.getElementById('modal-stars');
+    const buttonEl = document.getElementById('modal-btn');
+    const contentEl = document.getElementById('modal-dynamic-content');
+    const closeButtonEl = document.querySelector('.modal-close');
+    const levelButtons = document.querySelectorAll('[data-level]');
+
+    if (!overlay || !numberEl || !titleEl || !descriptionEl || !starsEl || !buttonEl || !contentEl) {
+        return;
+    }
+
+    let currentLevel = null;
+
+    const closeModal = () => {
+        overlay.classList.remove('active');
+    };
+
+    const openModal = (levelId) => {
+        const level = levels[levelId];
+        if (!level) return;
+
+        currentLevel = levelId;
+        numberEl.textContent = levelId;
+        titleEl.textContent = level.titulo;
+        descriptionEl.textContent = level.descricao;
+        starsEl.textContent = level.estrelas || '☆☆☆';
+        contentEl.innerHTML = '';
+        buttonEl.disabled = Boolean(level.bloqueado);
+        buttonEl.textContent = level.bloqueado ? 'Bloqueado' : 'Jogar';
+        overlay.classList.add('active');
+    };
+
+    levelButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            openModal(Number(button.dataset.level));
+        });
+    });
+
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) {
+            closeModal();
+        }
+    });
+
+    if (closeButtonEl) {
+        closeButtonEl.addEventListener('click', closeModal);
+    }
+
+    buttonEl.addEventListener('click', () => {
+        const handler = options.onPlay || ((levelId) => {
+            console.log('Iniciar nível', levelId);
+        });
+
+        if (currentLevel !== null) {
+            handler(currentLevel, levels[currentLevel]);
+        }
+    });
+}
+
 export default LevelLogic;

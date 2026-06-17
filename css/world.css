@@ -64,8 +64,6 @@ header p {
     position: relative;
     width: 100%;
     min-height: 900px;
-
-    background-image: url("comida.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -125,6 +123,236 @@ header p {
 }
 
 /* NÍVEIS BLOQUEADOS */
+/* MODAL */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #64748b;
+    line-height: 1;
+}
+
+.modal-level-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #1e3c72;
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.modal h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1e3c72;
+    margin-bottom: 8px;
+}
+
+.modal p {
+    color: #64748b;
+    font-size: 1rem;
+    margin-bottom: 24px;
+}
+
+.modal-stars {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    letter-spacing: 4px;
+}
+
+.btn-jogar {
+    background-color: #1e3c72;
+    color: white;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    width: 100%;
+}
+
+.btn-jogar:hover {
+    background-color: #162d56;
+    transform: translateY(-2px);
+}
+
+.btn-jogar:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#modal-dynamic-content {
+    margin-bottom: 18px;
+}
+
+.quiz-modal-content,
+.game-modal-content {
+    text-align: left;
+}
+
+.quiz-question {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e3c72;
+    margin-bottom: 16px;
+}
+
+.quiz-options {
+    display: grid;
+    gap: 10px;
+}
+
+.quiz-option-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    padding: 12px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.quiz-option-btn.selected {
+    border-color: #1e3c72;
+    background: #e0ebff;
+}
+
+.quiz-option-btn.correct {
+    border-color: #16a34a;
+    background: #dcfce7;
+}
+
+.quiz-option-btn.incorrect {
+    border-color: #dc2626;
+    background: #fee2e2;
+}
+
+.quiz-option-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #1e3c72;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.game-submit-btn {
+    margin-top: 16px;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    background: #1e3c72;
+    color: #fff;
+    padding: 12px;
+    font-weight: 700;
+}
+
+.items-pool,
+.drop-zones,
+.sort-bins,
+.matching-grid,
+.memory-grid,
+.color-options {
+    display: grid;
+    gap: 12px;
+}
+
+.drop-zones,
+.sort-bins,
+.color-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.matching-grid,
+.memory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.draggable-item,
+.drop-zone,
+.sortable-item,
+.sort-bin,
+.matching-card,
+.memory-card,
+.color-btn,
+.color-box {
+    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    padding: 12px;
+    background: #fff;
+    text-align: center;
+}
+
+.drop-zone.filled,
+.sort-bin.correct,
+.matching-card.matched,
+.memory-card.matched {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+
+.sort-bin.incorrect {
+    background: #fee2e2;
+    border-color: #dc2626;
+}
+
+.memory-card.flipped {
+    background: #e0ebff;
+    border-color: #1e3c72;
+}
+
+.score-display,
+.timer {
+    margin-top: 12px;
+    text-align: center;
+    font-weight: 700;
+    color: #1e3c72;
+}
+
 
 .bloqueado {
     opacity: 0.8;

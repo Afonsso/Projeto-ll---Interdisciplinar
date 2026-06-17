@@ -225,14 +225,68 @@
       "createdAt": "2026-06-10T12:21:29.407Z",
       "colorBlindnessType": null,
       "ishiharaCompleted": false,
-      "xp": 0,
+      "xp": 525,
       "streak": 1,
-      "lastLoginDate": "2026-06-17T20:01:45.858Z",
+      "lastLoginDate": "2026-06-17T20:52:36.179Z",
       "progress": {
         "worlds": {
           "transito": {
             "name": "Trânsito",
             "emoji": "🚦",
+            "unlocked": true,
+            "completed": true,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 3,
+                "completed": true,
+                "attempts": 2,
+                "bestScore": 5,
+                "totalQuestions": 5,
+                "xpEarned": 95
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 2,
+                "completed": true,
+                "attempts": 1,
+                "bestScore": 2,
+                "totalQuestions": 5,
+                "xpEarned": 100
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 2,
+                "completed": true,
+                "attempts": 2,
+                "bestScore": 2,
+                "totalQuestions": 5,
+                "xpEarned": 120
+              },
+              "4": {
+                "type": "game",
+                "stars": 3,
+                "completed": true,
+                "attempts": 13,
+                "bestScore": 1,
+                "totalQuestions": 1,
+                "xpEarned": 95
+              },
+              "5": {
+                "type": "game",
+                "stars": 3,
+                "completed": true,
+                "attempts": 1,
+                "bestScore": 1,
+                "totalQuestions": 1,
+                "xpEarned": 115
+              }
+            }
+          },
+          "roupas": {
+            "name": "Roupas & Estilo",
+            "emoji": "👚",
             "unlocked": true,
             "completed": false,
             "bossDefeated": false,
@@ -241,70 +295,46 @@
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "2": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "3": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "4": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "5": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
-              }
-            }
-          },
-          "roupas": {
-            "name": "Roupas & Estilo",
-            "emoji": "👚",
-            "unlocked": false,
-            "completed": false,
-            "bossDefeated": false,
-            "levels": {
-              "1": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "2": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "3": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "4": {
-                "type": "game",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "5": {
-                "type": "game",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               }
             }
           },
@@ -319,31 +349,46 @@
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "2": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "3": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "4": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "5": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               }
             }
           },
@@ -358,31 +403,46 @@
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "2": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "3": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "4": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "5": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               }
             }
           },
@@ -426,9 +486,106 @@
             }
           }
         },
-        "totalStars": 0,
-        "completedLevels": [],
-        "recentActivity": []
+        "totalStars": 13,
+        "completedLevels": [
+          "transito-1",
+          "transito-2",
+          "transito-3",
+          "transito-4",
+          "transito-5"
+        ],
+        "recentActivity": [
+          {
+            "worldId": "transito",
+            "levelId": 1,
+            "stars": 1,
+            "score": 1,
+            "totalQuestions": 5,
+            "xp": 0,
+            "date": "2026-06-17T21:13:19.015Z"
+          },
+          {
+            "worldId": "transito",
+            "levelId": 5,
+            "stars": 3,
+            "score": 1,
+            "totalQuestions": 1,
+            "xp": 115,
+            "date": "2026-06-17T21:10:28.487Z"
+          },
+          {
+            "worldId": "transito",
+            "levelId": 4,
+            "stars": 3,
+            "score": 1,
+            "totalQuestions": 1,
+            "xp": 5,
+            "date": "2026-06-17T21:10:15.937Z"
+          },
+          {
+            "worldId": "transito",
+            "levelId": 4,
+            "stars": 0,
+            "score": 0,
+            "totalQuestions": 1,
+            "xp": 0,
+            "date": "2026-06-17T21:10:04.871Z"
+          },
+          {
+            "worldId": "transito",
+            "levelId": 4,
+            "stars": 0,
+            "score": 0,
+            "totalQuestions": 1,
+            "xp": 0,
+            "date": "2026-06-17T21:09:52.854Z"
+          },
+          {
+            "worldId": "transito",
+            "levelId": 4,
+            "stars": 0,
+            "score": 0,
+            "totalQuestions": 1,
+            "xp": 0,
+            "date": "2026-06-17T21:09:30.237Z"
+          },
+          {
+            "worldId": "transito",
+            "levelId": 4,
+            "stars": 0,
+            "score": 0,
+            "totalQuestions": 1,
+            "xp": 0,
+            "date": "2026-06-17T21:09:14.906Z"
+          },
+          {
+            "worldId": "transito",
+            "levelId": 4,
+            "stars": 0,
+            "score": 0,
+            "totalQuestions": 1,
+            "xp": 0,
+            "date": "2026-06-17T21:07:44.206Z"
+          },
+          {
+            "worldId": "transito",
+            "levelId": 4,
+            "stars": 0,
+            "score": 0,
+            "totalQuestions": 1,
+            "xp": 0,
+            "date": "2026-06-17T21:07:32.455Z"
+          },
+          {
+            "worldId": "transito",
+            "levelId": 4,
+            "stars": 0,
+            "score": 0,
+            "totalQuestions": 1,
+            "xp": 0,
+            "date": "2026-06-17T21:07:18.422Z"
+          }
+        ]
       },
       "id": "s-S0Uji"
     }
@@ -625,6 +782,18 @@
       "createdAt": "2026-06-17T20:01:45.846Z",
       "expiresAt": "2026-06-24T20:01:45.846Z",
       "id": 32
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T20:39:52.570Z",
+      "expiresAt": "2026-06-24T20:39:52.570Z",
+      "id": 33
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T20:52:36.169Z",
+      "expiresAt": "2026-06-24T20:52:36.169Z",
+      "id": 34
     }
   ]
 }

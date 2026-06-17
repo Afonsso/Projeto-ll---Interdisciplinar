@@ -1,6 +1,6 @@
 /**
  * js/controller/ishiharatestController.js
- * Camada Controller: Escuta a ação dos teclados e faz a gestão dos passos.
+ * Camada Controller: Escuta a ação dos teclados e faz a gestão das transições e fases.
  */
 
 class QuizController {
@@ -11,9 +11,7 @@ class QuizController {
 
     init() {
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('🚀 Sistema de duplo teclado numérico ativado com sucesso.');
-            
-            // Não chamamos o refreshUI imediatamente para não desenhar o quiz na introdução
+            console.log('🚀 Controlador CromaApp ativado com suporte a testes adaptativos de Fase 2.');
             
             // Configuração dos botões ovais Sim/Não/Talvez na Intro
             document.querySelectorAll('#screen-intro .opt-btn').forEach(button => {
@@ -22,7 +20,6 @@ class QuizController {
                     row.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
                     e.target.classList.add('active');
                     
-                    // Condição para mostrar/esconder a pergunta do Tipo
                     if (row.parentElement.id === 'main-daltonismo-question') {
                         const isSim = e.target.getAttribute('data-value') === 'sim';
                         this.view.toggleTypeQuestionBlock(isSim);
@@ -35,11 +32,11 @@ class QuizController {
             if (startBtn) {
                 startBtn.addEventListener('click', () => {
                     this.view.changeScreen('screen-quiz');
-                    this.refreshUI(); // Desenha a primeira placa apenas aqui!
+                    this.refreshUI(); 
                 });
             }
 
-            // Clique no link de Ver Resultados Anteriores
+            // Clique no botão de Ver Histórico
             const historyLink = document.getElementById('view-history-btn');
             if (historyLink) {
                 historyLink.addEventListener('click', (e) => {
@@ -58,35 +55,34 @@ class QuizController {
         const totalPlates = this.model.getTotalPlates();
 
         this.view.renderPlate(plate, currentIndex, totalPlates, this.model, (side, value) => {
-            // Callback executado ao clicar num número do teclado
             this.model.setDigit(side, value);
-            this.refreshUI(); // Atualiza a View para pintar o botão ativo e validar o botão de avançar
+            this.refreshUI(); 
         });
     }
 
+    // Acessível pelo atributo onclick="quizController.handleClear(...)" do HTML
     handleClear(side) {
         this.model.clearDigit(side);
         this.refreshUI();
     }
 
+    // Acessível pelo atributo onclick="quizController.handleNextClick()" do HTML
     handleNextClick() {
-        const hasMore = this.model.saveCurrentAnswerAndAdvance();
+        const status = this.model.saveCurrentAnswerAndAdvance();
         
-        if (hasMore) {
+        if (status === "AVANCAR" || status === "PROSSEGUIR_FASE_2") {
             this.refreshUI();
-        } else {
+        } else if (status === "FIM") {
             const quizData = this.model.getQuizData();
             const userAnswers = this.model.getAnswers();
             const metrics = this.model.calculateResults();
             
-            // NOVO: Grava no histórico local assim que o teste termina
             this.model.saveTestToHistory(metrics);
-            
             this.view.renderFinalResults(quizData, userAnswers, metrics);
         }
     }
 }
 
-// Inicializa a orquestração global
+// Inicializa e expõe na janela global para os cliques inline do HTML funcionarem
 window.quizController = new QuizController(window.quizModel, window.quizView);
 window.quizController.init();

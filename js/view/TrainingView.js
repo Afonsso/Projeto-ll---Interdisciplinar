@@ -11,7 +11,7 @@ class TrainingView {
     }
 
     // Renderizar a lista de mundos com categorias
-    renderWorlds(worldsData, progressData) {
+    renderWorlds(progressModel) {
         const worldsContainer = document.getElementById('worlds-container');
         if (!worldsContainer) return;
 
@@ -30,18 +30,16 @@ class TrainingView {
         `;
 
         worldsOrder.forEach(worldId => {
-            const world = worldsData[worldId];
-            const progress = progressData.getWorldProgress(worldId);
-            
-            if (!world) return;
+            const progress = progressModel.getWorldProgress(worldId);
+            if (!progress) return;
 
-            const isUnlocked = progress?.unlocked || false;
-            const isCompleted = progress?.completed || false;
+            const isUnlocked = progress.unlocked || false;
+            const isCompleted = progress.completed || false;
 
             worldsHTML += `
                 <div class="categoria-item ${isUnlocked ? '' : 'locked'} ${isCompleted ? 'completed' : ''}" onclick="goToWorld('${worldId}')">
-                    <span class="categoria-emoji">${world.emoji}</span>
-                    <span class="categoria-name">${world.name}</span>
+                    <span class="categoria-emoji">${progress.emoji}</span>
+                    <span class="categoria-name">${progress.name}</span>
                 </div>
             `;
         });

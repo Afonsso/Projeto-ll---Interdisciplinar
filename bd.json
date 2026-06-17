@@ -217,17 +217,17 @@
       }
     },
     {
-      "name": "Afonso ",
+      "name": "Afonso Duarte",
       "email": "afonsoduart070@gmail.com",
-      "password": "Afonso2006",
-      "avatar": "property%201=c%C3%A3o.png",
+      "password": "afonso2006",
+      "avatar": "dog%20(1).png",
       "birthDate": "2005-01-01",
       "createdAt": "2026-06-10T12:21:29.407Z",
       "colorBlindnessType": null,
       "ishiharaCompleted": false,
       "xp": 0,
       "streak": 1,
-      "lastLoginDate": "2026-06-11T13:15:47.915Z",
+      "lastLoginDate": "2026-06-17T11:25:50.910Z",
       "progress": {
         "worlds": {
           "transito": {
@@ -517,6 +517,78 @@
       "createdAt": "2026-06-11T13:12:29.772Z",
       "expiresAt": "2026-06-18T13:12:29.772Z",
       "id": 14
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T09:30:05.402Z",
+      "expiresAt": "2026-06-24T09:30:05.402Z",
+      "id": 15
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T10:31:32.892Z",
+      "expiresAt": "2026-06-24T10:31:32.892Z",
+      "id": 16
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T10:58:48.197Z",
+      "expiresAt": "2026-06-24T10:58:48.197Z",
+      "id": 17
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T10:58:55.478Z",
+      "expiresAt": "2026-06-24T10:58:55.478Z",
+      "id": 18
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T10:59:06.670Z",
+      "expiresAt": "2026-06-24T10:59:06.670Z",
+      "id": 19
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T10:59:33.262Z",
+      "expiresAt": "2026-06-24T10:59:33.262Z",
+      "id": 20
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T11:14:27.420Z",
+      "expiresAt": "2026-06-24T11:14:27.420Z",
+      "id": 21
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T11:14:53.119Z",
+      "expiresAt": "2026-06-24T11:14:53.119Z",
+      "id": 22
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T11:18:44.149Z",
+      "expiresAt": "2026-06-24T11:18:44.149Z",
+      "id": 23
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T11:19:04.941Z",
+      "expiresAt": "2026-06-24T11:19:04.941Z",
+      "id": 24
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T11:19:40.238Z",
+      "expiresAt": "2026-06-24T11:19:40.238Z",
+      "id": 25
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T11:25:50.880Z",
+      "expiresAt": "2026-06-24T11:25:50.880Z",
+      "id": 26
     }
   ]
 }

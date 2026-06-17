@@ -5,17 +5,18 @@ class ProfileView {
     constructor() {
         this.container = null;
         this.avatars = [
-            'property 1=cão.png',
-            'property 1=gato.png',
-            'property 1=coelho.png',
-            'property 1=esquilo.png',
-            'property 1=girafa.png',
-            'property 1=gorila.png',
-            'property 1=leão.png',
-            'property 1=pato.png',
-            'property 1=pinguim.png',
-            'property 1=raposa.png',
-            'property 1=urso.png'
+            'dog.png',
+            'dog (1).png',
+            'bear.png',
+            'chicken.png',
+            'rabbit.png',
+            'giraffe.png',
+            'gorilla.png',
+            'lion.png',
+            'duck.png',
+            'penguin.png',
+            'fox.png',
+            'bear.png'
         ];
         this.currentAvatarIndex = 0;
     }

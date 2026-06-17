@@ -115,6 +115,7 @@ class App {
             this.currentPage = 'home';
         } else if (path.includes('about.html')) {
             this.currentPage = 'about';
+            console.log('Detected about page');
         } else if (path.includes('training.html') || path.includes('quiz-')) {
             this.currentPage = 'training';
         } else if (path.includes('profile.html')) {

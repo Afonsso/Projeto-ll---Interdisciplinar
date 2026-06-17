@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
     <style>
-        /* Forçar o HTML e o Body a ocuparem 100% da altura da tela e remover margens */
         html, body, .carousel, .carousel-inner, .carousel-item {
             height: 100vh;
             width: 100vw;
@@ -16,19 +15,17 @@
             overflow: hidden;
         }
 
-        /* Fazer com que as imagens cubram todo o espaço estilo 'background-size: cover' */
         .carousel-item img {
             height: 100%;
             width: 100%;
             object-fit: cover;
         }
 
-        /* Ajuste opcional para dar destaque aos botões e links no fundo da imagem */
         .carousel-caption {
             background: rgba(0, 0, 0, 0.4);
             padding: 20px;
             border-radius: 10px;
-            bottom: 20%; /* Sobe um pouco a legenda para não sumir em telas menores */
+            bottom: 20%; 
         }
 
         .btn-link-custom {

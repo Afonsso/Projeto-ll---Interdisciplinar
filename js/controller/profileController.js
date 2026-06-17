@@ -28,6 +28,20 @@ class ProfileController {
             this.handleProfileUpdate(e.detail);
         });
 
+        const prevAvatarBtn = document.getElementById('prev-avatar');
+        const nextAvatarBtn = document.getElementById('next-avatar');
+        const onAvatarChange = () => {
+            this.persistCurrentAvatar();
+        };
+
+        if (prevAvatarBtn) {
+            prevAvatarBtn.addEventListener('click', onAvatarChange);
+        }
+
+        if (nextAvatarBtn) {
+            nextAvatarBtn.addEventListener('click', onAvatarChange);
+        }
+
         // Navegação para troféus
         const trophyCard = document.querySelector('.trophy-clickable-card');
         if (trophyCard) {
@@ -54,7 +68,7 @@ class ProfileController {
     }
 
     // Lidar com atualização do perfil
-    handleProfileUpdate(data) {
+    async handleProfileUpdate(data) {
         const { name, email, birthDate, password } = data;
 
         const updateData = {
@@ -63,26 +77,45 @@ class ProfileController {
             birthDate
         };
 
+        const avatarFileName = this.getCurrentAvatarFileName();
+        if (avatarFileName) {
+            updateData.avatar = avatarFileName;
+        }
+
         if (password) {
             updateData.password = password;
         }
 
-        this.userModel.updateUser(updateData);
-        
-        // Atualizar avatar se foi alterado
-        const avatarImg = document.getElementById('user-avatar');
-        if (avatarImg) {
-            const currentAvatarSrc = avatarImg.src;
-            const avatarFileName = currentAvatarSrc.split('/').pop();
-            updateData.avatar = avatarFileName;
-            this.userModel.updateUser(updateData);
-        }
+        await this.userModel.updateUser(updateData);
 
         // Recarregar dados
         this.loadProfileData();
 
         // Mostrar mensagem de sucesso
         this.showSuccessMessage('Perfil atualizado com sucesso!');
+    }
+
+    getCurrentAvatarFileName() {
+        const avatarImg = document.getElementById('user-avatar');
+        if (!avatarImg?.src) {
+            return null;
+        }
+
+        return avatarImg.src.split('/').pop() || null;
+    }
+
+    async persistCurrentAvatar() {
+        const avatarFileName = this.getCurrentAvatarFileName();
+        if (!avatarFileName) {
+            return;
+        }
+
+        const currentUser = this.userModel.getUser();
+        if (currentUser?.avatar === avatarFileName) {
+            return;
+        }
+
+        await this.userModel.updateUser({ avatar: avatarFileName });
     }
 
     // Repetir nível

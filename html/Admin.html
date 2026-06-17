@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croma Admin</title>
+    <link rel="stylesheet" href="../css/globals.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <script type="module" src="../js/controller/adminController.js"></script>
+</head>
+<body>
+    <main class="admin-page">
+        <header class="admin-header">
+            <div>
+                <h1>Painel Admin</h1>
+                <p>Gerir utilizadores, quizzes e jogos.</p>
+            </div>
+            <div class="admin-header-actions">
+                <button id="reset-content-btn" type="button" class="btn btn-outline">Repor Conteudo Padrao</button>
+                <button id="save-content-btn" type="button" class="btn btn-primary">Guardar Conteudo</button>
+            </div>
+        </header>
+
+        <nav class="admin-tabs">
+            <button type="button" class="tab-btn active" data-tab="users">Utilizadores</button>
+            <button type="button" class="tab-btn" data-tab="quizzes">Quizzes</button>
+            <button type="button" class="tab-btn" data-tab="games">Jogos</button>
+        </nav>
+
+        <section id="admin-feedback" class="admin-feedback" aria-live="polite"></section>
+
+        <section class="admin-panel active" data-panel="users">
+            <div class="panel-header">
+                <h2>Utilizadores</h2>
+                <button id="reload-users-btn" type="button" class="btn btn-outline">Atualizar Lista</button>
+            </div>
+
+            <form id="new-user-form" class="card form-grid">
+                <h3>Criar Utilizador</h3>
+                <label>
+                    Nome
+                    <input type="text" name="name" required>
+                </label>
+                <label>
+                    Email
+                    <input type="email" name="email" required>
+                </label>
+                <label>
+                    Password
+                    <input type="text" name="password" minlength="6" required>
+                </label>
+                <button type="submit" class="btn btn-primary">Criar</button>
+            </form>
+
+            <div id="users-list" class="cards-list"></div>
+        </section>
+
+        <section class="admin-panel" data-panel="quizzes">
+            <div class="panel-header">
+                <h2>Quizzes</h2>
+                <div class="inline-selects">
+                    <label>
+                        Mundo
+                        <select id="quiz-world-select"></select>
+                    </label>
+                    <label>
+                        Nivel
+                        <select id="quiz-level-select"></select>
+                    </label>
+                </div>
+            </div>
+
+            <form id="quiz-meta-form" class="card form-grid">
+                <h3>Metadados do Nivel</h3>
+                <label>
+                    Titulo
+                    <input type="text" id="quiz-level-title" required>
+                </label>
+                <label>
+                    Descricao
+                    <input type="text" id="quiz-level-description" required>
+                </label>
+            </form>
+
+            <div id="quiz-questions-editor" class="cards-list"></div>
+        </section>
+
+        <section class="admin-panel" data-panel="games">
+            <div class="panel-header">
+                <h2>Jogos</h2>
+                <div class="inline-selects">
+                    <label>
+                        Mundo
+                        <select id="game-world-select"></select>
+                    </label>
+                    <label>
+                        Nivel
+                        <select id="game-level-select"></select>
+                    </label>
+                </div>
+            </div>
+
+            <form id="game-form" class="card form-grid">
+                <label>
+                    Titulo
+                    <input type="text" id="game-title" required>
+                </label>
+                <label>
+                    Descricao
+                    <input type="text" id="game-description" required>
+                </label>
+                <label>
+                    Tipo de jogo
+                    <select id="game-type" required>
+                        <option value="sorting">sorting</option>
+                        <option value="drag_drop">drag_drop</option>
+                        <option value="memory">memory</option>
+                        <option value="speed">speed</option>
+                        <option value="reaction">reaction</option>
+                    </select>
+                </label>
+                <label>
+                    Itens (JSON array)
+                    <textarea id="game-items" rows="5"></textarea>
+                </label>
+                <label>
+                    Ordem correta (JSON array)
+                    <textarea id="game-correct-order" rows="3"></textarea>
+                </label>
+                <label>
+                    Pares (memory)
+                    <input type="number" min="1" id="game-pairs">
+                </label>
+                <label>
+                    Limite de tempo (speed)
+                    <input type="number" min="0" id="game-time-limit">
+                </label>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

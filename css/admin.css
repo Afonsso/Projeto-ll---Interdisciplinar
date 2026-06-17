@@ -1,0 +1,184 @@
+.admin-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+    color: #1f2d3d;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.admin-header p {
+    margin: 6px 0 0;
+    color: #627189;
+}
+
+.admin-header-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    border: 1px solid #ccd7e6;
+    background: #f6f9fc;
+    color: #294173;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    background: #294173;
+    color: #ffffff;
+    border-color: #294173;
+}
+
+.admin-feedback {
+    min-height: 22px;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+.admin-feedback.success {
+    color: #13673f;
+}
+
+.admin-feedback.error {
+    color: #b42318;
+}
+
+.admin-panel {
+    display: none;
+}
+
+.admin-panel.active {
+    display: block;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+}
+
+.panel-header h2 {
+    margin: 0;
+}
+
+.inline-selects {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e3e9f3;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.cards-list {
+    display: grid;
+    gap: 12px;
+}
+
+.form-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.form-grid h3 {
+    margin: 0 0 6px;
+}
+
+label {
+    display: grid;
+    gap: 6px;
+    font-size: 0.92rem;
+    color: #475467;
+}
+
+input,
+select,
+textarea {
+    border: 1px solid #cdd6e4;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.btn {
+    border: 0;
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #294173;
+    color: #fff;
+}
+
+.btn-outline {
+    border: 1px solid #c6d1e3;
+    color: #294173;
+    background: #fff;
+}
+
+.user-card {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto auto;
+    gap: 10px;
+    align-items: end;
+}
+
+.user-card .danger {
+    background: #fff5f5;
+    border: 1px solid #f8caca;
+    color: #b42318;
+}
+
+.quiz-question-card {
+    background: #ffffff;
+    border: 1px solid #e3e9f3;
+    border-radius: 12px;
+    padding: 14px;
+    display: grid;
+    gap: 8px;
+}
+
+@media (max-width: 880px) {
+    .user-card {
+        grid-template-columns: 1fr;
+    }
+}

@@ -35,6 +35,22 @@ class ProfileController {
                 window.location.href = 'trophies.html';
             });
         }
+
+        document.addEventListener('click', (event) => {
+            const replayLevelButton = event.target.closest('[data-replay-world][data-replay-level]');
+            if (replayLevelButton) {
+                this.replayLevel(
+                    replayLevelButton.dataset.replayWorld,
+                    replayLevelButton.dataset.replayLevel
+                );
+                return;
+            }
+
+            const replayWorldButton = event.target.closest('[data-replay-world-name]');
+            if (replayWorldButton) {
+                this.replayWorld(replayWorldButton.dataset.replayWorldName);
+            }
+        });
     }
 
     // Lidar com atualização do perfil
@@ -71,22 +87,29 @@ class ProfileController {
 
     // Repetir nível
     replayLevel(worldId, levelId) {
-        window.location.href = `quiz-${worldId}.html`;
+        const worldMap = {
+            transito: 'transito',
+            roupas: 'roupa',
+            cozinha: 'comida',
+            desporto: 'desporto'
+        };
+
+        const slug = worldMap[worldId] || worldId;
+        window.location.href = `mundos/${slug}.html#nivel-${levelId}`;
     }
 
     // Repetir mundo
     replayWorld(worldName) {
         const worldMap = {
             'Trânsito': 'transito',
-            'Roupas': 'roupas',
-            'Alimentos': 'cozinha',
+            'Roupas & Estilo': 'roupa',
+            'Comida & Alimentação': 'comida',
             'Desporto': 'desporto',
-            'Reflexo': 'reflexo'
         };
 
         const worldId = worldMap[worldName];
         if (worldId) {
-            window.location.href = `quiz-${worldId}.html`;
+            window.location.href = `mundos/${worldId}.html`;
         }
     }
 

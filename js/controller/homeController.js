@@ -35,9 +35,15 @@ class HomeController {
 
     // Obter sugestões de treino
     getTrainingSuggestions() {
-        const incompleteLevels = this.progressModel.getIncompleteLevels();
-        const weakWorlds = this.progressModel.getWeakWorlds();
-        const belowMaxStars = this.progressModel.getLevelsBelowMaxStars();
+       const incompleteLevels = typeof progressData.getIncompleteLevels === "function"
+    ? progressData.getIncompleteLevels()
+    : [];
+     const weakWorlds = typeof progressData.getWeakWorlds === "function"
+    ? progressData.getWeakWorlds()
+    : [];
+        const belowMaxStars = typeof progressData.getLevelsBelowMaxStars === "function"
+    ? progressData.getLevelsBelowMaxStars()
+    : [];
 
         return {
             incompleteLevels,

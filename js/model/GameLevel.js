@@ -1,4 +1,4 @@
-import Level from './Level.js';
+import Level from './logic/level.js';
 
 class GameLevel extends Level {
     constructor(id, numero, worldId, dificuldade, xpReward, gameConfig = {}) {

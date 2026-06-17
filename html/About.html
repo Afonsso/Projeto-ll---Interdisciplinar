@@ -68,6 +68,11 @@
             </div>
           </div>
         </a>
+        <a href="#" id="guest-logout-btn" onclick="logoutGuest(event)" style="display: none; color: #ff6b6b; text-decoration: none;">
+          <div class="div-3">
+            <span style="font-weight: 500;">Sair</span>
+          </div>
+        </a>
       </div>
     </nav>
 
@@ -209,6 +214,36 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../js/guestGuard.js"></script>
+    <script>
+        // Mostrar botão de logout para convidados
+        function updateGuestUI() {
+            const isGuest = localStorage.getItem('croma_guest') === 'true';
+            if (isGuest) {
+                const guestLogoutBtn = document.getElementById('guest-logout-btn');
+                if (guestLogoutBtn) {
+                    guestLogoutBtn.style.display = 'block';
+                }
+                // Ocultar menu items para convidados
+                const navHome = document.getElementById('nav-home');
+                const navTraining = document.getElementById('nav-training');
+                const navProfile = document.getElementById('nav-profile');
+                
+                if (navHome) navHome.style.display = 'none';
+                if (navTraining) navTraining.style.display = 'none';
+                if (navProfile) navProfile.style.display = 'none';
+            }
+        }
+
+        function logoutGuest(event) {
+            event.preventDefault();
+            localStorage.removeItem('croma_guest');
+            window.location.href = '../index.html';
+        }
+
+        // Chamar a função quando o documento está carregado
+        document.addEventListener('DOMContentLoaded', updateGuestUI);
+    </script>
 </body>
 <<<<<<< HEAD
 =======

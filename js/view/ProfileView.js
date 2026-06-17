@@ -5,17 +5,18 @@ class ProfileView {
     constructor() {
         this.container = null;
         this.avatars = [
-            'property 1=cão.png',
-            'property 1=gato.png',
-            'property 1=coelho.png',
-            'property 1=esquilo.png',
-            'property 1=girafa.png',
-            'property 1=gorila.png',
-            'property 1=leão.png',
-            'property 1=pato.png',
-            'property 1=pinguim.png',
-            'property 1=raposa.png',
-            'property 1=urso.png'
+            'dog.png',
+            'dog (1).png',
+            'bear.png',
+            'chicken.png',
+            'rabbit.png',
+            'giraffe.png',
+            'gorilla.png',
+            'lion.png',
+            'duck.png',
+            'penguin.png',
+            'fox.png',
+            'bear.png'
         ];
         this.currentAvatarIndex = 0;
     }
@@ -49,7 +50,8 @@ class ProfileView {
         if (totalXP) totalXP.textContent = `${user.xp} XP`;
         if (currentStreak) currentStreak.textContent = `${user.streak} dias`;
         if (progressText) {
-            const totalLevels = 25; // 5 mundos x 5 níveis
+            const totalLevels = Object.values(progress.worlds)
+                .reduce((sum, world) => sum + Object.keys(world.levels || {}).length, 0);
             const completedLevels = progress.completedLevels.length;
             const percentage = Math.round((completedLevels / totalLevels) * 100);
             progressText.textContent = `${percentage}%`;
@@ -71,19 +73,17 @@ class ProfileView {
         }
 
         const worldEmojis = {
-            transito: '🚗',
-            roupas: '👕',
-            cozinha: '🍏',
-            desporto: '⚽',
-            reflexo: '🏁'
+            transito: '🚦',
+            roupas: '👚',
+            cozinha: '🍽️',
+            desporto: '⚽'
         };
 
         const worldNames = {
             transito: 'Trânsito',
-            roupas: 'Roupas',
-            cozinha: 'Alimentos',
-            desporto: 'Desporto',
-            reflexo: 'Reflexo'
+            roupas: 'Roupas & Estilo',
+            cozinha: 'Comida & Alimentação',
+            desporto: 'Desporto'
         };
 
         recentContainer.innerHTML = recentActivity.map(activity => `
@@ -91,9 +91,9 @@ class ProfileView {
                 <div class="item-icon-bg">${worldEmojis[activity.worldId] || '🎮'}</div>
                 <div class="item-info">
                     <h4>${worldNames[activity.worldId] || activity.worldId}</h4>
-                    <p>Nível ${activity.levelId} - ${activity.stars} estrelas</p>
+                    <p>Nível ${activity.levelId} - ${activity.xp || 0} XP</p>
                 </div>
-                <button class="btn-action-replay" onclick="replayLevel('${activity.worldId}', ${activity.levelId})">↻</button>
+                <button class="btn-action-replay" data-replay-world="${activity.worldId}" data-replay-level="${activity.levelId}">↻</button>
             </div>
         `).join('');
     }
@@ -113,19 +113,17 @@ class ProfileView {
         }
 
         const worldEmojis = {
-            transito: '🚗',
-            roupas: '👕',
-            cozinha: '🍏',
-            desporto: '⚽',
-            reflexo: '🏁'
+            transito: '🚦',
+            roupas: '👚',
+            cozinha: '🍽️',
+            desporto: '⚽'
         };
 
         const worldNames = {
             transito: 'Trânsito',
-            roupas: 'Roupas',
-            cozinha: 'Alimentos',
-            desporto: 'Desporto',
-            reflexo: 'Reflexo'
+            roupas: 'Roupas & Estilo',
+            cozinha: 'Comida & Alimentação',
+            desporto: 'Desporto'
         };
 
         // Agrupar por mundo
@@ -142,7 +140,7 @@ class ProfileView {
             }
             worldStats[worldId].maxLevel = Math.max(worldStats[worldId].maxLevel, parseInt(levelId));
             
-            const levelProgress = progress.getWorldProgress(worldId)?.levels[levelId];
+            const levelProgress = progress.worlds[worldId]?.levels[levelId];
             if (levelProgress) {
                 worldStats[worldId].totalStars += levelProgress.stars;
             }
@@ -157,7 +155,7 @@ class ProfileView {
                 <p class="test-level">Nível ${world.maxLevel}</p>
                 <div class="test-footer-row">
                     <div class="test-stars">${'⭐'.repeat(Math.min(world.totalStars, 3))}${'☆'.repeat(3 - Math.min(world.totalStars, 3))}</div>
-                    <button class="btn-test-replay" onclick="replayWorld('${world.name}')">↻</button>
+                    <button class="btn-test-replay" data-replay-world-name="${world.name}">↻</button>
                 </div>
             </div>
         `).join('');

@@ -1,5 +1,5 @@
 #body-container {
-    background: #EBEBEB;
+    background: var(--color-bg-main);
 }
 
 /* Container Principal  */
@@ -24,7 +24,7 @@
 }
 
 #container-principal-texto {
-    color: #252E4A;
+    color: var(--color-primary-navy);
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -34,7 +34,7 @@
 }
 
 .button-principal {
-    background-color: #252E4A;
+    background-color: var(--color-primary-navy);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -45,8 +45,8 @@
 }
 
 .button-secundario {
-    color: #7F7F7F;
-    border: 2px solid #7F7F7F;
+    color: var(--color-border-gray-secondary);
+    border: 2px solid var(--color-border-gray-secondary);
     padding: 10px 20px;
     margin-right: 10px;
     border-radius: 50px;
@@ -68,7 +68,7 @@
 
 /* Container tipos  */
 #container-tipos {
-    background-color: #F2F4F8;
+    background-color: var(--color-bg-blue-light);
     margin-top: 100px;
     padding-bottom: 60px;
     display: flex;
@@ -84,7 +84,7 @@
 #container-tipos p {
     max-width: 800px;
     text-align: center;
-    color: #252E4A;
+    color: var(--color-primary-navy);
     line-height: 1.5;
 }
 
@@ -105,11 +105,11 @@
     margin: 30px 0px 0px -40px;
 }
 .lista-causas li {
-    background-color: #D7D7D7;
+    background-color: var(--color-neutral-light-border);
     margin: 10px;
     border-radius: 10px;
     padding: 10px;
-    color: #7F7F7F;
+    color: var(--color-border-gray-secondary);
 }
 #diagnostico {
     display: flex;
@@ -131,7 +131,7 @@
     flex-direction: column;
     align-items: center;
     padding: 50px;
-    background-color: #F2F4F8;
+    background-color: var(--color-bg-blue-light);
 }
 #container-impacto h2 {
     text-align: center;
@@ -140,7 +140,7 @@
     font-size: 13pt;
     margin-top: -10px;
     margin-bottom: 50px;
-    color: #001D6C;
+    color: var(--color-primary-dark);
     text-align: center;
 }
 
@@ -160,7 +160,7 @@
     justify-content: center;
 }
 .cards-solucoes .card .card-body {
-    background-color: #E7E7E7;
+    background-color: var(--color-neutral-light-bg-card);
     border-radius: 20px;
 }
 .cards-solucoes .card{
@@ -252,7 +252,7 @@
     #container-tipos p {
         max-width: 800px;
         text-align: center;
-        color: #252E4A;
+        color: var(--color-primary-navy);
         line-height: 1.5;
     }
     #container-causas {

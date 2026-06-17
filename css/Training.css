@@ -36,23 +36,23 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #64748b;
+    background-color: var(--color-slate-500);
     color: var(--branco);
     font-size: 1.1rem;
     font-weight: 700;
     padding: 16px 40px;
     border-radius: 14px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 10px var(--rgba-black-05);
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .btn-random-mode:hover {
     transform: translateY(-2px);
-    background-color: #475569;
+    background-color: var(--color-slate-600);
 }
 
 .category-panel-header {
-    background-color: #64748b;
+    background-color: var(--color-slate-500);
     color: var(--branco);
     font-size: 1.1rem;
     font-weight: 700;
@@ -64,7 +64,7 @@
     background-color: var(--branco);
     border-radius: 0 0 24px 24px;
     padding: 10px 0;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 25px var(--rgba-black-05);
 }
 
 .category-row-item {
@@ -72,7 +72,7 @@
     align-items: center;
     padding: 18px 24px;
     color: var(--azul);
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--color-bg-slate-light);
     transition: background-color 0.15s ease;
 }
 
@@ -81,7 +81,7 @@
 }
 
 .category-row-item:hover {
-    background-color: #f8fafc;
+    background-color: var(--color-bg-white-pure);
 }
 
 .category-emoji {
@@ -95,13 +95,13 @@
 .category-name {
     font-size: 1.05rem;
     font-weight: 600;
-    color: #334155;
+    color: var(--color-slate-700);
     flex: 1;
 }
 
 .category-arrow {
     font-size: 1.5rem;
-    color: #94a3b8;
+    color: var(--color-slate-400);
     line-height: 1;
     transition: transform 0.2s;
 }

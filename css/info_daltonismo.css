@@ -5,7 +5,7 @@
             height: 100%;
             width: 100%;
             overflow-x: hidden;
-            background-color: #ffffff;
+            background-color: var(--color-white);
             font-family: sans-serif;
         }
 
@@ -34,7 +34,7 @@
             top: 40px;
             right: 60px;
             font-size: 1.8rem;
-            color: #333;
+            color: var(--color-neutral-dark-soft);
             text-decoration: none;
             cursor: pointer;
         }
@@ -43,7 +43,7 @@
             font-weight: 700;
             font-size: 2.6rem;
             margin-bottom: 60px; 
-            color: #000000;
+            color: var(--color-black);
         }
 
         .subtitulo-seccao {
@@ -61,7 +61,7 @@
             font-weight: 600;
             font-size: 1.05rem;
             margin-bottom: 14px;
-            color: #000000;
+            color: var(--color-black);
             display: block;
         }
 
@@ -82,7 +82,7 @@
         }
 
         .opcao-item label {
-            border: 1px solid #999999;
+            border: 1px solid var(--color-border-gray);
             border-radius: 20px;
             padding: 8px 24px; 
             font-size: 0.9rem;
@@ -90,14 +90,14 @@
             user-select: none;
             margin: 0;
             transition: all 0.2s ease;
-            background-color: #ffffff;
-            color: #000000;
+            background-color: var(--color-white);
+            color: var(--color-black);
         }
 
         .opcao-item input[type="radio"]:checked + label {
-            background-color: #1c1f26;
-            color: #ffffff;
-            border-color: #1c1f26;
+            background-color: var(--color-neutral-dark-pure);
+            color: var(--color-white);
+            border-color: var(--color-neutral-dark-pure);
         }
 
         
@@ -111,7 +111,7 @@
 
         .texto-secundario {
             font-size: 0.85rem;
-            color: #555555;
+            color: var(--color-neutral-muted);
             line-height: 1.6;
             margin-bottom: 50px; 
             max-width: 380px;
@@ -119,8 +119,8 @@
 
         /* Botões de Ação do Teste */
         .btn-iniciar {
-            background-color: #1c1f26;
-            color: #ffffff;
+            background-color: var(--color-neutral-dark-pure);
+            color: var(--color-white);
             border-radius: 25px;
             padding: 12px 0;
             font-size: 0.95rem;
@@ -128,21 +128,21 @@
             width: 100%;
             max-width: 220px;
             border: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px var(--rgba-black-30);
             text-align: center;
             margin-bottom: 15px;
             display: block;
         }
 
         .btn-iniciar:hover {
-            background-color: #333333;
-            color: #ffffff;
+            background-color: var(--color-neutral-dark-soft);
+            color: var(--color-white);
             text-decoration: none;
         }
 
         .link-ja-fiz {
             font-size: 0.85rem;
-            color: #000000;
+            color: var(--color-black);
             text-decoration: underline;
             margin-left: 95px; 
             display: inline-block;
@@ -151,7 +151,7 @@
 
         .link-resultados {
             font-size: 0.95rem;
-            color: #1c1f26;
+            color: var(--color-neutral-dark-pure);
             text-decoration: underline;
             font-weight: 500;
             display: block;
@@ -169,5 +169,5 @@
         .radio-lista-item input[type="radio"] {
             width: 18px;
             height: 18px;
-            accent-color: #666666;
+            accent-color: var(--color-neutral-muted-light);
         }

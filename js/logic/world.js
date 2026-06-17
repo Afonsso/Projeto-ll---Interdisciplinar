@@ -55,7 +55,7 @@ class WorldLogic {
 
     // Desbloquear próximo mundo
     unlockNextWorld(currentWorldId) {
-        const worldOrder = ['transito', 'roupas', 'cozinha', 'desporto', 'reflexo'];
+        const worldOrder = ['transito', 'roupas', 'cozinha', 'desporto'];
         const currentIndex = worldOrder.indexOf(currentWorldId);
         
         if (currentIndex !== -1 && currentIndex < worldOrder.length - 1) {

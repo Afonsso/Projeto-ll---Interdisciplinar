@@ -227,7 +227,7 @@
       "ishiharaCompleted": false,
       "xp": 0,
       "streak": 1,
-      "lastLoginDate": "2026-06-17T15:32:56.087Z",
+      "lastLoginDate": "2026-06-17T19:33:27.049Z",
       "progress": {
         "worlds": {
           "transito": {
@@ -613,6 +613,12 @@
       "createdAt": "2026-06-17T15:32:56.058Z",
       "expiresAt": "2026-06-24T15:32:56.058Z",
       "id": 30
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T19:33:27.032Z",
+      "expiresAt": "2026-06-24T19:33:27.032Z",
+      "id": 31
     }
   ]
 }

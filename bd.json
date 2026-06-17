@@ -12,11 +12,7 @@
       "ishiharaCompleted": false,
       "xp": 2000,
       "streak": 0,
-<<<<<<< HEAD
       "lastLoginDate": "2026-06-17T15:32:54.593Z",
-=======
-      "lastLoginDate": "2026-06-17T15:19:17.923Z",
->>>>>>> ccf2b13045884e0678bc76b7f83f7a6c7afdc1dd
       "progress": {
         "worlds": {
           "transito": {
@@ -231,11 +227,7 @@
       "ishiharaCompleted": false,
       "xp": 0,
       "streak": 1,
-<<<<<<< HEAD
       "lastLoginDate": "2026-06-17T13:08:48.077Z",
-=======
-      "lastLoginDate": "2026-06-17T20:01:45.858Z",
->>>>>>> ccf2b13045884e0678bc76b7f83f7a6c7afdc1dd
       "progress": {
         "worlds": {
           "transito": {
@@ -600,29 +592,18 @@
     },
     {
       "userId": "s-S0Uji",
-<<<<<<< HEAD
       "createdAt": "2026-06-17T13:08:48.063Z",
       "expiresAt": "2026-06-24T13:08:48.064Z",
-=======
-      "createdAt": "2026-06-17T14:59:06.175Z",
-      "expiresAt": "2026-06-24T14:59:06.175Z",
->>>>>>> ccf2b13045884e0678bc76b7f83f7a6c7afdc1dd
       "id": 27
     },
     {
       "userId": "user_1",
-<<<<<<< HEAD
       "createdAt": "2026-06-17T13:49:54.439Z",
       "expiresAt": "2026-06-24T13:49:54.440Z",
-=======
-      "createdAt": "2026-06-17T15:16:54.674Z",
-      "expiresAt": "2026-06-24T15:16:54.674Z",
->>>>>>> ccf2b13045884e0678bc76b7f83f7a6c7afdc1dd
       "id": 28
     },
     {
       "userId": "user_1",
-<<<<<<< HEAD
       "createdAt": "2026-06-17T14:06:51.528Z",
       "expiresAt": "2026-06-24T14:06:51.529Z",
       "id": 29
@@ -638,29 +619,6 @@
       "createdAt": "2026-06-17T15:32:54.583Z",
       "expiresAt": "2026-06-24T15:32:54.583Z",
       "id": 31
-=======
-      "createdAt": "2026-06-17T15:19:17.904Z",
-      "expiresAt": "2026-06-24T15:19:17.904Z",
-      "id": 29
-    },
-    {
-      "userId": "s-S0Uji",
-      "createdAt": "2026-06-17T15:32:56.058Z",
-      "expiresAt": "2026-06-24T15:32:56.058Z",
-      "id": 30
-    },
-    {
-      "userId": "s-S0Uji",
-      "createdAt": "2026-06-17T19:33:27.032Z",
-      "expiresAt": "2026-06-24T19:33:27.032Z",
-      "id": 31
-    },
-    {
-      "userId": "s-S0Uji",
-      "createdAt": "2026-06-17T20:01:45.846Z",
-      "expiresAt": "2026-06-24T20:01:45.846Z",
-      "id": 32
->>>>>>> ccf2b13045884e0678bc76b7f83f7a6c7afdc1dd
     }
   ]
 }

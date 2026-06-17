@@ -53,14 +53,7 @@ class ProgressModel {
                     completed: false,
                     bossDefeated: false,
                     levels: this.createDefaultLevels()
-                },
-                reflexo: {
-                    name: 'Reflexo',
-                    emoji: '🏁',
-                    unlocked: false,
-                    completed: false,
-                    bossDefeated: false,
-                    levels: this.createDefaultLevels()
+
                 }
             },
             totalStars: 0,
@@ -319,7 +312,7 @@ class ProgressModel {
     }
 
     checkWorldUnlock(completedWorldId) {
-        const worldOrder = ['transito', 'roupas', 'cozinha', 'desporto', 'reflexo'];
+        const worldOrder = ['transito', 'roupas', 'cozinha', 'desporto'];
         const currentIndex = worldOrder.indexOf(completedWorldId);
 
         if (currentIndex >= 0 && currentIndex < worldOrder.length - 1) {

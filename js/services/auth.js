@@ -263,6 +263,23 @@ class AuthService {
 
         return { success: true };
     }
+
+    // Login como convidado
+    loginAsGuest() {
+        localStorage.setItem('croma_guest', 'true');
+        return { success: true };
+    }
+
+    // Verificar se é convidado
+    isGuest() {
+        return localStorage.getItem('croma_guest') === 'true';
+    }
+
+    // Logout como convidado
+    logoutGuest() {
+        localStorage.removeItem('croma_guest');
+        return { success: true };
+    }
 }
 
 export default AuthService;

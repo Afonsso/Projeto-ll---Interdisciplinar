@@ -7,7 +7,7 @@ html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-color: #ffffff;
+    background-color: var(--color-white);
     font-family: sans-serif;
 }
 
@@ -28,7 +28,7 @@ html, body {
     top: 40px;
     right: 60px;
     font-size: 1.8rem;
-    color: #333;
+    color: var(--color-neutral-dark-soft);
     text-decoration: none;
     cursor: pointer;
 }
@@ -39,20 +39,20 @@ html, body {
 .titulo-formulario {
     font-weight: 700;
     font-size: 2.5rem;
-    color: #000000;
+    color: var(--color-black);
     line-height: 1.1;
     margin-bottom: 5px;
 }
 
 .subtitulo-formulario {
     font-size: 1.1rem;
-    color: #555555;
+    color: var(--color-neutral-muted);
     margin-bottom: 40px;
 }
 
 .texto-instrucao {
     font-size: 0.95rem;
-    color: #000000;
+    color: var(--color-black);
     line-height: 1.5;
     margin-bottom: 30px;
     text-align: center;
@@ -70,14 +70,14 @@ html, body {
 
 .form-group label {
     font-weight: 500;
-    color: #000000;
+    color: var(--color-black);
     margin-bottom: 8px;
     font-size: 1rem;
 }
 
 /* Inputs arredondados estilo pílula */
 .input-custom {
-    border: 1px solid #999999;
+    border: 1px solid var(--color-border-gray);
     border-radius: 20px;
     padding: 12px 20px;
     height: auto;
@@ -85,7 +85,7 @@ html, body {
 }
 
 .input-custom:focus {
-    border-color: #666;
+    border-color: var(--color-neutral-muted-light);
     box-shadow: none;
 }
 
@@ -105,7 +105,7 @@ html, body {
     display: flex;
     flex-direction: column;
     font-size: 0.8rem;
-    color: #333;
+    color: var(--color-neutral-dark-soft);
     cursor: pointer;
     line-height: 1.1;
 }
@@ -120,7 +120,7 @@ html, body {
 
 .validacao-lista li {
     font-size: 0.8rem;
-    color: #555555;
+    color: var(--color-neutral-muted);
     margin-bottom: 6px;
     display: flex;
     align-items: center;
@@ -128,7 +128,7 @@ html, body {
 }
 
 .visto-icon {
-    color: #666666;
+    color: var(--color-neutral-muted-light);
     font-weight: bold;
 }
 
@@ -137,7 +137,7 @@ html, body {
 /* Botão Principal Cinzento */
 .btn-principal-croma,
 .btn-criar-conta {
-    background-color: #7a7a7a;
+    background-color: var(--color-btn-gray-primary);
     color: white;
     border-radius: 25px;
     padding: 11px 40px;
@@ -149,7 +149,7 @@ html, body {
 
 .btn-principal-croma:hover,
 .btn-criar-conta:hover {
-    background-color: #5a5a5a;
+    background-color: var(--color-btn-gray-primary-hover);
     color: white;
     text-decoration: none;
 }
@@ -163,14 +163,14 @@ html, body {
 /* Links Úteis */
 .link-esqueceu {
     font-size: 0.85rem;
-    color: #000000;
+    color: var(--color-black);
     text-decoration: underline;
     display: inline-block;
     margin-top: 8px;
 }
 
 .link-voltar {
-    color: #000000;
+    color: var(--color-black);
     font-size: 0.95rem;
     text-decoration: underline;
     font-weight: 500;
@@ -190,13 +190,13 @@ html, body {
 }
 
 .link-alternativo {
-    color: #000000;
+    color: var(--color-black);
     font-weight: 500;
     text-decoration: none;
 }
 
 .link-alternativo-sublinhado {
-    color: #000000;
+    color: var(--color-black);
     font-weight: 500;
     text-decoration: underline;
 }

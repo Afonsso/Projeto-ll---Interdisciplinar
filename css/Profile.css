@@ -42,7 +42,7 @@
 .avatar-circle {
     width: 120px;
     height: 120px;
-    background-color: #00ca72;
+    background-color: var(--color-success);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -65,7 +65,7 @@
     bottom: 2px;
     right: 2px;
     background: var(--branco);
-    border: 2px solid #ebebeb;
+    border: 2px solid var(--color-bg-main);
     border-radius: 50%;
     width: 28px;
     height: 28px;
@@ -73,7 +73,7 @@
     align-items: center;
     justify-content: center;
     font-size: 0.85rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px var(--rgba-black-10);
 }
 
 .btn-arrow-avatar {
@@ -106,8 +106,13 @@
     margin-bottom: 14px;
 }
 
+.profile-buttons {
+    display: flex;
+    gap: 10px;
+}
+
 .btn-edit {
-    background-color: #a5a5a5;
+    background-color: var(--color-neutral-gray-placeholder);
     color: var(--branco);
     border: none;
     border-radius: 8px;
@@ -117,12 +122,28 @@
     cursor: pointer;
 }
 
+.btn-logout {
+    background-color: var(--color-error-bright);
+    color: var(--branco);
+    border: none;
+    border-radius: 8px;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
 
+.btn-logout:hover {
+    background-color: var(--color-error);
+}
+
+/* Estilização Base dos Cards do Topo */
 .points-card, .info-status-card {
     flex: 1;
     min-width: 160px;
     background-color: var(--branco);
-    border: 1px solid #e8e8e8;
+    border: 1px solid var(--color-neutral-light-bg-card);
     border-radius: 24px;
     padding: 20px 16px;
     height: 150px;
@@ -130,7 +151,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+    box-shadow: 0 4px 14px var(--rgba-black-02);
 }
 
 .points-card {
@@ -151,12 +172,12 @@
 
 .settings-icon { 
     font-size: 1.1rem; 
-    color: #8a8a8a; 
+    color: var(--color-neutral-gray-light-mid); 
     cursor: pointer; 
 }
 
 .xp-pill { 
-    background-color: #fbc02d; 
+    background-color: var(--color-warning); 
     border-radius: 20px; 
     padding: 10px 0; 
     text-align: center; 
@@ -195,7 +216,7 @@
     width: 100%; 
     height: 100%; 
     border-radius: 50%;
-    border: 7px solid #ebebeb; 
+    border: 7px solid var(--color-bg-main); 
     border-top-color: var(--azul); 
     border-right-color: var(--azul);
     display: flex; 
@@ -217,7 +238,7 @@
 .trophy-clickable-card:hover {
     transform: translateY(-4px);
     border-color: var(--azul);
-    box-shadow: 0 6px 20px rgba(37, 46, 74, 0.08);
+    box-shadow: 0 6px 20px var(--rgba-primary-08);
 }
 
 .trophy-icon {
@@ -238,7 +259,9 @@
     opacity: 1;
 }
 
-
+/* --------------------------------------------------------------------------
+   PARTE INFERIOR: CONTEÚDO (FUNDO CINZENTO)
+   -------------------------------------------------------------------------- */
 .profile-dark-bg-area {
     width: 100%;
     background-color: var(--cinza-bg);
@@ -271,7 +294,7 @@
 
 .recent-item-card {
     background-color: var(--azul);
-    border: 2px solid #1f263d;
+    border: 2px solid var(--color-primary-dark-variant);
     border-radius: 24px;
     padding: 24px;
     display: flex;
@@ -284,7 +307,7 @@
 .item-info p { color: var(--branco); font-size: 0.7rem; opacity: 0.6; }
 
 .btn-action-replay, .btn-test-replay {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: var(--rgba-white-15);
     color: var(--branco); border: none; border-radius: 50%;
     width: 32px; height: 32px; font-size: 0.9rem; cursor: pointer;
     display: flex; align-items: center; justify-content: center; margin-left: auto;
@@ -318,14 +341,14 @@
 .test-card-icon { font-size: 1.3rem; }
 .test-level { font-size: 0.75rem; opacity: 0.7; margin-top: -15px; }
 .test-footer-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-.test-stars { color: #fbc02d; font-size: 0.9rem; letter-spacing: 2px; }
+.test-stars { color: var(--color-warning); font-size: 0.9rem; letter-spacing: 2px; }
 .btn-test-replay { margin-left: 0; width: 28px; height: 28px; font-size: 0.8rem; }
 
 /* MODAL DE EDIÇÃO */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(37, 46, 74, 0.5);
+    background-color: var(--rgba-primary-50);
     display: flex; align-items: center; justify-content: center;
     opacity: 0; visibility: hidden; z-index: 2000;
     transition: opacity 0.25s, visibility 0.25s;
@@ -340,7 +363,7 @@
     background-color: var(--branco);
     width: 460px; max-width: 90%;
     border-radius: 24px; padding: 32px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 30px var(--rgba-black-15);
     animation: slideUp 0.3s ease;
 }
 
@@ -351,7 +374,7 @@
 
 .modal-header {
     display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 24px; border-bottom: 1px solid #ebebeb; padding-bottom: 12px;
+    margin-bottom: 24px; border-bottom: 1px solid var(--color-bg-main); padding-bottom: 12px;
 }
 
 .modal-header h3 { font-size: 1.4rem; color: var(--azul); font-weight: 700; }
@@ -366,7 +389,7 @@
 .form-group label { font-size: 0.85rem; font-weight: 700; color: var(--azul); }
 
 .form-group input {
-    width: 100%; height: 42px; border-radius: 8px; border: 1px solid #cccccc;
+    width: 100%; height: 42px; border-radius: 8px; border: 1px solid var(--color-border-light);
     padding: 0 14px; font-size: 0.9rem; color: var(--azul); outline: none;
 }
 
@@ -376,4 +399,4 @@
     font-weight: 600; cursor: pointer; margin-top: 10px; transition: background 0.2s;
 }
 
-.btn-submit-modal:hover { background-color: #1a2136; }
+.btn-submit-modal:hover { background-color: var(--color-primary-dark-variant); }

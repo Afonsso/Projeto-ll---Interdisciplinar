@@ -1,0 +1,28 @@
+        /* Forçar o HTML e o Body a ocuparem 100% da altura da tela e remover margens */
+html, body, .carousel, .carousel-inner, .carousel-item {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Fazer com que as imagens cubram todo o espaço estilo 'background-size: cover' */
+.carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Ajuste opcional para dar destaque aos botões e links no fundo da imagem */
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+    bottom: 20%; /* Sobe um pouco a legenda para não sumir em telas menores */
+}
+
+.btn-link-custom {
+    margin: 5px;
+    min-width: 150px;
+}

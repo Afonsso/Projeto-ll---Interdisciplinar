@@ -28,6 +28,29 @@ class ProfileController {
             this.handleProfileUpdate(e.detail);
         });
 
+        const avatarTrigger = document.getElementById('avatar-toggle-trigger');
+        const prevAvatarBtn = document.getElementById('prev-avatar');
+        const nextAvatarBtn = document.getElementById('next-avatar');
+
+        if (avatarTrigger && prevAvatarBtn && nextAvatarBtn) {
+            avatarTrigger.addEventListener('click', () => {
+                prevAvatarBtn.classList.toggle('visible');
+                nextAvatarBtn.classList.toggle('visible');
+            });
+        }
+
+        const onAvatarChange = () => {
+            this.persistCurrentAvatar();
+        };
+
+        if (prevAvatarBtn) {
+            prevAvatarBtn.addEventListener('click', onAvatarChange);
+        }
+
+        if (nextAvatarBtn) {
+            nextAvatarBtn.addEventListener('click', onAvatarChange);
+        }
+
         // Navegação para troféus
         const trophyCard = document.querySelector('.trophy-clickable-card');
         if (trophyCard) {
@@ -35,10 +58,33 @@ class ProfileController {
                 window.location.href = 'trophies.html';
             });
         }
+
+        const logoutBtn = document.getElementById('logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+                this.handleLogout();
+            });
+        }
+
+        document.addEventListener('click', (event) => {
+            const replayLevelButton = event.target.closest('[data-replay-world][data-replay-level]');
+            if (replayLevelButton) {
+                this.replayLevel(
+                    replayLevelButton.dataset.replayWorld,
+                    replayLevelButton.dataset.replayLevel
+                );
+                return;
+            }
+
+            const replayWorldButton = event.target.closest('[data-replay-world-name]');
+            if (replayWorldButton) {
+                this.replayWorld(replayWorldButton.dataset.replayWorldName);
+            }
+        });
     }
 
     // Lidar com atualização do perfil
-    handleProfileUpdate(data) {
+    async handleProfileUpdate(data) {
         const { name, email, birthDate, password } = data;
 
         const updateData = {
@@ -47,20 +93,16 @@ class ProfileController {
             birthDate
         };
 
+        const avatarFileName = this.getCurrentAvatarFileName();
+        if (avatarFileName) {
+            updateData.avatar = avatarFileName;
+        }
+
         if (password) {
             updateData.password = password;
         }
 
-        this.userModel.updateUser(updateData);
-        
-        // Atualizar avatar se foi alterado
-        const avatarImg = document.getElementById('user-avatar');
-        if (avatarImg) {
-            const currentAvatarSrc = avatarImg.src;
-            const avatarFileName = currentAvatarSrc.split('/').pop();
-            updateData.avatar = avatarFileName;
-            this.userModel.updateUser(updateData);
-        }
+        await this.userModel.updateUser(updateData);
 
         // Recarregar dados
         this.loadProfileData();
@@ -69,24 +111,64 @@ class ProfileController {
         this.showSuccessMessage('Perfil atualizado com sucesso!');
     }
 
+    getCurrentAvatarFileName() {
+        const avatarImg = document.getElementById('user-avatar');
+        if (!avatarImg?.src) {
+            return null;
+        }
+
+        return avatarImg.src.split('/').pop() || null;
+    }
+
+    async persistCurrentAvatar() {
+        const avatarFileName = this.getCurrentAvatarFileName();
+        if (!avatarFileName) {
+            return;
+        }
+
+        const currentUser = this.userModel.getUser();
+        if (currentUser?.avatar === avatarFileName) {
+            return;
+        }
+
+        await this.userModel.updateUser({ avatar: avatarFileName });
+    }
+
+    async handleLogout() {
+        try {
+            await this.userModel.logout();
+            window.location.href = '../index.html';
+        } catch (error) {
+            console.error('Logout error:', error);
+            this.showSuccessMessage('Nao foi possivel terminar sessao.');
+        }
+    }
+
     // Repetir nível
     replayLevel(worldId, levelId) {
-        window.location.href = `quiz-${worldId}.html`;
+        const worldMap = {
+            transito: 'transito',
+            roupas: 'roupa',
+            cozinha: 'comida',
+            desporto: 'desporto'
+        };
+
+        const slug = worldMap[worldId] || worldId;
+        window.location.href = `mundos/${slug}.html#nivel-${levelId}`;
     }
 
     // Repetir mundo
     replayWorld(worldName) {
         const worldMap = {
             'Trânsito': 'transito',
-            'Roupas': 'roupas',
-            'Alimentos': 'cozinha',
+            'Roupas & Estilo': 'roupa',
+            'Comida & Alimentação': 'comida',
             'Desporto': 'desporto',
-            'Reflexo': 'reflexo'
         };
 
         const worldId = worldMap[worldName];
         if (worldId) {
-            window.location.href = `quiz-${worldId}.html`;
+            window.location.href = `mundos/${worldId}.html`;
         }
     }
 
@@ -125,7 +207,6 @@ class ProfileController {
         return {
             user,
             progress,
-            trophies: this.profileView.calculateTrophies(user, progress),
             weakWorlds: this.progressModel.getWeakWorlds(),
             incompleteLevels: this.progressModel.getIncompleteLevels()
         };

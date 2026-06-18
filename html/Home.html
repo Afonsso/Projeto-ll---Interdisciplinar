@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt">
-<head>
+  <html lang="pt">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> CROMA </title>
+    <title>CROMA</title>
     <link rel="stylesheet" href="../css/globals.css">
     <link rel="stylesheet" href="../css/Home.css">
-    <script type="module" src="../js/init.js"></script>
-</head>
-<body>
-<div class="pg-inicial">
+    <link rel="stylesheet" href="../css/components.css">
+  <script type="module" src="../js/init.js"></script>
+  <script src="../js/guestGuard.js"></script>
+  </head>
 
-    <!-- NAVBAR -->
+  <body>
+  <div class="pg-inicial">
+
     <nav class="navbar">
       <a href="../index.html">
         <div class="logo">
@@ -22,25 +24,29 @@
           </div>
         </div>
       </a>
+
       <div class="menu-3">
-        <a href="home.html">
+        <a href="Home.html">
           <div class="incio">
             <img class="vector-7" src="../imagens/inicio.svg" alt="" />
             <div class="text-wrapper-12">Início</div>
           </div>
         </a>
-        <a href="about.html">
+
+        <a href="About.html">
           <div class="div-3">
             <img class="vector-8" src="../imagens/sobre.svg" alt="" />
             <div class="text-wrapper-12">Sobre</div>
           </div>
         </a>
+
         <a href="training.html">
           <div class="div-3">
             <img class="vector-7" src="../imagens/quizzes.svg" alt="" />
             <div class="text-wrapper-12">Quizzes</div>
           </div>
         </a>
+
         <a href="profile.html">
           <div class="div-3">
             <img class="vector-9" src="../imagens/perfil.svg" alt="" />
@@ -55,19 +61,20 @@
 
     <main class="landingpage">
 
-      <!-- MVC Container - Welcome Message -->
       <div id="welcome-message" class="welcome-section"></div>
 
-      <!-- MVC Container - Quick Stats -->
       <div id="quick-stats" class="stats-section"></div>
 
-      <!-- MVC Container - Training Suggestions -->
+      <!-- OLHO DE PROGRESSO -->
+      <div id="eye-progress"></div>
+
+      <!-- CHATBOT CARD -->
+      <div id="chatbot-section" class="chatbot-home-section"></div>
+
       <div id="training-suggestions" class="suggestions-section"></div>
 
-      <!-- MVC Container - Ishihara Test -->
       <div id="ishihara-section" class="ishihara-section"></div>
 
-      <!-- SECÇÃO SERVIÇOS -->
       <section class="servicos">
         <div class="top-wrapper">
           <div class="top-2">
@@ -129,43 +136,40 @@
         </div>
       </section>
 
-      <!-- SECÇÃO FEEDBACKS -->
-  <section class="feedbacks">
-  <div class="section">
+      <section class="feedbacks">
+        <div class="section">
+          <div class="frame-2">
+            <div class="testimonial-box">
+              <div class="user-thumb">
+                <img src="../imagens/mulher.jpg" alt="">
+              </div>
 
-    <div class="frame-2">
+              <p class="text-wrapper-5">
+                Hoje, a minha relação com o mundo visual é diferente.
+                O CROMA não "curou" o meu daltonismo, mas deu-me a
+                literacia visual que o mundo nunca me ofereceu.
+                Sinto que finalmente tenho o controlo sobre a minha
+                própria percepção.
+              </p>
 
-      <div class="testimonial-box">
-
-        <div class="user-thumb">
-          <img src="../imagens/mulher.jpg" alt="">
-        </div>
-
-        <p class="text-wrapper-5">
-          Hoje, a minha relação com o mundo visual é diferente.
-          O CROMA não "curou" o meu daltonismo, mas deu-me a
-          literacia visual que o mundo nunca me ofereceu.
-          Sinto que finalmente tenho o controlo sobre a minha
-          própria percepção.
-        </p>
-
-        <div class="details">
-          <div class="category">Mariana Silva</div>
-          <div class="text-wrapper-5">
-            22 anos | Estudante
+              <div class="details">
+                <div class="category">Mariana Silva</div>
+                <div class="text-wrapper-5">
+                  22 anos | Estudante
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-    </div>
       </section>
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
       <div class="footer-2">
 
         <div class="top-3">
-          <a href="index.html">
+          <a href="../index.html">
             <div class="logo">
               <div class="cone">
                 <img class="vector-6" src="../imagens/logofooter.png" alt="Logo Croma" />
@@ -266,42 +270,5 @@
     </footer>
 
   </div>
-</body>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-

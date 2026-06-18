@@ -1,0 +1,8 @@
+{
+  "name": "Croma",
+  "description": "Aplicativo de assistência para pessoas com daltonismo, integrando teste de visão, simulação de modos de daltonismo, ajustes de contraste dinâmico e assistente inteligente por Chatbot.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

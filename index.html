@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
     <style>
-        /* Forçar o HTML e o Body a ocuparem 100% da altura da tela e remover margens */
         html, body, .carousel, .carousel-inner, .carousel-item {
             height: 100vh;
             width: 100vw;
@@ -16,19 +15,17 @@
             overflow: hidden;
         }
 
-        /* Fazer com que as imagens cubram todo o espaço estilo 'background-size: cover' */
         .carousel-item img {
             height: 100%;
             width: 100%;
             object-fit: cover;
         }
 
-        /* Ajuste opcional para dar destaque aos botões e links no fundo da imagem */
         .carousel-caption {
             background: rgba(0, 0, 0, 0.4);
             padding: 20px;
             border-radius: 10px;
-            bottom: 20%; /* Sobe um pouco a legenda para não sumir em telas menores */
+            bottom: 20%; 
         }
 
         .btn-link-custom {
@@ -80,15 +77,15 @@
     </div>
 
     <div style="display: flex; gap: 15px; width: 100%; max-width: 320px; margin-bottom: 25px;">
-      <a href="html/login_account.html" class="btn btn-link-custom" style="flex: 1; background-color: #1c1f26; color: white; border-radius: 25px; padding: 10px 0; font-size: 0.95rem; font-weight: 500; border: none;">
+      <a href="html/auth/login_account.html" class="btn btn-link-custom" style="flex: 1; background-color: #1c1f26; color: white; border-radius: 25px; padding: 10px 0; font-size: 0.95rem; font-weight: 500; border: none;">
         Log-in
       </a>
-      <a href="html/create_account.html" class="btn btn-link-custom" style="flex: 1; background-color: transparent; color: white; border: 1px solid white; border-radius: 25px; padding: 10px 0; font-size: 0.95rem; font-weight: 500;">
+      <a href="html/auth/create_account.html" class="btn btn-link-custom" style="flex: 1; background-color: transparent; color: white; border: 1px solid white; border-radius: 25px; padding: 10px 0; font-size: 0.95rem; font-weight: 500;">
         Registar-se
       </a>
     </div>
 
-    <a href="html/login_account.html" style="color: #E6D443; text-decoration: none; font-size: 0.9rem; font-weight: 500;">
+    <a href="#" onclick="enterAsGuest(event)" style="color: #E6D443; text-decoration: none; font-size: 0.9rem; font-weight: 500;">
       Entrar como convidado
     </a>
   </div>
@@ -109,12 +106,16 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+    function enterAsGuest(event) {
+        event.preventDefault();
+        localStorage.setItem('croma_guest', 'true');
+        window.location.href = 'html/About.html';
+    }
+</script>
 
 </body>
 </html>
-<<<<<<< HEAD
->>>>>>> 17e41e44b69143f34fb7899f3f37a553026dee7f
-=======
 
->>>>>>> ad1034665ca6f89004f3eef7f047f5df4e181b8b

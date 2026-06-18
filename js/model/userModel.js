@@ -21,7 +21,7 @@ class UserModel {
             id: null,
             name: 'Utilizador',
             email: '',
-            avatar: 'property 1=cão.png',
+            avatar: 'doggie.png',
             birthDate: '',
             xp: 0,
             streak: 0,

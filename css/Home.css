@@ -1,11 +1,10 @@
-
 :root {
-  --azul: #252e4a;
-  --cinza-bg: #ebebeb;
-  --cinza-footer: #5e5e5e;
-  --branco: #ffffff;
-  --texto: #252e4a;
-  --texto-suave: #5c5c5c;
+  --azul: var(--color-primary-navy);
+  --cinza-bg: var(--color-bg-main);
+  --cinza-footer: var(--color-neutral-muted-light);
+  --branco: var(--color-white);
+  --texto: var(--color-primary-navy);
+  --texto-suave: var(--color-neutral-muted);
 }
 
 * {
@@ -19,7 +18,7 @@ html {
 }
 
 body {
-  background: #777;
+  background: var(--color-neutral-gray-mid);
   color: var(--texto);
 }
 
@@ -31,16 +30,17 @@ a {
 .pg-inicial {
   width: 100%;
   min-height: 100vh;
-  background-color: #ebebeb;
+  background-color: var(--color-bg-main);
 }
 
-
-/* MAIN */
+/* ==========================================================================
+   MAIN & LANDING PAGE
+   ========================================================================== */
 .landingpage {
   width: 100%;
 }
 
-/* APRESENTAÃ‡ÃƒO */
+/* APRESENTAÇÃO */
 .apresentao {
   min-height: 610px;
   background: var(--cinza-bg);
@@ -83,7 +83,7 @@ a {
   font-size: 52px;
   line-height: 1;
   letter-spacing: -2px;
-  color: #1d2338;
+  color: var(--color-primary-dark-variant);
 }
 
 .subt-tulo {
@@ -97,7 +97,7 @@ a {
   max-width: 470px;
   font-size: 14px;
   line-height: 1.55;
-  color: #1f2538;
+  color: var(--color-primary-dark-variant);
 }
 
 .buttons {
@@ -120,7 +120,7 @@ a {
 
 .saber-mais {
   background: var(--azul);
-  color: white;
+  color: var(--color-white);
 }
 
 .log-in {
@@ -136,21 +136,154 @@ a {
   white-space: nowrap;
 }
 
-.icon-jam-icons {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-}
-
+.icon-jam-icons,
 .vector {
   width: 18px;
   height: 18px;
   object-fit: contain;
 }
 
-/* CHATBOT */
+/* ==========================================================================
+   COMPONENTE HERO ATUALIZADO (COM CARD DE PROGRESSO ALINHADO)
+   ========================================================================== */
+.home-hero {
+  width: min(980px, calc(100% - 40px));
+  margin: 35px auto 25px;
+  padding: 34px 38px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--color-primary-dark-variant), var(--color-primary-navy));
+  color: var(--color-white);
+  box-shadow: 0 18px 45px var(--rgba-primary-08);
+}
+
+.home-eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-warning-bright);
+  font-weight: 700;
+}
+
+.home-hero h1 {
+  font-size: 38px;
+  line-height: 1.05;
+  margin: 0;
+  color: var(--color-white);
+}
+
+#quick-stats {
+  display: none;
+}
+
+/* CARD DE PROGRESSO 3D (Contentor Principal - Imagem 2) */
+
+.eye-progress-3d-card {
+  width: 660px;
+  max-width: calc(100% - 40px);
+  margin: 30px auto;
+  border-radius: 28px;
+  color: white;
+  /* background: linear-gradient(180deg, #202b4d 0%, #18233f 100%); */
+  box-shadow: 0 18px 40px rgba(24, 35, 63, 0.28);
+}
+
+.eye-progress-head h2 {
+  font-size: 26px;
+}
+
+/* ==========================================================================
+   CARD DE PROGRESSO DO OLHO 3D (#eye-progress)
+   ========================================================================== */
+
+#eye-progress {
+  width: min(960px, calc(100% - 40px));
+  margin: 40px auto;
+  border-radius: 32px;
+  background: linear-gradient(180deg, #1d2640 0%, #151c30 100%); 
+  color: white;
+  box-shadow: 0 20px 45px rgba(21, 28, 48, 0.35);
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+  min-height: 440px; 
+  position: relative;
+}
+
+.eye-progress-head {
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  gap: 720px;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.eye-progress-head h2 {
+  font-size: 32px; 
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+
+.eye-progress-head .percentage,
+.eye-progress-head span {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f2c200; 
+}
+
+/* Canvas do Three.js (O Olho 3D) */
+#eye-progress canvas {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 260px;
+  display: block;
+  outline: none;
+  margin: auto 0; 
+}
+
+
+.eye-progress-bar-container,
+#eye-progress .progress-bar-wrapper {
+  width: 100%;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.15); 
+  border-radius: 100px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+/* Se a barra for um elemento direto injetado (ex: uma div branca cheia) */
+#eye-progress .progress-fill,
+#eye-progress .bar {
+  height: 100%;
+  background-color: #ffffff; /* Branca como demonstrado no screenshot */
+  border-radius: 100px;
+  width: 0%; /* Controlado dinamicamente pelo JS */
+  transition: width 0.4s ease;
+}
+
+.eye-progress-head {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.eye-progress-head h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   CHATBOT AREA
+   ========================================================================== */
 .chatbot {
-  background: white;
+  background: var(--color-white);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -183,25 +316,25 @@ a {
 
 .text-wrapper-2 {
   font-size: 12px;
-  color: white;
+  color: var(--color-white);
 }
 
 .text-wrapper-3 {
   font-size: 26px;
   font-weight: 800;
-  color: white;
+  color: var(--color-white);
 }
 
 .p {
   font-size: 13px;
-  color: #d6d6d6;
+  color: var(--color-neutral-light-border);
 }
 
 .card .icon {
   width: 82px;
   height: 82px;
   border-radius: 50%;
-  background: rgba(255,255,255,.12);
+  background: var(--rgba-white-12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -217,7 +350,7 @@ a {
   width: 360px;
   height: 48px;
   margin-top: -24px;
-  background: #d9d9d9;
+  background: var(--color-neutral-light-divider);
   border-radius: 100px;
   display: flex;
   align-items: center;
@@ -226,13 +359,181 @@ a {
 }
 
 .text-wrapper-4 {
-  color: #777;
+  color: var(--color-neutral-gray-mid);
   font-size: 13px;
 }
 
-/* SERVIÃ‡OS */
+/* ==========================================================================
+   SUGESTÕES DE TREINO (SMART TRAINING)
+   ========================================================================== */
+.smart-training-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.smart-training-card {
+  width: min(760px, calc(100% - 40px));
+  margin: 70px auto 45px;
+}
+
+.smart-training-card h2 {
+  text-align: center;
+  font-size: 42px;
+  line-height: 1.08;
+  font-weight: 900;
+  color: var(--color-neutral-dark-pure);
+  margin-bottom: 36px;
+}
+
+.smart-training-list {
+  background: var(--color-neutral-light-bg-card);
+  border-radius: 34px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: 0 24px 55px var(--rgba-black-10);
+}
+
+.smart-training-item {
+  min-height: 110px;
+  background: linear-gradient(135deg, var(--color-primary-navy), var(--color-primary-dark-variant));
+  border-radius: 26px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  color: var(--color-white);
+  box-shadow: 0 14px 28px rgba(37, 46, 74, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.smart-training-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(37, 46, 74, 0.3);
+}
+
+.smart-training-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  background: var(--rgba-white-06, rgba(255, 255, 255, 0.06));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+}
+
+.smart-training-text {
+  flex: 1;
+}
+
+.smart-training-text h3 {
+  margin: 0;
+  color: var(--color-white);
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.smart-training-text p {
+  margin-top: 8px;
+  color: var(--color-neutral-light-text);
+  font-size: 18px;
+}
+
+.smart-training-action {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: var(--color-slate-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: 32px;
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   SECÇÃO TESTE ISHIHARA
+   ========================================================================== */
+.ishihara-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px auto 80px;
+}
+
+.ishihara-card {
+  width: min(860px, calc(100% - 40px));
+  min-height: 165px;
+  padding: 30px 38px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, var(--color-white), var(--color-bg-white-pure));
+  border: 2px solid var(--color-neutral-light-border);
+  box-shadow: 0 24px 60px var(--rgba-black-08);
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  align-items: center;
+  gap: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ishihara-card::before {
+  content: "12";
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f7f0c8 0%, #bfd68d 45%, #7aa76a 100%); /* Mantido gradiente específico do teste de cores clínico */
+  color: #f27b32;
+  font-size: 44px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px var(--rgba-black-15);
+}
+
+.ishihara-card h3 {
+  font-size: 30px;
+  color: var(--color-neutral-dark-pure);
+  margin: 0 0 8px;
+}
+
+.ishihara-card p {
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--color-neutral-muted);
+  margin: 0;
+}
+
+.ishihara-card button {
+  border: none;
+  border-radius: 22px;
+  padding: 20px 34px;
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary-navy));
+  color: var(--color-white);
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 16px 35px var(--rgba-primary-50);
+}
+
+.ishihara-card button::after {
+  content: "›";
+  margin-left: 12px;
+  font-size: 26px;
+}
+
+/* ==========================================================================
+   SERVIÇOS
+   ========================================================================== */
 .servicos {
-  background: white;
+  background: var(--color-white);
   padding: 25px 80px 65px;
   display: flex;
   flex-direction: column;
@@ -311,7 +612,9 @@ a {
   color: var(--azul);
 }
 
-/* FEEDBACKS */
+/* ==========================================================================
+   FEEDBACKS
+   ========================================================================== */
 .feedbacks {
   background: var(--cinza-bg);
 }
@@ -339,47 +642,39 @@ a {
   gap: 14px;
   text-align: center;
 }
+
 .user-thumb {
   width: 100px;
   height: 100px;
-
   border-radius: 50%;
-
   overflow: hidden;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin: 0 auto 20px;
-}
-a {
-  text-decoration: none;
-  color: inherit;
 }
 
 .user-thumb img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 }
-
-
 
 .text-wrapper-5 {
   font-size: 13px;
   line-height: 1.5;
-  color: #1d2338;
+  color: var(--color-primary-dark-variant);
 }
 
 .category {
   font-size: 17px;
   font-weight: 800;
-  color: #1d2338;
+  color: var(--color-primary-dark-variant);
 }
 
-/* FOOTER */
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 .footer {
   background: var(--cinza-footer);
 }
@@ -400,7 +695,7 @@ a {
 
 .footer .text-wrapper-6,
 .footer .text-wrapper-7 {
-  color: white;
+  color: var(--color-white);
 }
 
 .vector-6 {
@@ -432,17 +727,17 @@ a {
 }
 
 .field {
-  background: white;
+  background: var(--color-white);
 }
 
 .text-2 {
   font-size: 12px;
-  color: #5e5e5e;
+  color: var(--color-neutral-muted-light);
 }
 
 .button {
-  background: #323232;
-  color: white;
+  background: var(--color-neutral-dark-soft);
+  color: var(--color-white);
   cursor: pointer;
 }
 
@@ -455,11 +750,11 @@ a {
 .separator-left {
   width: 1px;
   height: 24px;
-  background: rgba(255,255,255,.3);
+  background: var(--rgba-white-30);
 }
 
 .button-text {
-  color: white;
+  color: var(--color-white);
   font-size: 12px;
   font-weight: 600;
 }
@@ -467,7 +762,7 @@ a {
 .rectangle {
   width: 100%;
   height: 1px;
-  background: rgba(255,255,255,.25);
+  background: var(--rgba-white-25);
 }
 
 .div-2 {
@@ -485,20 +780,20 @@ a {
 }
 
 .menu-item-2 {
-  color: white;
+  color: var(--color-white);
   font-size: 14px;
   font-weight: 800;
 }
 
 .menu-item-4,
 .text-wrapper-8 {
-  color: #d0d0d0;
+  color: var(--color-neutral-light-text);
   font-size: 12px;
   line-height: 1.4;
 }
 
 .text-wrapper-9 {
-  color: white;
+  color: var(--color-white);
   font-size: 11px;
 }
 
@@ -509,11 +804,13 @@ a {
 }
 
 .menu-item-5 {
-  color: white;
+  color: var(--color-white);
   font-size: 12px;
 }
 
-/* RESPONSIVO */
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVIDADE)
+   ========================================================================== */
 @media (max-width: 900px) {
   .menu-3 {
     gap: 12px;
@@ -550,6 +847,12 @@ a {
   .menu-2 {
     margin-left: 0;
     flex-wrap: wrap;
+  }
+
+  .ishihara-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
   }
 }
 
@@ -589,5 +892,119 @@ a {
   .section {
     padding-left: 24px;
     padding-right: 24px;
+  }
+}
+
+/* ─── Chatbot Home Card ─────────────────────────────────────── */
+.chatbot-home-section {
+  width: min(960px, calc(100% - 40px));
+  margin: 0 auto 40px;
+}
+
+.chatbot-home-card {
+  background: #273154;
+  border-radius: 28px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.chatbot-home-card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 32px 24px;
+  gap: 20px;
+}
+
+.chatbot-home-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chatbot-home-eyebrow {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.chatbot-home-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.chatbot-home-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0;
+}
+
+.chatbot-home-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.chatbot-home-avatar svg {
+  width: 46px;
+  height: 46px;
+}
+
+.chatbot-home-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+  background: rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chatbot-home-cta:hover {
+  background: rgba(255, 255, 255, 0.13);
+  color: #fff;
+}
+
+.chatbot-home-cta svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .chatbot-home-card-inner {
+    padding: 22px 22px 18px;
+  }
+
+  .chatbot-home-title {
+    font-size: 26px;
+  }
+
+  .chatbot-home-avatar {
+    width: 68px;
+    height: 68px;
+  }
+
+  .chatbot-home-avatar svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .chatbot-home-cta {
+    padding: 14px 22px;
   }
 }

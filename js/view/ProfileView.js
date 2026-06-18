@@ -1,9 +1,24 @@
 /**
- * TrainingView - Gerencia a renderização da página de Treino/Quizzes
+ * ProfileView - Gerencia a renderização da página de Perfil
  */
-class TrainingView {
+class ProfileView {
     constructor() {
         this.container = null;
+        this.avatars = [
+            'dog.png',
+            'dog (1).png',
+            'bear.png',
+            'chicken.png',
+            'rabbit.png',
+            'giraffe.png',
+            'gorilla.png',
+            'lion.png',
+            'duck.png',
+            'penguin.png',
+            'fox.png',
+            'bear.png'
+        ];
+        this.currentAvatarIndex = 0;
     }
 
     // Inicializar a view
@@ -11,342 +26,225 @@ class TrainingView {
         this.container = container;
     }
 
-    // Renderizar a lista de mundos
-    renderWorlds(worldsData, progressData) {
-        const worldsContainer = document.getElementById('worlds-container');
-        if (!worldsContainer) return;
+    // Renderizar informações do utilizador
+    renderUserInfo(user) {
+        const userName = document.getElementById('user-name');
+        const userEmail = document.getElementById('user-email');
+        const userAvatar = document.getElementById('user-avatar');
 
-        const worldsOrder = ['transito', 'roupas', 'cozinha', 'desporto', 'reflexo'];
-        
-        let worldsHTML = '<div class="worlds-grid">';
-
-        worldsOrder.forEach(worldId => {
-            const world = worldsData[worldId];
-            const progress = progressData.getWorldProgress(worldId);
-            
-            if (!world) return;
-
-            const isUnlocked = progress?.unlocked || false;
-            const isCompleted = progress?.completed || false;
-            const worldStars = this.calculateWorldStars(progress);
-            const maxStars = 15; // 5 níveis x 3 estrelas
-
-            worldsHTML += `
-                <div class="world-card ${isUnlocked ? '' : 'locked'} ${isCompleted ? 'completed' : ''}" data-world="${worldId}">
-                    <div class="world-header">
-                        <div class="world-emoji">${world.emoji}</div>
-                        <div class="world-info">
-                            <h3>${world.name}</h3>
-                            ${!isUnlocked ? '<span class="lock-icon">🔒</span>' : ''}
-                            ${isCompleted ? '<span class="completed-badge">✓</span>' : ''}
-                        </div>
-                    </div>
-                    
-                    <div class="world-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${(worldStars / maxStars) * 100}%"></div>
-                        </div>
-                        <div class="stars-display">
-                            ${'⭐'.repeat(worldStars)}${'☆'.repeat(maxStars - worldStars)}
-                        </div>
-                    </div>
-
-                    <div class="world-levels">
-                        ${this.renderLevelIndicators(progress)}
-                    </div>
-
-                    ${isUnlocked ? `
-                        <button class="btn-world" onclick="window.location.href='quiz-${worldId}.html'">
-                            ${isCompleted ? 'Repetir' : 'Começar'}
-                        </button>
-                    ` : `
-                        <button class="btn-world disabled" disabled>
-                            Bloqueado
-                        </button>
-                    `}
-                </div>
-            `;
-        });
-
-        worldsHTML += '</div>';
-        worldsContainer.innerHTML = worldsHTML;
-    }
-
-    // Calcular estrelas de um mundo
-    calculateWorldStars(progress) {
-        if (!progress || !progress.levels) return 0;
-        return Object.values(progress.levels).reduce((sum, level) => sum + level.stars, 0);
-    }
-
-    // Renderizar indicadores de níveis
-    renderLevelIndicators(progress) {
-        if (!progress || !progress.levels) return '';
-
-        let indicators = '<div class="level-indicators">';
-        
-        for (let i = 1; i <= 5; i++) {
-            const level = progress.levels[i];
-            const isCompleted = level?.completed || false;
-            const stars = level?.stars || 0;
-            
-            indicators += `
-                <div class="level-indicator ${isCompleted ? 'completed' : ''}" title="Nível ${i} - ${stars} estrelas">
-                    ${i}
-                </div>
-            `;
+        if (userName) userName.textContent = user.name;
+        if (userEmail) userEmail.textContent = user.email;
+        if (userAvatar) {
+            userAvatar.src = `../imagens/${user.avatar}`;
+            this.currentAvatarIndex = this.avatars.indexOf(user.avatar);
+            if (this.currentAvatarIndex === -1) this.currentAvatarIndex = 0;
         }
-        
-        indicators += '</div>';
-        return indicators;
     }
 
-    // Renderizar página de um mundo específico
-    renderWorldPage(worldData, progress) {
-        const worldContainer = document.getElementById('world-page');
-        if (!worldContainer) return;
+    // Renderizar estatísticas do utilizador
+    renderUserStats(user, progress) {
+        const totalXP = document.getElementById('total-xp');
+        const currentStreak = document.getElementById('current-streak');
+        const progressText = document.getElementById('progress-text');
 
-        const worldProgress = progress.getWorldProgress(worldData.id);
-        const isBossUnlocked = this.checkBossUnlock(worldProgress);
+        if (totalXP) totalXP.textContent = `${user.xp} XP`;
+        if (currentStreak) currentStreak.textContent = `${user.streak} dias`;
+        if (progressText) {
+            const totalLevels = Object.values(progress.worlds)
+                .reduce((sum, world) => sum + Object.keys(world.levels || {}).length, 0);
+            const completedLevels = progress.completedLevels.length;
+            const percentage = Math.round((completedLevels / totalLevels) * 100);
+            progressText.textContent = `${percentage}%`;
+        }
+    }
 
-        let pageHTML = `
-            <div class="world-header">
-                <div class="world-title">
-                    <span class="world-emoji">${worldData.emoji}</span>
-                    <h1>${worldData.name}</h1>
-                </div>
-                <div class="world-stats">
-                    <div class="stat">
-                        <span class="stat-label">Estrelas:</span>
-                        <span class="stat-value">${this.calculateWorldStars(worldProgress)}/15</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-label">Progresso:</span>
-                        <span class="stat-value">${this.calculateWorldProgress(worldProgress)}%</span>
-                    </div>
-                </div>
-            </div>
+    // Renderizar atividade recente
+    renderRecentActivity(progress) {
+        const recentContainer = document.getElementById('recent-worlds-container');
+        if (!recentContainer) return;
 
-            <div class="world-content">
-                <div class="quizzes-section">
-                    <h2>Quizzes</h2>
-                    <div class="levels-grid">
-        `;
+        const recentActivity = progress.recentActivity.slice(0, 3);
 
-        // Renderizar quizzes (níveis 1-3)
-        worldData.quizzes.forEach((quiz, index) => {
-            const levelId = index + 1;
-            const levelProgress = worldProgress?.levels[levelId];
-            const isCompleted = levelProgress?.completed || false;
-            const stars = levelProgress?.stars || 0;
-
-            pageHTML += `
-                <div class="level-card quiz-card ${isCompleted ? 'completed' : ''}">
-                    <div class="level-header">
-                        <span class="level-number">${levelId}</span>
-                        <span class="level-type">Quiz</span>
-                    </div>
-                    <p class="level-question">${quiz.question}</p>
-                    <div class="level-footer">
-                        <div class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(3 - stars)}</div>
-                        <button class="btn-level" onclick="startQuiz('${worldData.id}', ${quiz.id})">
-                            ${isCompleted ? 'Repetir' : 'Começar'}
-                        </button>
-                    </div>
-                </div>
+        if (recentActivity.length === 0) {
+            recentContainer.innerHTML = `
+                <p class="no-activity">Ainda não há atividade recente. Começa a treinar!</p>
             `;
+            return;
+        }
+
+        const worldEmojis = {
+            transito: '🚦',
+            roupas: '👚',
+            cozinha: '🍽️',
+            desporto: '⚽'
+        };
+
+        const worldNames = {
+            transito: 'Trânsito',
+            roupas: 'Roupas & Estilo',
+            cozinha: 'Comida & Alimentação',
+            desporto: 'Desporto'
+        };
+
+        recentContainer.innerHTML = recentActivity.map(activity => `
+            <div class="recent-item-card">
+                <div class="item-icon-bg">${worldEmojis[activity.worldId] || '🎮'}</div>
+                <div class="item-info">
+                    <h4>${worldNames[activity.worldId] || activity.worldId}</h4>
+                    <p>Nível ${activity.levelId} - ${activity.xp || 0} XP</p>
+                </div>
+                <button class="btn-action-replay" data-replay-world="${activity.worldId}" data-replay-level="${activity.levelId}">↻</button>
+            </div>
+        `).join('');
+    }
+
+    // Renderizar testes completados
+    renderCompletedTests(progress) {
+        const testsContainer = document.getElementById('completed-tests-container');
+        if (!testsContainer) return;
+
+        const completedLevels = progress.completedLevels;
+
+        if (completedLevels.length === 0) {
+            testsContainer.innerHTML = `
+                <p class="no-tests">Ainda não completaste nenhum teste.</p>
+            `;
+            return;
+        }
+
+        const worldEmojis = {
+            transito: '🚦',
+            roupas: '👚',
+            cozinha: '🍽️',
+            desporto: '⚽'
+        };
+
+        const worldNames = {
+            transito: 'Trânsito',
+            roupas: 'Roupas & Estilo',
+            cozinha: 'Comida & Alimentação',
+            desporto: 'Desporto'
+        };
+
+        // Agrupar por mundo
+        const worldStats = {};
+        completedLevels.forEach(levelKey => {
+            const [worldId, levelId] = levelKey.split('-');
+            if (!worldStats[worldId]) {
+                worldStats[worldId] = {
+                    name: worldNames[worldId],
+                    emoji: worldEmojis[worldId],
+                    maxLevel: 0,
+                    totalStars: 0
+                };
+            }
+            worldStats[worldId].maxLevel = Math.max(worldStats[worldId].maxLevel, parseInt(levelId));
+            
+            const levelProgress = progress.worlds[worldId]?.levels[levelId];
+            if (levelProgress) {
+                worldStats[worldId].totalStars += levelProgress.stars;
+            }
         });
 
-        pageHTML += `
-                    </div>
+        testsContainer.innerHTML = Object.values(worldStats).map(world => `
+            <div class="test-item-card">
+                <div class="test-header-info">
+                    <h4>${world.name}</h4>
+                    <span class="test-card-icon">${world.emoji}</span>
                 </div>
-
-                <div class="games-section">
-                    <h2>Jogos</h2>
-                    <div class="levels-grid">
-        `;
-
-        // Renderizar jogos (níveis 4-5)
-        worldData.games.forEach((game, index) => {
-            const levelId = index + 4;
-            const levelProgress = worldProgress?.levels[levelId];
-            const isCompleted = levelProgress?.completed || false;
-            const stars = levelProgress?.stars || 0;
-
-            pageHTML += `
-                <div class="level-card game-card ${isCompleted ? 'completed' : ''}">
-                    <div class="level-header">
-                        <span class="level-number">${levelId}</span>
-                        <span class="level-type">Jogo</span>
-                    </div>
-                    <h3 class="game-title">${game.title}</h3>
-                    <p class="game-description">${game.description}</p>
-                    <div class="level-footer">
-                        <div class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(3 - stars)}</div>
-                        <button class="btn-level" onclick="startGame('${worldData.id}', ${game.id})">
-                            ${isCompleted ? 'Repetir' : 'Começar'}
-                        </button>
-                    </div>
+                <p class="test-level">Nível ${world.maxLevel}</p>
+                <div class="test-footer-row">
+                    <div class="test-stars">${'⭐'.repeat(Math.min(world.totalStars, 3))}${'☆'.repeat(3 - Math.min(world.totalStars, 3))}</div>
+                    <button class="btn-test-replay" data-replay-world-name="${world.name}">↻</button>
                 </div>
-            `;
+            </div>
+        `).join('');
+    }
+
+    // Configurar navegação de avatar
+    setupAvatarNavigation() {
+        const prevBtn = document.getElementById('prev-avatar');
+        const nextBtn = document.getElementById('next-avatar');
+        const avatarImg = document.getElementById('user-avatar');
+
+        if (prevBtn && nextBtn && avatarImg) {
+            prevBtn.addEventListener('click', () => {
+                this.currentAvatarIndex = (this.currentAvatarIndex - 1 + this.avatars.length) % this.avatars.length;
+                avatarImg.src = `../imagens/${this.avatars[this.currentAvatarIndex]}`;
+            });
+
+            nextBtn.addEventListener('click', () => {
+                this.currentAvatarIndex = (this.currentAvatarIndex + 1) % this.avatars.length;
+                avatarImg.src = `../imagens/${this.avatars[this.currentAvatarIndex]}`;
+            });
+        }
+    }
+
+    // Configurar modal de edição
+    setupEditModal(user) {
+        const openModalBtn = document.getElementById('open-modal-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modal = document.getElementById('edit-profile-modal');
+        const form = document.getElementById('form-edit-profile');
+
+        if (!modal) return;
+
+        if (openModalBtn) {
+            openModalBtn.addEventListener('click', () => {
+                modal.classList.add('active');
+            });
+        }
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
         });
 
-        pageHTML += `
-                    </div>
-                </div>
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('input-name').value;
+                const email = document.getElementById('input-email').value;
+                const birthDate = document.getElementById('input-birth').value;
+                const password = document.getElementById('input-password').value;
 
-                <div class="boss-section">
-                    <h2>Boss do Mundo</h2>
-                    <div class="boss-card ${isBossUnlocked ? 'unlocked' : 'locked'}">
-                        <div class="boss-header">
-                            <span class="boss-icon">👑</span>
-                            <h3>${worldData.boss.title}</h3>
-                            ${!isBossUnlocked ? '<span class="lock-icon">🔒</span>' : ''}
-                        </div>
-                        <p>${worldData.boss.description}</p>
-                        ${isBossUnlocked ? `
-                            <button class="btn-boss" onclick="startBoss('${worldData.id}')">
-                                Desafiar Boss
-                            </button>
-                        ` : `
-                            <p class="boss-locked-message">Complete todos os níveis para desbloquear</p>
-                        `}
-                    </div>
-                </div>
-            </div>
+                // Atualizar utilizador (será feito pelo controller)
+                window.dispatchEvent(new CustomEvent('updateUserProfile', {
+                    detail: { name, email, birthDate, password }
+                }));
 
-            <button class="btn-back" onclick="window.location.href='training.html'">
-                ← Voltar aos Mundos
-            </button>
-        `;
+                modal.classList.remove('active');
+            });
+        }
 
-        worldContainer.innerHTML = pageHTML;
+        // Preencher formulário com dados actuais
+        if (document.getElementById('input-name')) {
+            document.getElementById('input-name').value = user.name;
+        }
+        if (document.getElementById('input-email')) {
+            document.getElementById('input-email').value = user.email;
+        }
+        if (document.getElementById('input-birth') && user.birthDate) {
+            document.getElementById('input-birth').value = user.birthDate;
+        }
     }
 
-    // Verificar se o boss está desbloqueado
-    checkBossUnlock(progress) {
-        if (!progress || !progress.levels) return false;
-        return Object.values(progress.levels).every(level => level.completed);
-    }
-
-    // Calcular progresso do mundo em percentagem
-    calculateWorldProgress(progress) {
-        if (!progress || !progress.levels) return 0;
-        
-        const totalLevels = Object.keys(progress.levels).length;
-        const completedLevels = Object.values(progress.levels).filter(level => level.completed).length;
-        
-        return Math.round((completedLevels / totalLevels) * 100);
-    }
-
-    // Renderizar página de quiz
-    renderQuizPage(quizData) {
-        const quizContainer = document.getElementById('quiz-container');
-        if (!quizContainer) return;
-
-        let quizHTML = `
-            <div class="quiz-header">
-                <h2>Quiz</h2>
-                <div class="quiz-progress">
-                    <span id="current-question">1</span> / <span id="total-questions">1</span>
-                </div>
-            </div>
-
-            <div class="quiz-content">
-                <div class="question-card">
-                    <p class="question-text">${quizData.question}</p>
-                    ${quizData.image ? `<img src="${quizData.image}" alt="Imagem da pergunta" class="question-image">` : ''}
-                </div>
-
-                <div class="options-grid">
-        `;
-
-        quizData.options.forEach((option, index) => {
-            quizHTML += `
-                <button class="option-btn" data-index="${index}" onclick="selectOption(${index})">
-                    <span class="option-letter">${String.fromCharCode(65 + index)}</span>
-                    <span class="option-text">${option}</span>
-                </button>
-            `;
-        });
-
-        quizHTML += `
-                </div>
-            </div>
-
-            <div class="quiz-footer">
-                <button class="btn-submit" id="submit-answer" onclick="submitAnswer()" disabled>
-                    Confirmar Resposta
-                </button>
-            </div>
-        `;
-
-        quizContainer.innerHTML = quizHTML;
-    }
-
-    // Renderizar página de jogo
-    renderGamePage(gameData) {
-        const gameContainer = document.getElementById('game-container');
-        if (!gameContainer) return;
-
-        let gameHTML = `
-            <div class="game-header">
-                <h2>${gameData.title}</h2>
-                <p class="game-description">${gameData.description}</p>
-                ${gameData.timeLimit ? `<div class="timer">⏱️ <span id="game-timer">${gameData.timeLimit}</span>s</div>` : ''}
-            </div>
-
-            <div class="game-content" id="game-play-area">
-                <!-- Conteúdo específico do jogo será renderizado aqui -->
-            </div>
-
-            <div class="game-footer">
-                <button class="btn-back-game" onclick="window.location.href='training.html'">
-                    ← Sair
-                </button>
-            </div>
-        `;
-
-        gameContainer.innerHTML = gameHTML;
-    }
-
-    // Renderizar resultado do quiz/jogo
-    renderResult(score, stars, correctAnswers, totalQuestions) {
-        const resultContainer = document.getElementById('result-container');
-        if (!resultContainer) return;
-
-        resultContainer.innerHTML = `
-            <div class="result-card">
-                <div class="result-header">
-                    <div class="result-icon">${stars === 3 ? '🏆' : stars === 2 ? '🥈' : stars === 1 ? '🥉' : '😅'}</div>
-                    <h2>${stars === 3 ? 'Excelente!' : stars === 2 ? 'Muito Bem!' : stars === 1 ? 'Bom!' : 'Tenta Novamente!'}</h2>
-                </div>
-
-                <div class="result-stats">
-                    <div class="stat">
-                        <span class="stat-label">Pontuação:</span>
-                        <span class="stat-value">${score}</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-label">Estrelas:</span>
-                        <span class="stat-value">${'⭐'.repeat(stars)}${'☆'.repeat(3 - stars)}</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-label">Respostas Correctas:</span>
-                        <span class="stat-value">${correctAnswers}/${totalQuestions}</span>
-                    </div>
-                </div>
-
-                <div class="result-actions">
-                    <button class="btn-retry" onclick="retryLevel()">
-                        ↻ Repetir
-                    </button>
-                    <button class="btn-continue" onclick="continueToNext()">
-                        Continuar →
-                    </button>
-                </div>
-            </div>
-        `;
+    // Atualizar a página de perfil completa
+    renderProfile(user, progress) {
+        this.renderUserInfo(user);
+        this.renderUserStats(user, progress);
+        this.renderRecentActivity(progress);
+        this.renderCompletedTests(progress);
+        this.setupAvatarNavigation();
+        this.setupEditModal(user);
     }
 }
 
-export default TrainingView;
+export default ProfileView;

@@ -153,6 +153,123 @@
     padding: 120px;
     gap: 30px;
 }
+
+/* Simulator */
+#simulator-container {
+    background: #ffffff;
+    padding: 48px 56px;
+}
+
+.simulator-shell {
+    margin: 0 auto;
+    max-width: 1240px;
+    padding: 28px;
+    border: 1px solid var(--color-neutral-light-border);
+    border-radius: 20px;
+    background: linear-gradient(180deg, #fdfefe 0%, #f7fbff 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.simulator-head h2 {
+    margin: 0;
+    color: var(--color-primary-navy);
+}
+
+.simulator-head p {
+    margin: 8px 0 0;
+    color: var(--color-border-gray-secondary);
+}
+
+.simulator-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 12px;
+}
+
+.sim-upload {
+    background: var(--color-primary-navy);
+    color: #fff;
+    border-radius: 999px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 0;
+}
+
+#sim-upload-input {
+    display: none;
+}
+
+.sim-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.sim-presets button {
+    border: 1px solid var(--color-neutral-light-border);
+    background: #fff;
+    color: var(--color-primary-navy);
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.sim-select-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--color-primary-navy);
+    font-weight: 600;
+}
+
+.sim-select-wrap select {
+    min-width: 240px;
+    border: 1px solid var(--color-neutral-light-border);
+    border-radius: 10px;
+    padding: 8px 10px;
+    background: #fff;
+}
+
+.sim-status {
+    background: #ecf6ff;
+    color: var(--color-primary-navy);
+    border: 1px dashed #b5d8ff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+}
+
+.sim-compare-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.sim-panel {
+    background: #fff;
+    border: 1px solid var(--color-neutral-light-border);
+    border-radius: 16px;
+    padding: 12px;
+}
+
+.sim-panel h3 {
+    font-size: 1rem;
+    color: var(--color-primary-navy);
+    margin: 0 0 10px;
+}
+
+.sim-panel canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: #f2f4f6;
+    border-radius: 12px;
+}
 .cards-solucoes {
     display: flex;
     gap: 30px;
@@ -289,5 +406,22 @@
         gap: 10px;
         flex-direction: column;
         padding: 20px;
+    }
+
+    #simulator-container {
+        padding: 20px 16px;
+    }
+
+    .simulator-shell {
+        padding: 16px;
+    }
+
+    .sim-compare-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sim-select-wrap select {
+        min-width: 0;
+        width: 100%;
     }
 }

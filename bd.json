@@ -11,9 +11,13 @@
       "createdAt": "2026-01-01T00:00:00.000Z",
       "colorBlindnessType": null,
       "ishiharaCompleted": false,
-      "xp": 0,
+      "xp": 2000,
       "streak": 0,
+<<<<<<< HEAD
+      "lastLoginDate": "2026-06-17T15:32:54.593Z",
+=======
       "lastLoginDate": "2026-06-17T21:34:57.811Z",
+>>>>>>> a6784dfc2c383bccfb9d3a9328350ac982bbeddc
       "progress": {
         "worlds": {
           "transito": {
@@ -293,7 +297,11 @@
       "xp": 525,
       "streak": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
       "lastLoginDate": "2026-06-17T22:15:32.951Z",
+=======
+      "lastLoginDate": "2026-06-17T13:08:48.077Z",
+>>>>>>> 6b8407eb1d5ab3f703cea02a6799e0b357467775
 =======
       "lastLoginDate": "2026-06-17T21:37:17.792Z",
 >>>>>>> a6784dfc2c383bccfb9d3a9328350ac982bbeddc
@@ -818,33 +826,35 @@
     },
     {
       "userId": "s-S0Uji",
-      "createdAt": "2026-06-17T14:59:06.175Z",
-      "expiresAt": "2026-06-24T14:59:06.175Z",
+      "createdAt": "2026-06-17T13:08:48.063Z",
+      "expiresAt": "2026-06-24T13:08:48.064Z",
       "id": 27
     },
     {
       "userId": "user_1",
-      "createdAt": "2026-06-17T15:16:54.674Z",
-      "expiresAt": "2026-06-24T15:16:54.674Z",
+      "createdAt": "2026-06-17T13:49:54.439Z",
+      "expiresAt": "2026-06-24T13:49:54.440Z",
       "id": 28
     },
     {
       "userId": "user_1",
-      "createdAt": "2026-06-17T15:19:17.904Z",
-      "expiresAt": "2026-06-24T15:19:17.904Z",
+      "createdAt": "2026-06-17T14:06:51.528Z",
+      "expiresAt": "2026-06-24T14:06:51.529Z",
       "id": 29
     },
     {
-      "userId": "s-S0Uji",
-      "createdAt": "2026-06-17T15:32:56.058Z",
-      "expiresAt": "2026-06-24T15:32:56.058Z",
+      "userId": "user_1",
+      "createdAt": "2026-06-17T15:20:59.816Z",
+      "expiresAt": "2026-06-24T15:20:59.818Z",
       "id": 30
     },
     {
-      "userId": "s-S0Uji",
-      "createdAt": "2026-06-17T19:33:27.032Z",
-      "expiresAt": "2026-06-24T19:33:27.032Z",
+      "userId": "user_1",
+      "createdAt": "2026-06-17T15:32:54.583Z",
+      "expiresAt": "2026-06-24T15:32:54.583Z",
       "id": 31
+<<<<<<< HEAD
+=======
     },
     {
       "userId": "s-S0Uji",

@@ -37,12 +37,87 @@
 
 
 :root {
-  --azul: #252e4a;
-  --cinza-bg: #ebebeb;
-  --cinza-footer: #5e5e5e;
-  --branco: #ffffff;
-  --texto: #252e4a;
-  --texto-suave: #5c5c5c;
+  /* ==========================================================================
+     SISTEMA DE DESIGN TOKENS (VÁLIDO PARA DALTONISMO E ADAPTAÇÃO DINÂMICA)
+     ========================================================================== */
+  
+  /* Cores Principais / Corporativas (Azuis e Variantes) */
+  --color-primary-navy: #252e4a;
+  --color-primary-dark: #001d6c;
+  --color-primary-dark-variant: #1f263d;
+  
+  /* Cores Neutras Escuras (Pretos e Antracite) */
+  --color-neutral-dark-pure: #1c1f26;
+  --color-neutral-dark: #1a1a1a;
+  --color-neutral-dark-soft: #333333;
+  --color-black: #000000;
+  
+  /* Cores de Texto Suave e Estados Muted (Cinzas Escuros) */
+  --color-neutral-muted-dark: #444444;
+  --color-neutral-muted: #555555;
+  --color-neutral-muted-light: #666666;
+  --color-neutral-gray-mid: #777777;
+  --color-neutral-gray-light-mid: #8a8a8a;
+  
+  /* Botões e Elementos Interativos (Cinzas Médios de Controlo) */
+  --color-accent-btn-gray: #707070;
+  --color-accent-btn-hover-gray: #4d4d4d;
+  --color-btn-gray-primary: #7a7a7a;
+  --color-btn-gray-primary-hover: #5a5a5a;
+  --color-border-gray-secondary: #7f7f7f;
+  --color-border-gray: #999999;
+  --color-neutral-gray-placeholder: #a5a5a5;
+
+  /* Escala Slate (Usada no painel de Treino) */
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-50: #f1f5f9; /* Alinhado semanticamente */
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  
+  /* Cores de Fundo Globais e Divisores (Cinzas Claros) */
+  --color-bg-main: #ebebeb;
+  --color-border-light: #cccccc;
+  --color-neutral-light-text: #d0d0d0;
+  --color-neutral-light-border: #d6d6d6;
+  --color-neutral-light-divider: #d9d9d9;
+  --color-neutral-light-bg-card: #e7e7e7;
+  --color-bg-card-alt: #f0f0f0;
+  --color-bg-slate-light: #f1f5f9;
+  --color-bg-blue-light: #f2f4f8;
+  --color-bg-white-pure: #f8fafc;
+  --color-white: #ffffff;
+  
+  /* Cores de Estado Clínico (Sucesso, Alertas, Erros) */
+  --color-success: #00ca72;
+  --color-success-bright: #10b981;
+  --color-warning: #fbc02d;
+  --color-warning-bright: #f59e0b;
+  --color-error: #ff3344;
+  --color-error-bright: #ff4757;
+  --color-error-dark: #ef4444;
+  
+  /* Transparências Alfa Convertidas para Variáveis CSS */
+  --rgba-black-02: rgba(0, 0, 0, 0.02);
+  --rgba-black-05: rgba(0, 0, 0, 0.05);
+  --rgba-black-08: rgba(0, 0, 0, 0.08);
+  --rgba-black-10: rgba(0, 0, 0, 0.1);
+  --rgba-black-15: rgba(0, 0, 0, 0.15);
+  --rgba-black-30: rgba(0, 0, 0, 0.3);
+  --rgba-white-12: rgba(255, 255, 255, 0.12);
+  --rgba-white-15: rgba(255, 255, 255, 0.15);
+  --rgba-white-20: rgba(255, 255, 255, 0.2);
+  --rgba-white-25: rgba(255, 255, 255, 0.25);
+  --rgba-white-30: rgba(255, 255, 255, 0.3);
+  --rgba-primary-08: rgba(37, 46, 74, 0.08);
+  --rgba-primary-50: rgba(37, 46, 74, 0.5);
+
+  /* Legado de variáveis do modulo teste_daltonismo para retrocompatibilidade */
+  --bg-color: var(--color-bg-main);
+  --text-main: var(--color-neutral-dark);
+  --text-muted: var(--color-neutral-muted-light);
+  --accent-btn: var(--color-accent-btn-gray);
+  --accent-hover: var(--color-accent-btn-hover-gray);
 }
 
 * {
@@ -114,7 +189,7 @@ nav.navbar div {
   display: flex;
   align-items: center;
   padding: 0 80px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--rgba-black-05);
 }
 
 .navbar .logo {
@@ -267,7 +342,7 @@ footer.footer div {
 .footer .rectangle {
   width: 100%;
   height: 1px;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--rgba-white-20);
 }
 
 .footer .div-2 {
@@ -289,35 +364,21 @@ footer.footer div {
 }
 
 .footer .menu-item-4 {
-  color: #d0d0d0;
+  color: var(--color-neutral-light-text);
   font-size: 12px;
   line-height: 1.4;
 }
 
 .footer .text-wrapper-9 {
   font-size: 11px;
-  color: #d0d0d0;
+  color: var(--color-neutral-light-text);
   margin-top: 20px;
-}
-
-button,
-input[type="button"],
-input[type="submit"],
-.button,
-.button-principal,
-.button-secundario,
-.btn-random-mode,
-.btn,
-.btn-link {
-  font-family: 'Helvetica Now Display', Arial, Helvetica, sans-serif !important;
-  font-weight: 600;
-  letter-spacing: 0.01em;
 }
 
 button {
   height: 42px;
   border-radius: 50px;
-  border: 0;
+  border: 1px solid var(--color-border-gray);
   padding: 0 18px;
   display: flex;
   align-items: center;
@@ -347,18 +408,18 @@ button {
 }
 
 .footer .field {
-  background: #ffffff;
+  background: var(--color-white);
   color: var(--texto);
 }
 
 .footer .button {
-  background: #323232;
-  color: #ffffff;
+  background: var(--color-neutral-dark-soft);
+  color: var(--color-white);
   cursor: pointer;
 }
 
 .footer .button-text {
-  color: #ffffff;
+  color: var(--color-white);
   font-size: 12px;
   font-weight: 600;
 }
@@ -366,7 +427,7 @@ button {
 .footer .separator-left {
   width: 1px;
   height: 24px;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--rgba-white-30);
 }
 
 

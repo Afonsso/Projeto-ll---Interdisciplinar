@@ -29,15 +29,28 @@ export function createEyeProgress(canvas, options = {}) {
     controls.enableZoom = false;
     controls.enableRotate = false;
 
+    // Iluminação do Olho 3d
+
     scene.add(new THREE.AmbientLight(0xffffff, 2));
 
-    const light1 = new THREE.DirectionalLight(0xffffff, 2);
-    light1.position.set(2, 3, 4);
+    // Luz ambiente geral
+    const ambientLight = new THREE.AmbientLight(0xffffff, 3.5);
+    scene.add(ambientLight);
+
+    // Luz Frontal Direita principal
+    const light1 = new THREE.DirectionalLight(0xffffff, 5.0);
+    light1.position.set(2, 3, 5);
     scene.add(light1);
 
-    const light2 = new THREE.DirectionalLight(0xffffff, 1.5);
-    light2.position.set(-2, -1, 3);
+    // Luz Frontal Esquerda de preenchimento
+    const light2 = new THREE.DirectionalLight(0xffffff, 10.0);
+    light2.position.set(-3, 1, 4);
     scene.add(light2);
+
+    // Luz de realce inferior/traseira
+    const light3 = new THREE.DirectionalLight(0xffffff, 2.5);
+    light3.position.set(0, -4, 2);
+    scene.add(light3);
 
     const holder = new THREE.Group();
     scene.add(holder);
@@ -98,7 +111,7 @@ export function createEyeProgress(canvas, options = {}) {
         model.position.sub(center);
 
         const maxDim = Math.max(size.x, size.y, size.z) || 1;
-        model.scale.setScalar(2.4 / maxDim);
+        model.scale.setScalar(3.0 / maxDim);
     }
 
     function setEyeProgress(progress) {

@@ -894,3 +894,117 @@ a {
     padding-right: 24px;
   }
 }
+
+/* ─── Chatbot Home Card ─────────────────────────────────────── */
+.chatbot-home-section {
+  width: min(960px, calc(100% - 40px));
+  margin: 0 auto 40px;
+}
+
+.chatbot-home-card {
+  background: #273154;
+  border-radius: 28px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.chatbot-home-card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 32px 24px;
+  gap: 20px;
+}
+
+.chatbot-home-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chatbot-home-eyebrow {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.chatbot-home-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.chatbot-home-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0;
+}
+
+.chatbot-home-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.chatbot-home-avatar svg {
+  width: 46px;
+  height: 46px;
+}
+
+.chatbot-home-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+  background: rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chatbot-home-cta:hover {
+  background: rgba(255, 255, 255, 0.13);
+  color: #fff;
+}
+
+.chatbot-home-cta svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .chatbot-home-card-inner {
+    padding: 22px 22px 18px;
+  }
+
+  .chatbot-home-title {
+    font-size: 26px;
+  }
+
+  .chatbot-home-avatar {
+    width: 68px;
+    height: 68px;
+  }
+
+  .chatbot-home-avatar svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .chatbot-home-cta {
+    padding: 14px 22px;
+  }
+}

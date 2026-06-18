@@ -33,8 +33,8 @@ class HomeView {
 
                 <canvas id="eye-canvas"></canvas>
 
-                <div class="eye-progress-bar">
-                    <div class="eye-progress-fill" style="width:${percentage}%"></div>
+                <div class="progress-bar-wrapper">
+                    <div class="progress-fill" style="width:${percentage}%"></div>
                 </div>
             </div>
         `;
@@ -162,11 +162,45 @@ class HomeView {
                 <div class="ishihara-card">
                     <h3>Teste Ishihara</h3>
                     <p><p>Descubra o seu tipo de daltonismo e receba recomendações personalizadas.</p></p>
-                    <button class="btn-primary" onclick="window.location.href='info_daltonismo.html'">
+                    <button class="btn-primary" onclick="window.location.href='teste_daltonismo.html'">
                         Realizar Teste
                     </button>
                 </div>
             `;
+    }
+
+    renderChatbotSection(userName) {
+        const container = document.getElementById("chatbot-section");
+        if (!container) return;
+
+        const displayName = userName || 'utilizador';
+
+        container.innerHTML = `
+            <div class="chatbot-home-card">
+                <div class="chatbot-home-card-inner">
+                    <div class="chatbot-home-card-text">
+                        <span class="chatbot-home-eyebrow">Olá, ${displayName}!</span>
+                        <h2 class="chatbot-home-title">Chat Bot</h2>
+                        <p class="chatbot-home-sub">Ajuda para o seu cotidiano e mais...</p>
+                    </div>
+                    <div class="chatbot-home-avatar" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="7" width="20" height="13" rx="3" stroke="currentColor" stroke-width="1.8"/>
+                            <circle cx="8.5" cy="13.5" r="2" fill="currentColor"/>
+                            <circle cx="15.5" cy="13.5" r="2" fill="currentColor"/>
+                            <rect x="6" y="17" width="12" height="1.5" rx="0.75" fill="currentColor"/>
+                            <path d="M9 7V5a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <a href="ChatBot.html" class="chatbot-home-cta">
+                    <span>Como posso ajudar?</span>
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+                        <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        `;
     }
 
     renderQuickStats(user, progress) {
@@ -225,7 +259,8 @@ class HomeView {
             'quick-stats',
             'eye-progress',
             'training-suggestions',
-            'ishihara-section'
+            'ishihara-section',
+            'chatbot-section'
         ];
 
         sectionsToClear.forEach((id) => {
@@ -253,6 +288,7 @@ class HomeView {
         if (statsContainer) statsContainer.innerHTML = "";
 
         this.renderEyeProgress(user, progress);
+        this.renderChatbotSection(user.name);
         this.renderTrainingSuggestions(progress);
         this.renderIshiharaButton(user.ishiharaCompleted);
     }

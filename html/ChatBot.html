@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Croma</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/globals.css">
+    <link rel="stylesheet" href="../css/Home.css">
+    <link rel="stylesheet" href="../css/chatbot.css">
+    <script type="module" src="../js/init.js"></script>
+    <script src="../js/guestGuard.js"></script>
+</head>
+<body>
+
+<div class="pg-inicial">
+    <nav class="navbar">
+        <!-- Teu navbar mantido intacto -->
+        <a href="../index.html">
+            <div class="logo">
+                <img class="cone-2" src="../imagens/logo.svg" alt="Logo Croma" />
+                <div class="nome-2">
+                    <div class="text-wrapper-10">Croma</div>
+                    <div class="text-wrapper-11">app</div>
+                </div>
+            </div>
+        </a>
+
+        <div class="menu-3">
+            <a href="Home.html"><div class="incio"><img class="vector-7" src="../imagens/inicio.svg" alt="" /><div class="text-wrapper-12">Início</div></div></a>
+            <a href="About.html"><div class="div-3"><img class="vector-8" src="../imagens/sobre.svg" alt="" /><div class="text-wrapper-12">Sobre</div></div></a>
+            <a href="training.html"><div class="div-3"><img class="vector-7" src="../imagens/quizzes.svg" alt="" /><div class="text-wrapper-12">Quizzes</div></div></a>
+            <a href="profile.html"><div class="div-3"><img class="vector-9" src="../imagens/perfil.svg" alt="" /><div class="text-wrapper-13">Perfil</div><div class="badge"><div class="text-3">10+</div></div></div></a>
+        </div>
+    </nav>
+
+    <div id="chatbot-root" class="container mt-4"></div>
+</div>
+
+<script type="module" src="../js/controllers/chatbotController.js"></script>
+</body>
+</html>

@@ -748,6 +748,183 @@
         "recentActivity": []
       },
       "id": "XcrRH6w"
+    },
+    {
+      "name": "Alice Moraes",
+      "email": "br.alice.moraes@gmail.com",
+      "password": "197317",
+      "avatar": "property 1=cão.png",
+      "birthDate": "2006-01-01",
+      "createdAt": "2026-06-18T10:24:09.872Z",
+      "colorBlindnessType": null,
+      "ishiharaCompleted": false,
+      "xp": 0,
+      "streak": 0,
+      "lastLoginDate": "2026-06-18T10:24:20.615Z",
+      "progress": {
+        "worlds": {
+          "transito": {
+            "name": "Trânsito",
+            "emoji": "🚦",
+            "unlocked": true,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          },
+          "roupas": {
+            "name": "Roupas & Estilo",
+            "emoji": "👚",
+            "unlocked": false,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          },
+          "cozinha": {
+            "name": "Cozinha & Alimentação",
+            "emoji": "🏡",
+            "unlocked": false,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          },
+          "desporto": {
+            "name": "Desporto",
+            "emoji": "⚽",
+            "unlocked": false,
+            "completed": false,
+            "bossDefeated": false,
+            "levels": {
+              "1": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "2": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "3": {
+                "type": "quiz",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "4": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              },
+              "5": {
+                "type": "game",
+                "stars": 0,
+                "completed": false,
+                "attempts": 0
+              }
+            }
+          }
+        },
+        "totalStars": 0,
+        "completedLevels": [],
+        "recentActivity": []
+      },
+      "id": "C25Yxwe"
     }
   ],
   "sessions": [
@@ -930,6 +1107,24 @@
       "createdAt": "2026-06-18T10:14:32.158Z",
       "expiresAt": "2026-06-25T10:14:32.158Z",
       "id": 41
+    },
+    {
+      "userId": "C25Yxwe",
+      "createdAt": "2026-06-18T10:24:09.918Z",
+      "expiresAt": "2026-06-25T10:24:09.918Z",
+      "id": 42
+    },
+    {
+      "userId": "C25Yxwe",
+      "createdAt": "2026-06-18T10:24:14.261Z",
+      "expiresAt": "2026-06-25T10:24:14.261Z",
+      "id": 43
+    },
+    {
+      "userId": "C25Yxwe",
+      "createdAt": "2026-06-18T10:24:20.608Z",
+      "expiresAt": "2026-06-25T10:24:20.608Z",
+      "id": 44
     }
   ]
 }

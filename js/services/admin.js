@@ -4,6 +4,8 @@ import {
     saveWorldContentOverrides,
     clearWorldContentOverrides
 } from '../logic/world.js';
+import StorageService from './storage.js';
+import AuthService from './auth.js';
 
 const API_URL = 'http://localhost:3000';
 const QUIZ_LEVELS_PER_WORLD = 4;
@@ -19,8 +21,22 @@ const state = {
     selectedGameLevel: 4
 };
 
+let authService = null;
+
 function cloneData(data) {
     return JSON.parse(JSON.stringify(data));
+}
+
+function redirectToHome() {
+    window.location.href = './Home.html';
+}
+
+async function ensureAdminAccess() {
+    const storageService = new StorageService();
+    authService = new AuthService(storageService);
+    await authService.init();
+
+    return authService.isAuthenticated() && authService.isAdminUser();
 }
 
 function showFeedback(message, type = 'success') {
@@ -521,6 +537,7 @@ function setupButtons() {
     const saveBtn = document.getElementById('save-content-btn');
     const resetBtn = document.getElementById('reset-content-btn');
     const reloadUsersBtn = document.getElementById('reload-users-btn');
+    const logoutBtn = document.getElementById('admin-logout-btn');
 
     saveBtn.addEventListener('click', saveContent);
     resetBtn.addEventListener('click', () => {
@@ -530,9 +547,25 @@ function setupButtons() {
         }
     });
     reloadUsersBtn.addEventListener('click', loadUsers);
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', async () => {
+            if (authService) {
+                await authService.logout();
+            }
+            window.location.href = '../index.html';
+        });
+    }
 }
 
-function init() {
+async function init() {
+    const isAdmin = await ensureAdminAccess();
+    if (!isAdmin) {
+        showFeedback('Acesso negado. Esta pagina e apenas para demo@croma.app.', 'error');
+        window.setTimeout(redirectToHome, 1200);
+        return;
+    }
+
     setupTabs();
     loadContentOverrides();
     setupButtons();
@@ -546,4 +579,6 @@ function init() {
     loadUsers();
 }
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+    init();
+});

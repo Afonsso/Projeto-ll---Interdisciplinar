@@ -216,16 +216,46 @@ class HomeView {
     `;
 }
 
+    isAdminUser(user) {
+        return String(user?.email || '').trim().toLowerCase() === 'demo@croma.app';
+    }
+
+    renderAdminHomeOnlyWelcome() {
+        const sectionsToClear = [
+            'quick-stats',
+            'eye-progress',
+            'training-suggestions',
+            'ishihara-section'
+        ];
+
+        sectionsToClear.forEach((id) => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.innerHTML = '';
+            }
+        });
+
+        const sectionsToHide = document.querySelectorAll('.servicos, .feedbacks');
+        sectionsToHide.forEach((section) => {
+            section.style.display = 'none';
+        });
+    }
+
     renderHome(user, progress) {
-    this.renderWelcomeMessage(user.name);
+        this.renderWelcomeMessage(user.name);
 
-    const statsContainer = document.getElementById("quick-stats");
-    if (statsContainer) statsContainer.innerHTML = "";
+        if (this.isAdminUser(user)) {
+            this.renderAdminHomeOnlyWelcome();
+            return;
+        }
 
-    this.renderEyeProgress(user, progress);
-    this.renderTrainingSuggestions(progress);
-    this.renderIshiharaButton(user.ishiharaCompleted);
-}
+        const statsContainer = document.getElementById("quick-stats");
+        if (statsContainer) statsContainer.innerHTML = "";
+
+        this.renderEyeProgress(user, progress);
+        this.renderTrainingSuggestions(progress);
+        this.renderIshiharaButton(user.ishiharaCompleted);
+    }
 }
 
 export default HomeView;

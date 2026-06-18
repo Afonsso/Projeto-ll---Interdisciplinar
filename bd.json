@@ -2,17 +2,18 @@
   "users": [
     {
       "id": "user_1",
-      "name": "Arroz",
+      "name": "Admin",
       "email": "demo@croma.app",
       "password": "demo123",
-      "avatar": "property%201=c%C3%A3o.png",
+      "role": "admin",
+      "avatar": "rabbit.png",
       "birthDate": "1990-01-01",
       "createdAt": "2026-01-01T00:00:00.000Z",
       "colorBlindnessType": null,
       "ishiharaCompleted": false,
       "xp": 0,
       "streak": 0,
-      "lastLoginDate": "2026-06-17T15:19:17.923Z",
+      "lastLoginDate": "2026-06-17T21:34:57.811Z",
       "progress": {
         "worlds": {
           "transito": {
@@ -26,31 +27,46 @@
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "2": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "3": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "4": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "5": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               }
             }
           },
@@ -65,31 +81,46 @@
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "2": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "3": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "4": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "5": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               }
             }
           },
@@ -104,31 +135,46 @@
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "2": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "3": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "4": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "5": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               }
             }
           },
@@ -143,31 +189,46 @@
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "2": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "3": {
                 "type": "quiz",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "4": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               },
               "5": {
                 "type": "game",
                 "stars": 0,
                 "completed": false,
-                "attempts": 0
+                "attempts": 0,
+                "bestScore": 0,
+                "totalQuestions": 0,
+                "xpEarned": 0
               }
             }
           },
@@ -220,14 +281,22 @@
       "name": "Afonso Duarte",
       "email": "afonsoduart070@gmail.com",
       "password": "afonso123",
+<<<<<<< HEAD
       "avatar": "doggie.png",
+=======
+      "avatar": "chicken.png",
+>>>>>>> a6784dfc2c383bccfb9d3a9328350ac982bbeddc
       "birthDate": "2005-01-01",
       "createdAt": "2026-06-10T12:21:29.407Z",
       "colorBlindnessType": null,
       "ishiharaCompleted": false,
       "xp": 525,
       "streak": 1,
+<<<<<<< HEAD
       "lastLoginDate": "2026-06-17T22:15:32.951Z",
+=======
+      "lastLoginDate": "2026-06-17T21:37:17.792Z",
+>>>>>>> a6784dfc2c383bccfb9d3a9328350ac982bbeddc
       "progress": {
         "worlds": {
           "transito": {
@@ -790,16 +859,28 @@
       "id": 33
     },
     {
-      "userId": "s-S0Uji",
-      "createdAt": "2026-06-17T20:52:36.169Z",
-      "expiresAt": "2026-06-24T20:52:36.169Z",
+      "userId": "user_1",
+      "createdAt": "2026-06-17T21:24:10.287Z",
+      "expiresAt": "2026-06-24T21:24:10.287Z",
       "id": 34
     },
     {
       "userId": "s-S0Uji",
+<<<<<<< HEAD
       "createdAt": "2026-06-17T22:15:32.924Z",
       "expiresAt": "2026-06-24T22:15:32.925Z",
       "id": 35
+=======
+      "createdAt": "2026-06-17T21:29:07.426Z",
+      "expiresAt": "2026-06-24T21:29:07.426Z",
+      "id": 35
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T21:37:17.774Z",
+      "expiresAt": "2026-06-24T21:37:17.774Z",
+      "id": 36
+>>>>>>> a6784dfc2c383bccfb9d3a9328350ac982bbeddc
     }
   ]
 }

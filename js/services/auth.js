@@ -23,16 +23,27 @@ class AuthService {
     async login(email, password) {
         try {
             const normalizedEmail = email.trim().toLowerCase();
+            const normalizedPassword = String(password || '').trim();
+
+            if (!normalizedEmail || !normalizedPassword) {
+                throw new Error('Email e password sao obrigatorios');
+            }
 
             // Carregar utilizador do bd.json
-            const user = await this.storageService.getUserByEmail(normalizedEmail);
+            let user = null;
+            try {
+                user = await this.storageService.getUserByEmail(normalizedEmail);
+            } catch (storageError) {
+                console.error('Storage error during login:', storageError);
+                throw new Error('Nao foi possivel ligar ao servidor. Tente novamente.');
+            }
             
             if (!user) {
                 throw new Error('Email ou password incorretos');
             }
 
             // Verificar password (em produção, usar hash)
-            if (user.password !== password) {
+            if (String(user.password || '').trim() !== normalizedPassword) {
                 throw new Error('Email ou password incorretos');
             }
 

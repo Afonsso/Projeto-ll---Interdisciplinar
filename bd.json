@@ -13,11 +13,7 @@
       "ishiharaCompleted": false,
       "xp": 2000,
       "streak": 0,
-<<<<<<< HEAD
-      "lastLoginDate": "2026-06-17T15:32:54.593Z",
-=======
       "lastLoginDate": "2026-06-17T21:34:57.811Z",
->>>>>>> a6784dfc2c383bccfb9d3a9328350ac982bbeddc
       "progress": {
         "worlds": {
           "transito": {
@@ -285,18 +281,14 @@
       "name": "Afonso Duarte",
       "email": "afonsoduart070@gmail.com",
       "password": "afonso123",
-      "avatar": "chicken.png",
+      "avatar": "rabbit.png",
       "birthDate": "2005-01-01",
       "createdAt": "2026-06-10T12:21:29.407Z",
       "colorBlindnessType": null,
       "ishiharaCompleted": false,
       "xp": 525,
       "streak": 1,
-<<<<<<< HEAD
-      "lastLoginDate": "2026-06-17T13:08:48.077Z",
-=======
-      "lastLoginDate": "2026-06-17T21:37:17.792Z",
->>>>>>> a6784dfc2c383bccfb9d3a9328350ac982bbeddc
+      "lastLoginDate": "2026-06-18T09:37:44.350Z",
       "progress": {
         "worlds": {
           "transito": {
@@ -845,8 +837,6 @@
       "createdAt": "2026-06-17T15:32:54.583Z",
       "expiresAt": "2026-06-24T15:32:54.583Z",
       "id": 31
-<<<<<<< HEAD
-=======
     },
     {
       "userId": "s-S0Uji",
@@ -877,7 +867,18 @@
       "createdAt": "2026-06-17T21:37:17.774Z",
       "expiresAt": "2026-06-24T21:37:17.774Z",
       "id": 36
->>>>>>> a6784dfc2c383bccfb9d3a9328350ac982bbeddc
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-18T09:37:38.420Z",
+      "expiresAt": "2026-06-25T09:37:38.420Z",
+      "id": 37
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-18T09:37:44.332Z",
+      "expiresAt": "2026-06-25T09:37:44.332Z",
+      "id": 38
     }
   ]
 }

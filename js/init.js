@@ -13,11 +13,13 @@ import HomeView from './view/homeView.js';
 import AboutView from './view/aboutView.js';
 import TrainingView from './view/trainingView.js';
 import ProfileView from './view/profileView.js';
+import TrophiesView from './view/trophiesview.js';
 
 import HomeController from './controller/homeController.js';
 import AboutController from './controller/aboutController.js';
 import TrainingController from './controller/trainingController.js';
 import ProfileController from './controller/profileController.js';
+import TrophiesController from './controller/trophiesController.js';
 import AuthController from './controller/authController.js';
 
 class App {
@@ -87,6 +89,7 @@ class App {
         this.views.about = new AboutView();
         this.views.training = new TrainingView();
         this.views.profile = new ProfileView();
+        this.views.trophies = new TrophiesView();
     }
 
     // Inicializar Controllers
@@ -115,6 +118,12 @@ class App {
             this.models.user,
             this.models.progress,
             this.views.profile
+        );
+
+        this.controllers.trophies = new TrophiesController(
+            this.models.user,
+            this.models.progress,
+            this.views.trophies
         );
     }
 
@@ -152,6 +161,7 @@ class App {
         switch (this.currentPage) {
             case 'login':
             case 'register':
+                await this.controllers.auth.init();
                 break;
             case 'home':
                 this.controllers.home.init();
@@ -163,8 +173,10 @@ class App {
                 this.controllers.training.init();
                 break;
             case 'profile':
-            case 'trophies':
                 this.controllers.profile.init();
+                break;
+            case 'trophies':
+                this.controllers.trophies.init();
                 break;
             default:
                 this.controllers.home.init();

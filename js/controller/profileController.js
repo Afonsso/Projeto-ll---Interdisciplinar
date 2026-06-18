@@ -28,8 +28,17 @@ class ProfileController {
             this.handleProfileUpdate(e.detail);
         });
 
+        const avatarTrigger = document.getElementById('avatar-toggle-trigger');
         const prevAvatarBtn = document.getElementById('prev-avatar');
         const nextAvatarBtn = document.getElementById('next-avatar');
+
+        if (avatarTrigger && prevAvatarBtn && nextAvatarBtn) {
+            avatarTrigger.addEventListener('click', () => {
+                prevAvatarBtn.classList.toggle('visible');
+                nextAvatarBtn.classList.toggle('visible');
+            });
+        }
+
         const onAvatarChange = () => {
             this.persistCurrentAvatar();
         };
@@ -47,6 +56,13 @@ class ProfileController {
         if (trophyCard) {
             trophyCard.addEventListener('click', () => {
                 window.location.href = 'trophies.html';
+            });
+        }
+
+        const logoutBtn = document.getElementById('logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+                this.handleLogout();
             });
         }
 
@@ -118,6 +134,16 @@ class ProfileController {
         await this.userModel.updateUser({ avatar: avatarFileName });
     }
 
+    async handleLogout() {
+        try {
+            await this.userModel.logout();
+            window.location.href = '../index.html';
+        } catch (error) {
+            console.error('Logout error:', error);
+            this.showSuccessMessage('Nao foi possivel terminar sessao.');
+        }
+    }
+
     // Repetir nível
     replayLevel(worldId, levelId) {
         const worldMap = {
@@ -181,7 +207,6 @@ class ProfileController {
         return {
             user,
             progress,
-            trophies: this.profileView.calculateTrophies(user, progress),
             weakWorlds: this.progressModel.getWeakWorlds(),
             incompleteLevels: this.progressModel.getIncompleteLevels()
         };

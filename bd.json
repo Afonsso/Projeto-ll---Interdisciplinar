@@ -13,7 +13,7 @@
       "ishiharaCompleted": false,
       "xp": 2000,
       "streak": 0,
-      "lastLoginDate": "2026-06-18T10:05:08.108Z",
+      "lastLoginDate": "2026-06-18T13:18:25.405Z",
       "progress": {
         "worlds": {
           "transito": {
@@ -236,7 +236,9 @@
         "totalStars": 0,
         "completedLevels": [],
         "recentActivity": []
-      }
+      },
+      "ishiharaHistory": [],
+      "lastIshiharaResult": null
     },
     {
       "name": "Afonso Duarte",
@@ -570,7 +572,9 @@
           }
         ]
       },
-      "id": "s-S0Uji"
+      "id": "s-S0Uji",
+      "ishiharaHistory": [],
+      "lastIshiharaResult": null
     },
     {
       "name": "afonso",
@@ -747,20 +751,22 @@
         "completedLevels": [],
         "recentActivity": []
       },
-      "id": "XcrRH6w"
+      "id": "XcrRH6w",
+      "ishiharaHistory": [],
+      "lastIshiharaResult": null
     },
     {
       "name": "Alice Moraes",
       "email": "br.alice.moraes@gmail.com",
       "password": "197317",
-      "avatar": "property 1=cão.png",
+      "avatar": "bear.png",
       "birthDate": "2006-01-01",
       "createdAt": "2026-06-18T10:24:09.872Z",
       "colorBlindnessType": null,
       "ishiharaCompleted": false,
       "xp": 535,
       "streak": 0,
-      "lastLoginDate": "2026-06-18T13:00:19.729Z",
+      "lastLoginDate": "2026-06-18T13:23:04.067Z",
       "progress": {
         "worlds": {
           "transito": {
@@ -1036,184 +1042,9 @@
           }
         ]
       },
-      "id": "C25Yxwe"
-    },
-    {
-      "name": "Clara Mota",
-      "email": "clara10mota@gmail.com",
-      "password": "clara123",
-      "avatar": "property 1=cão.png",
-      "birthDate": "2007-01-01",
-      "createdAt": "2026-06-18T13:02:35.868Z",
-      "colorBlindnessType": null,
-      "ishiharaCompleted": false,
-      "xp": 0,
-      "streak": 0,
-      "lastLoginDate": "2026-06-18T13:02:52.005Z",
-      "progress": {
-        "worlds": {
-          "transito": {
-            "name": "Trânsito",
-            "emoji": "🚦",
-            "unlocked": true,
-            "completed": false,
-            "bossDefeated": false,
-            "levels": {
-              "1": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "2": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "3": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "4": {
-                "type": "game",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "5": {
-                "type": "game",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              }
-            }
-          },
-          "roupas": {
-            "name": "Roupas & Estilo",
-            "emoji": "👚",
-            "unlocked": false,
-            "completed": false,
-            "bossDefeated": false,
-            "levels": {
-              "1": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "2": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "3": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "4": {
-                "type": "game",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "5": {
-                "type": "game",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              }
-            }
-          },
-          "cozinha": {
-            "name": "Cozinha & Alimentação",
-            "emoji": "🏡",
-            "unlocked": false,
-            "completed": false,
-            "bossDefeated": false,
-            "levels": {
-              "1": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "2": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "3": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "4": {
-                "type": "game",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "5": {
-                "type": "game",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              }
-            }
-          },
-          "desporto": {
-            "name": "Desporto",
-            "emoji": "⚽",
-            "unlocked": false,
-            "completed": false,
-            "bossDefeated": false,
-            "levels": {
-              "1": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "2": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "3": {
-                "type": "quiz",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "4": {
-                "type": "game",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              },
-              "5": {
-                "type": "game",
-                "stars": 0,
-                "completed": false,
-                "attempts": 0
-              }
-            }
-          }
-        },
-        "totalStars": 0,
-        "completedLevels": [],
-        "recentActivity": []
-      },
-      "id": "MZnBGst"
+      "id": "C25Yxwe",
+      "ishiharaHistory": [],
+      "lastIshiharaResult": null
     }
   ],
   "sessions": [
@@ -1422,16 +1253,10 @@
       "id": 45
     },
     {
-      "userId": "MZnBGst",
-      "createdAt": "2026-06-18T13:02:35.895Z",
-      "expiresAt": "2026-06-25T13:02:35.895Z",
+      "userId": "C25Yxwe",
+      "createdAt": "2026-06-18T13:23:04.059Z",
+      "expiresAt": "2026-06-25T13:23:04.059Z",
       "id": 46
-    },
-    {
-      "userId": "MZnBGst",
-      "createdAt": "2026-06-18T13:02:52.000Z",
-      "expiresAt": "2026-06-25T13:02:52.000Z",
-      "id": 47
     }
   ]
 }

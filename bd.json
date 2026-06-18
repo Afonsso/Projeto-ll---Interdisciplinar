@@ -219,7 +219,7 @@
     {
       "name": "Afonso Duarte",
       "email": "afonsoduart070@gmail.com",
-      "password": "afonso2006",
+      "password": "afonso123",
       "avatar": "doggie.png",
       "birthDate": "2005-01-01",
       "createdAt": "2026-06-10T12:21:29.407Z",
@@ -227,7 +227,7 @@
       "ishiharaCompleted": false,
       "xp": 525,
       "streak": 1,
-      "lastLoginDate": "2026-06-17T20:52:36.179Z",
+      "lastLoginDate": "2026-06-17T22:15:32.951Z",
       "progress": {
         "worlds": {
           "transito": {
@@ -794,6 +794,12 @@
       "createdAt": "2026-06-17T20:52:36.169Z",
       "expiresAt": "2026-06-24T20:52:36.169Z",
       "id": 34
+    },
+    {
+      "userId": "s-S0Uji",
+      "createdAt": "2026-06-17T22:15:32.924Z",
+      "expiresAt": "2026-06-24T22:15:32.925Z",
+      "id": 35
     }
   ]
 }

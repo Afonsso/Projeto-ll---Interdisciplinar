@@ -1,7 +1,3 @@
-/**
- * Init.js - Ponto de entrada da aplicação MVC
- * Este arquivo inicializa e conecta os Modelos, Views e Controllers
- */
 
 import StorageService from './services/storage.js';
 import AuthService from './services/auth.js';
@@ -9,11 +5,12 @@ import AuthService from './services/auth.js';
 import UserModel from './model/userModel.js';
 import ProgressModel from './model/progressModel.js';
 
-import HomeView from './view/homeView.js';
+import HomeView from './view/HomeView.js';
 import AboutView from './view/aboutView.js';
-import TrainingView from './view/trainingView.js';
-import ProfileView from './view/profileView.js';
-import TrophiesView from './view/trophiesview.js';
+import TrainingView from './view/TrainingView.js';
+import ProfileView from './view/ProfileView.js';
+import TrophiesView from './view/TrophiesView.js';
+import ChatbotView from './view/chatbotView.js';
 
 import HomeController from './controller/homeController.js';
 import AboutController from './controller/aboutController.js';
@@ -21,6 +18,7 @@ import TrainingController from './controller/trainingController.js';
 import ProfileController from './controller/profileController.js';
 import TrophiesController from './controller/trophiesController.js';
 import AuthController from './controller/authController.js';
+import ChatbotController from './controller/chatbotController.js';
 
 class App {
     constructor() {
@@ -90,6 +88,7 @@ class App {
         this.views.training = new TrainingView();
         this.views.profile = new ProfileView();
         this.views.trophies = new TrophiesView();
+        this.views.chatbot = new ChatbotView();
     }
 
     // Inicializar Controllers
@@ -125,6 +124,11 @@ class App {
             this.models.progress,
             this.views.trophies
         );
+
+        this.controllers.chatbot = new ChatbotController(
+            this.services.auth,
+            this.views.chatbot
+        );
     }
 
     // Detectar a página atual baseado na URL
@@ -147,6 +151,8 @@ class App {
             this.currentPage = 'ishihara';
         } else if (path.includes('trophies.html')) {
             this.currentPage = 'trophies';
+        } else if (path.includes('chatbot.html')) {
+            this.currentPage = 'chatbot';
         } else {
             this.currentPage = 'home';
         }
@@ -178,13 +184,16 @@ class App {
             case 'trophies':
                 this.controllers.trophies.init();
                 break;
+            case 'chatbot':
+                this.controllers.chatbot.init();
+                break;
             default:
                 this.controllers.home.init();
         }
     }
 
     isProtectedPage() {
-        const protectedPages = ['home', 'training', 'profile', 'trophies'];
+        const protectedPages = ['home', 'training', 'profile', 'trophies', 'chatbot'];
         return protectedPages.includes(this.currentPage);
     }
 

@@ -18,9 +18,12 @@ class ChatbotView {
             <main class="chatbot-page">
                 <section class="chatbot-shell">
                     <aside class="chatbot-sidebar">
-                        <h2>Recentes</h2>
+                        <div class="chatbot-sidebar-header">
+                            <h2>Histórico</h2>
+                            <button type="button" class="chatbot-new-chat" id="chatbot-new-chat" data-new-conversation="true">Nova</button>
+                        </div>
                         <div id="chatbot-recent-list" class="chatbot-recent-list">
-                            <p class="chatbot-empty-state">Sem mensagens recentes.</p>
+                            <p class="chatbot-empty-state">Sem conversas recentes.</p>
                         </div>
                     </aside>
 
@@ -63,7 +66,7 @@ class ChatbotView {
                                 placeholder="Pergunte ao Chat Bot"
                                 autocomplete="off"
                             />
-                            <button type="submit" class="chatbot-send" aria-label="Enviar mensagem">
+                            <button type="submit" class="chatbot-send" id="chatbot-send-btn" aria-label="Enviar mensagem">
                                 <svg viewBox="0 0 24 24" fill="none" width="22" height="22">
                                     <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
@@ -79,26 +82,70 @@ class ChatbotView {
         this._fileInput = document.getElementById('chatbot-file-input');
     }
 
-    renderRecentTopics(topics) {
+    renderConversationHistory(conversations, activeConversationId) {
         const container = document.getElementById('chatbot-recent-list');
         if (!container) return;
 
-        container.innerHTML = topics.length
-            ? topics.map(topic =>
-                `<button type="button" class="chatbot-recent-item" data-suggested-topic="${this.escapeHtml(topic)}">${this.escapeHtml(topic)}</button>`
-              ).join('')
-            : '<p class="chatbot-empty-state">Sem mensagens recentes.</p>';
+        const items = Array.isArray(conversations) ? conversations : [];
+        if (items.length === 0) {
+            container.innerHTML = '<p class="chatbot-empty-state">Sem conversas recentes.</p>';
+            return;
+        }
+
+        container.innerHTML = items.map(conversation => {
+            const lastMessage = [...(conversation.messages || [])].reverse().find(message => message.text);
+            const snippet = lastMessage?.text || 'Conversa vazia';
+            const isActive = conversation.id === activeConversationId;
+
+            return `
+                <button type="button"
+                    class="chatbot-recent-item ${isActive ? 'is-active' : ''}"
+                    data-conversation-id="${this.escapeHtml(conversation.id)}">
+                    <span class="chatbot-recent-title">${this.escapeHtml(conversation.title || 'Conversa')}</span>
+                    <span class="chatbot-recent-snippet">${this.escapeHtml(this._truncate(snippet, 56))}</span>
+                    <span class="chatbot-recent-date">${this.escapeHtml(this._formatDate(conversation.updatedAt))}</span>
+                </button>
+            `;
+        }).join('');
+    }
+
+    renderRecentTopics(topics) {
+        this.renderConversationHistory(
+            (topics || []).map((topic, index) => ({
+                id: `topic_${index}`,
+                title: topic,
+                updatedAt: new Date().toISOString(),
+                messages: [{ text: topic }]
+            })),
+            null
+        );
     }
 
     renderSuggestedTopics(topics) {
         const container = document.getElementById('chatbot-suggestions');
-        if (!container) return;
-
-        if (!topics || topics.length === 0) return;
+        if (!container || !topics || topics.length === 0) return;
 
         container.innerHTML = topics
             .map(t => `<button type="button" class="chatbot-suggestion" data-suggested-topic="${this.escapeHtml(t)}">${this.escapeHtml(t)}</button>`)
             .join('');
+    }
+
+    renderMessages(messages, emptyWelcomeText) {
+        const container = document.getElementById('chatbot-messages');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        const items = Array.isArray(messages) ? messages : [];
+        if (items.length === 0 && emptyWelcomeText) {
+            this.addMessage('bot', emptyWelcomeText);
+            return;
+        }
+
+        items.forEach(message => {
+            const role = message.role === 'assistant' ? 'bot' : 'user';
+            this.addMessage(role, message.text, message.imageBase64);
+        });
     }
 
     addMessage(role, text, imageBase64) {
@@ -129,7 +176,7 @@ class ChatbotView {
 
     showTyping() {
         const container = document.getElementById('chatbot-messages');
-        if (!container) return;
+        if (!container || document.getElementById('chatbot-typing')) return;
 
         const typing = document.createElement('div');
         typing.id = 'chatbot-typing';
@@ -142,6 +189,16 @@ class ChatbotView {
     hideTyping() {
         const el = document.getElementById('chatbot-typing');
         if (el) el.remove();
+    }
+
+    setSendingState(isSending) {
+        const input = document.getElementById('chatbot-input');
+        const sendBtn = document.getElementById('chatbot-send-btn');
+        const attachBtn = document.getElementById('chatbot-attach-btn');
+
+        [input, sendBtn, attachBtn].forEach(el => {
+            if (el) el.disabled = Boolean(isSending);
+        });
     }
 
     setInputValue(value) {
@@ -168,32 +225,33 @@ class ChatbotView {
     removeAttachedImage() {
         this._pendingImageBase64 = null;
         const preview = document.getElementById('chatbot-image-preview');
+        const previewImg = document.getElementById('chatbot-preview-img');
         if (preview) preview.style.display = 'none';
+        if (previewImg) previewImg.src = '';
         if (this._fileInput) this._fileInput.value = '';
     }
 
-    bindHandlers({ onSubmit, onSuggestion }) {
+    bindHandlers({ onSubmit, onSuggestion, onSelectConversation, onNewConversation }) {
         const form = document.getElementById('chatbot-form');
         const attachBtn = document.getElementById('chatbot-attach-btn');
         const fileInput = document.getElementById('chatbot-file-input');
         const removeBtn = document.getElementById('chatbot-remove-image');
+        const input = document.getElementById('chatbot-input');
 
         if (form) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 onSubmit?.(this.getInputValue(), this._pendingImageBase64);
             });
+        }
 
-            // Send on Enter (not Shift+Enter)
-            const input = document.getElementById('chatbot-input');
-            if (input) {
-                input.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        onSubmit?.(this.getInputValue(), this._pendingImageBase64);
-                    }
-                });
-            }
+        if (input) {
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    onSubmit?.(this.getInputValue(), this._pendingImageBase64);
+                }
+            });
         }
 
         if (attachBtn && fileInput) {
@@ -204,6 +262,13 @@ class ChatbotView {
             fileInput.addEventListener('change', (e) => {
                 const file = e.target.files?.[0];
                 if (!file) return;
+
+                if (!file.type.startsWith('image/')) {
+                    this.addMessage('bot', 'Só consigo anexar imagens neste chat.');
+                    this.removeAttachedImage();
+                    return;
+                }
+
                 const reader = new FileReader();
                 reader.onload = () => {
                     this._pendingImageBase64 = reader.result;
@@ -222,17 +287,28 @@ class ChatbotView {
             removeBtn.addEventListener('click', () => this.removeAttachedImage());
         }
 
-        // Delegate suggestion / recent clicks
-        document.addEventListener('click', (e) => {
-            const btn = e.target.closest('[data-suggested-topic]');
-            if (btn) {
-                const topic = btn.getAttribute('data-suggested-topic') || '';
-                onSuggestion?.(topic);
-            }
-        });
+        if (this.container) {
+            this.container.addEventListener('click', (e) => {
+                const newConversationBtn = e.target.closest('[data-new-conversation]');
+                if (newConversationBtn) {
+                    onNewConversation?.();
+                    return;
+                }
+
+                const conversationBtn = e.target.closest('[data-conversation-id]');
+                if (conversationBtn) {
+                    onSelectConversation?.(conversationBtn.getAttribute('data-conversation-id'));
+                    return;
+                }
+
+                const suggestedBtn = e.target.closest('[data-suggested-topic]');
+                if (suggestedBtn) {
+                    onSuggestion?.(suggestedBtn.getAttribute('data-suggested-topic') || '');
+                }
+            });
+        }
     }
 
-    // Minimal markdown: **bold**, - list items, newlines
     _renderMarkdown(text) {
         const escaped = String(text || '')
             .replaceAll('&', '&amp;')
@@ -242,9 +318,7 @@ class ChatbotView {
         return escaped
             .split('\n')
             .map(line => {
-                // Bold
                 line = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-                // List item
                 if (/^[-*]\s/.test(line)) {
                     return `<li>${line.slice(2)}</li>`;
                 }
@@ -252,6 +326,23 @@ class ChatbotView {
                 return `<p>${line}</p>`;
             })
             .join('');
+    }
+
+    _truncate(text, maxLength) {
+        const value = String(text || '');
+        return value.length > maxLength ? `${value.slice(0, maxLength)}...` : value;
+    }
+
+    _formatDate(value) {
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return '';
+
+        return date.toLocaleDateString('pt-PT', {
+            day: '2-digit',
+            month: 'short',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
     }
 
     escapeHtml(text) {

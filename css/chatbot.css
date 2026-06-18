@@ -457,3 +457,80 @@ body {
     overflow-y: auto;
     padding-right: 4px;
 }
+
+/* ─── Ajuste do texto do histórico na barra lateral ────────── */
+.chatbot-sidebar {
+    overflow: hidden;
+}
+
+.chatbot-sidebar-header {
+    align-items: flex-start;
+}
+
+.chatbot-sidebar-header h2 {
+    min-width: 0;
+    font-size: 20px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatbot-new-chat {
+    flex: 0 0 auto;
+}
+
+.chatbot-recent-list,
+.chatbot-recent-item {
+    min-width: 0;
+}
+
+.chatbot-recent-item {
+    overflow: hidden;
+}
+
+.chatbot-recent-title {
+    max-width: 100%;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatbot-recent-snippet {
+    max-width: 100%;
+    line-height: 1.35;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow-wrap: anywhere;
+}
+
+.chatbot-recent-date {
+    max-width: 100%;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatbot-empty-state {
+    line-height: 1.35;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 560px) {
+    .chatbot-sidebar-header {
+        flex-wrap: wrap;
+    }
+
+    .chatbot-sidebar-header h2 {
+        font-size: 18px;
+    }
+
+    .chatbot-new-chat {
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+}

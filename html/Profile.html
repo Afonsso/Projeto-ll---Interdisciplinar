@@ -247,37 +247,5 @@
       </div>
     </footer>
 
-    <script>
-        // Lógica de Mostrar/Ocultar Setas do Avatar ao Clicar
-        const avatarTrigger = document.getElementById('avatar-toggle-trigger');
-        const prevBtn = document.getElementById('prev-avatar');
-        const nextBtn = document.getElementById('next-avatar');
-        
-        avatarTrigger.addEventListener('click', () => {
-            prevBtn.classList.toggle('visible');
-            nextBtn.classList.toggle('visible');
-        });
-
-        // Lógica de Abrir/Fechar Modal
-        const modal = document.getElementById('edit-profile-modal');
-        const openModalBtn = document.getElementById('open-modal-btn');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-
-        openModalBtn.addEventListener('click', () => modal.classList.add('active'));
-        closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
-        modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
-
-        // Lógica de Logout
-        const logoutBtn = document.getElementById('logout-btn');
-        logoutBtn.addEventListener('click', async () => {
-            if (window.CromaApp) {
-                const authService = window.CromaApp.getService('auth');
-                if (authService) {
-                    await authService.logout();
-                    window.location.href = '../index.html';
-                }
-            }
-        });
-    </script>
 </body>
 </html>

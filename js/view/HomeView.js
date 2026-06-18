@@ -105,16 +105,14 @@ class HomeView {
             transito: "Sinais, Semáforos, Cores de carros...",
             roupas: "Combinações, Camisolas, Sapatos...",
             cozinha: "Frutas, Pratos, Bebidas...",
-            desporto: "Equipamentos, Cores, Equipas...",
-            reflexo: "Rapidez, Atenção, Reflexos..."
+            desporto: "Equipamentos, Cores, Equipas..."
         };
 
         const worldIcons = {
             transito: "🚘",
             roupas: "👕",
             cozinha: "🍎",
-            desporto: "⚽",
-            reflexo: "🏁"
+            desporto: "⚽"
         };
 
         const weakWorlds = [];

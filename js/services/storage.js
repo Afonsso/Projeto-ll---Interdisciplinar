@@ -130,20 +130,6 @@ class StorageService {
                                 4: { type: 'game', stars: 0, completed: false, attempts: 0 },
                                 5: { type: 'game', stars: 0, completed: false, attempts: 0 }
                             }
-                        },
-                        reflexo: {
-                            name: 'Reflexo',
-                            emoji: '🏁',
-                            unlocked: false,
-                            completed: false,
-                            bossDefeated: false,
-                            levels: {
-                                1: { type: 'quiz', stars: 0, completed: false, attempts: 0 },
-                                2: { type: 'quiz', stars: 0, completed: false, attempts: 0 },
-                                3: { type: 'quiz', stars: 0, completed: false, attempts: 0 },
-                                4: { type: 'game', stars: 0, completed: false, attempts: 0 },
-                                5: { type: 'game', stars: 0, completed: false, attempts: 0 }
-                            }
                         }
                     },
                     totalStars: 0,

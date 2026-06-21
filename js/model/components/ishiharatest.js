@@ -185,21 +185,132 @@ class QuizModel {
         };
     }
     
-    saveTestToHistory(metrics) {
-        const currentHistory = JSON.parse(localStorage.getItem('croma_test_history')) || [];
-        
+    /**
+     * Identifica o utilizador autenticado atualmente (via sessão guardada em
+     * localStorage) para que o histórico do teste seja guardado no servidor
+     * (bd.json), associado à conta, e não apenas no browser local.
+     */
+    async getAuthenticatedUser() {
+        const API_URL = 'http://localhost:3000';
+        const sessionId = localStorage.getItem('croma_session_id');
+        if (!sessionId) return null;
+
+        try {
+            const sessionResponse = await fetch(`${API_URL}/sessions/${encodeURIComponent(sessionId)}`);
+            if (!sessionResponse.ok) return null;
+
+            const session = await sessionResponse.json();
+            if (!session?.userId) return null;
+            if (session.expiresAt && new Date(session.expiresAt) < new Date()) return null;
+
+            const userResponse = await fetch(`${API_URL}/users/${encodeURIComponent(session.userId)}`);
+            if (!userResponse.ok) return null;
+
+            return await userResponse.json();
+        } catch (error) {
+            console.warn('Não foi possível identificar o utilizador autenticado:', error);
+            return null;
+        }
+    }
+
+    /**
+     * Guarda o resultado do teste no histórico do utilizador (bd.json),
+     * via API REST do json-server. Se não houver utilizador autenticado
+     * (ex. convidado a testar sem conta), usa localStorage como reserva
+     * para não perder o resultado durante a sessão atual.
+     */
+    async saveTestToHistory(metrics) {
+        const API_URL = 'http://localhost:3000';
+
         const newEntry = {
-            date: new Date().toLocaleString('pt-PT', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute:'2-digit' }),
+            date: new Date().toLocaleString('pt-PT', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
             score: `${metrics.percentage.toFixed(0)}% (${metrics.hits}/${metrics.total})`,
             diagnosis: metrics.diagnosis
         };
-        
-        currentHistory.unshift(newEntry);
-        localStorage.setItem('croma_test_history', JSON.stringify(currentHistory));
+
+        const user = await this.getAuthenticatedUser();
+
+        if (!user) {
+            // Sem conta autenticada: guarda apenas localmente nesta sessão de navegador.
+            const currentHistory = JSON.parse(localStorage.getItem('croma_test_history')) || [];
+            currentHistory.unshift(newEntry);
+            localStorage.setItem('croma_test_history', JSON.stringify(currentHistory));
+            return newEntry;
+        }
+
+        try {
+            const currentHistory = Array.isArray(user.ishiharaHistory) ? user.ishiharaHistory : [];
+            const updatedHistory = [newEntry, ...currentHistory];
+
+            const response = await fetch(`${API_URL}/users/${encodeURIComponent(user.id)}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ishiharaHistory: updatedHistory,
+                    lastIshiharaResult: newEntry,
+                    ishiharaCompleted: true
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Falha ao atualizar o histórico no servidor');
+            }
+        } catch (error) {
+            console.error('Erro ao guardar histórico do teste no servidor:', error);
+            // Mesmo em caso de falha de rede, guarda localmente para não perder o resultado.
+            const currentHistory = JSON.parse(localStorage.getItem('croma_test_history')) || [];
+            currentHistory.unshift(newEntry);
+            localStorage.setItem('croma_test_history', JSON.stringify(currentHistory));
+        }
+
+        return newEntry;
     }
 
-    getHistoryLog() {
-        return JSON.parse(localStorage.getItem('croma_test_history')) || [];
+    /**
+     * Obtém o histórico de testes do utilizador autenticado (bd.json).
+     * Sem conta autenticada, devolve o histórico local da sessão atual.
+     */
+    async getHistoryLog() {
+        const user = await this.getAuthenticatedUser();
+
+        if (!user) {
+            return JSON.parse(localStorage.getItem('croma_test_history')) || [];
+        }
+
+        return Array.isArray(user.ishiharaHistory) ? user.ishiharaHistory : [];
+    }
+
+    /**
+     * Guarda o tipo de daltonismo diagnosticado no perfil do utilizador
+     * autenticado (bd.json), para que a aplicação possa adaptar o esquema
+     * de cores em todas as páginas a partir deste resultado.
+     */
+    async saveColorBlindnessType(metrics) {
+        const API_URL = 'http://localhost:3000';
+        const user = await this.getAuthenticatedUser();
+        if (!user) return null;
+
+        const normalizedType = window.CromaColorAdapter
+            ? window.CromaColorAdapter.normalizeDiagnosisType(metrics.diagnosis)
+            : null;
+
+        if (!normalizedType) return null;
+
+        try {
+            const response = await fetch(`${API_URL}/users/${encodeURIComponent(user.id)}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ colorBlindnessType: normalizedType })
+            });
+
+            if (!response.ok) {
+                throw new Error('Falha ao atualizar o tipo de daltonismo no servidor');
+            }
+        } catch (error) {
+            console.error('Erro ao guardar o tipo de daltonismo:', error);
+        }
+
+        return normalizedType;
     }
 }
 

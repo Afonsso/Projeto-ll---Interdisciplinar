@@ -123,7 +123,6 @@
 }
 
 .btn-logout {
-    background-color: var(--color-error-bright);
     color: var(--branco);
     border: none;
     border-radius: 8px;

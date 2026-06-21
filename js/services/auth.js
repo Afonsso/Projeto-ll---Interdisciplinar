@@ -96,18 +96,10 @@ class AuthService {
 
             // Criar utilizador
             const newUser = await this.storageService.addUser(normalizedUserData);
-            
-            // Criar sessão automaticamente após registro
-            const session = await this.storageService.createSession(newUser.id);
-            
-            // Guardar sessão no localStorage
-            localStorage.setItem('croma_session_id', session.id);
 
-            // Definir utilizador atual
-            this.currentUser = newUser;
-            this.currentSession = session;
-
-            return { success: true, user: this.currentUser, session: this.currentSession };
+            // Não é criada sessão automaticamente: o utilizador deve fazer
+            // login manualmente depois da conta ser criada (aprovada).
+            return { success: true, user: newUser };
         } catch (error) {
             console.error('Register error:', error);
             return { success: false, error: error.message };
@@ -125,6 +117,14 @@ class AuthService {
             localStorage.removeItem('croma_session_id');
             localStorage.removeItem('croma_user');
             localStorage.removeItem('croma_progress');
+            localStorage.removeItem('croma_color_blindness_type');
+
+            // Repor o esquema de cores para o padrão, para o próximo
+            // utilizador a usar este dispositivo não herdar a paleta
+            // adaptada da conta anterior.
+            if (window.CromaColorAdapter) {
+                window.CromaColorAdapter.reset({ persist: false });
+            }
 
             // Limpar utilizador atual
             this.currentUser = null;

@@ -110,9 +110,9 @@ class AuthController {
             });
 
             if (result.success) {
-                this.showMessage(successDiv, 'Conta criada com sucesso! A redirecionar...');
+                this.showMessage(successDiv, 'Conta criada com sucesso! A redirecionar para o login...');
                 window.setTimeout(() => {
-                    window.location.href = '../Home.html';
+                    window.location.href = 'login_account.html';
                 }, 1200);
                 return;
             }

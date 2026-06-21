@@ -252,6 +252,28 @@ header p {
     cursor: pointer;
 }
 
+.quiz-option-text {
+    flex: 1;
+    text-align: left;
+}
+
+.quiz-option-icon {
+    margin-left: auto;
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1;
+    min-width: 22px;
+    text-align: center;
+}
+
+.quiz-option-btn.correct .quiz-option-icon {
+    color: var(--color-success-bright, #16a34a);
+}
+
+.quiz-option-btn.incorrect .quiz-option-icon {
+    color: var(--color-error-bright, #dc2626);
+}
+
 .quiz-option-btn.selected {
     border-color: #1e3c72;
     background: #e0ebff;
@@ -260,11 +282,13 @@ header p {
 .quiz-option-btn.correct {
     border-color: #16a34a;
     background: #dcfce7;
+    font-weight: 700;
 }
 
 .quiz-option-btn.incorrect {
     border-color: #dc2626;
     background: #fee2e2;
+    font-weight: 700;
 }
 
 .quiz-option-letter {

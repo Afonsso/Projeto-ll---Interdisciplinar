@@ -255,6 +255,8 @@ function setupNewUserForm() {
             createdAt: new Date().toISOString(),
             colorBlindnessType: null,
             ishiharaCompleted: false,
+            ishiharaHistory: [],
+            lastIshiharaResult: null,
             xp: 0,
             streak: 0,
             lastLoginDate: null,

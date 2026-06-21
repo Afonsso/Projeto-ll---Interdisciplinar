@@ -142,17 +142,27 @@ class HomeView {
             .slice(0, 3);
     }
 
-    renderIshiharaButton(ishiharaCompleted) {
+    renderIshiharaButton(ishiharaCompleted, colorBlindnessType) {
         const container = document.getElementById("ishihara-section");
         if (!container) return;
+
+        const typeLabels = {
+            normal: 'Visão de cores normal',
+            possible: 'Possível dificuldade ligeira',
+            protanopia: 'Protanopia',
+            deuteranopia: 'Deuteranopia',
+            tritanopia: 'Tritanopia',
+            mixed: 'Daltonismo misto'
+        };
+        const typeLabel = typeLabels[colorBlindnessType] || null;
 
         container.innerHTML = ishiharaCompleted
             ? `
                 <div class="ishihara-card completed">
                     <h3>Teste Ishihara</h3>
-                    <p>✓ Teste realizado</p>
-                    <button class="btn-secondary" onclick="window.location.href='info_daltonismo.html'">
-                        Repetir Teste
+                    <p>✓ Teste realizado${typeLabel ? ` — ${typeLabel}` : ''}</p>
+                    <button class="btn-secondary" onclick="window.location.href='teste_daltonismo.html'">
+                        Refazer Teste
                     </button>
                 </div>
             `
@@ -288,7 +298,7 @@ class HomeView {
         this.renderEyeProgress(user, progress);
         this.renderChatbotSection(user.name);
         this.renderTrainingSuggestions(progress);
-        this.renderIshiharaButton(user.ishiharaCompleted);
+        this.renderIshiharaButton(user.ishiharaCompleted, user.colorBlindnessType);
     }
 }
 

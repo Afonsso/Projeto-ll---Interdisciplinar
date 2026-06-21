@@ -193,7 +193,8 @@ class QuizLevelLogic {
                         ${currentQuestion.options.map((option, index) => `
                             <button class="quiz-option-btn" type="button" data-option-index="${index}">
                                 <span class="quiz-option-letter">${String.fromCharCode(65 + index)}</span>
-                                <span>${option}</span>
+                                <span class="quiz-option-text">${option}</span>
+                                <span class="quiz-option-icon" aria-hidden="true"></span>
                             </button>
                         `).join('')}
                     </div>
@@ -224,10 +225,13 @@ class QuizLevelLogic {
 
                 optionButtons.forEach((button, index) => {
                     button.disabled = true;
+                    const icon = button.querySelector('.quiz-option-icon');
                     if (index === currentQuestion.correct) {
                         button.classList.add('correct');
+                        if (icon) icon.textContent = '✓';
                     } else if (index === this.selectedAnswer && !isCorrect) {
                         button.classList.add('incorrect');
+                        if (icon) icon.textContent = '✗';
                     }
                 });
 

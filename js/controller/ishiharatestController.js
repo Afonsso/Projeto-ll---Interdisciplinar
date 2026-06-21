@@ -39,9 +39,9 @@ class QuizController {
             // Clique no botão de Ver Histórico
             const historyLink = document.getElementById('view-history-btn');
             if (historyLink) {
-                historyLink.addEventListener('click', (e) => {
+                historyLink.addEventListener('click', async (e) => {
                     e.preventDefault();
-                    const log = this.model.getHistoryLog();
+                    const log = await this.model.getHistoryLog();
                     this.view.renderHistoryEntries(log);
                     this.view.changeScreen('screen-history');
                 });
@@ -67,7 +67,7 @@ class QuizController {
     }
 
     // Acessível pelo atributo onclick="quizController.handleNextClick()" do HTML
-    handleNextClick() {
+    async handleNextClick() {
         const status = this.model.saveCurrentAnswerAndAdvance();
         
         if (status === "AVANCAR" || status === "PROSSEGUIR_FASE_2") {
@@ -76,8 +76,17 @@ class QuizController {
             const quizData = this.model.getQuizData();
             const userAnswers = this.model.getAnswers();
             const metrics = this.model.calculateResults();
-            
-            this.model.saveTestToHistory(metrics);
+
+            // Guarda o resultado no histórico do utilizador (bd.json) e no
+            // seu perfil, e adapta de imediato o esquema de cores de TODA a
+            // aplicação ao tipo de daltonismo diagnosticado.
+            await this.model.saveTestToHistory(metrics);
+            await this.model.saveColorBlindnessType(metrics);
+
+            if (window.CromaColorAdapter) {
+                window.CromaColorAdapter.applyFromDiagnosis(metrics);
+            }
+
             this.view.renderFinalResults(quizData, userAnswers, metrics);
         }
     }

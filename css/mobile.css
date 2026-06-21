@@ -1,0 +1,674 @@
+/*
+ * mobile.css — Responsividade global para telemóvel
+ * Cobre todas as páginas da aplicação Croma.
+ * Carregado SEMPRE no final do <head>, depois do CSS específico de cada
+ * página, para que as regras aqui definidas tenham prioridade no mesmo
+ * nível de especificidade.
+ * Breakpoints principais: 900px / 768px (tablet), 560px / 480px (telemóvel)
+ */
+
+/* ============================================================
+   FIX GLOBAL: evitar overflow horizontal em qualquer página
+   ============================================================ */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+* , *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, svg, video {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  html { -webkit-text-size-adjust: 100%; }
+
+  body { font-size: 15px; }
+
+  h1 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+  h2 { font-size: clamp(1.3rem, 5vw, 1.7rem); }
+  h3 { font-size: clamp(1.1rem, 4.5vw, 1.4rem); }
+
+  /* Toque confortável em botões/links interativos */
+  button, .btn, a.btn {
+    min-height: 42px;
+    touch-action: manipulation;
+  }
+
+  input, select, textarea {
+    font-size: 16px !important; /* evita zoom automático no iOS */
+  }
+
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   NAVBAR & FOOTER GLOBAL (globals.css)
+   ============================================================ */
+@media (max-width: 900px) {
+  .navbar {
+    height: auto;
+    min-height: 64px;
+    padding: 12px 20px;
+  }
+
+  /* Botão hambúrguer (3 barras), injetado por js/navbarMobile.js.
+     Só aparece em ecrãs estreitos; em desktop fica escondido. */
+  .navbar-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .navbar-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    border-radius: 2px;
+    background: var(--azul, var(--color-primary-navy));
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .navbar-hamburger.is-active span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+
+  .navbar-hamburger.is-active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar-hamburger.is-active span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+
+  /* O menu de páginas (.menu-3) passa a funcionar como um painel/modal
+     que entra a partir do lado direito, por cima do conteúdo da página. */
+  .navbar .menu-3 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(78vw, 320px);
+    margin-left: 0;
+    background: var(--branco, var(--color-white));
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 90px 28px 28px;
+    box-shadow: -12px 0 32px rgba(0, 0, 0, 0.18);
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    z-index: 1001;
+  }
+
+  .navbar .menu-3.navbar-mobile-open {
+    transform: translateX(0);
+  }
+
+  .navbar .incio,
+  .navbar .div-3 {
+    width: 100%;
+    padding: 12px 6px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  /* Camada de fundo escura, usada para fechar o menu ao tocar fora dele. */
+  .navbar-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.42);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+    z-index: 1000;
+  }
+
+  .navbar-mobile-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  body.navbar-mobile-locked {
+    overflow: hidden;
+  }
+
+  .footer-2,
+  .footer .footer-2 {
+    padding: 40px 24px 30px;
+  }
+
+  .footer .div-2 {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .footer .top-3,
+  .footer .form-field-button,
+  .footer .frame-2 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer .form-field-button-wrapper {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .footer .field,
+  .footer .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer .menu-2 {
+    margin-left: 0;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+}
+
+/* Em ecrãs largos, o botão hambúrguer e o overlay nunca são mostrados:
+   o menu mantém-se sempre visível na barra de navegação, como antes. */
+@media (min-width: 901px) {
+  .navbar-hamburger {
+    display: none;
+  }
+
+  .navbar-mobile-overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .navbar .text-wrapper-12,
+  .navbar .text-wrapper-13 {
+    font-size: 15px;
+  }
+}
+
+/* ============================================================
+   HOME PAGE (Home.css)
+   ============================================================ */
+@media (max-width: 768px) {
+  .apresentao {
+    flex-direction: column;
+    padding: 32px 20px;
+    gap: 28px;
+    text-align: center;
+    min-height: auto;
+  }
+
+  .apresentao > .imagem {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .content {
+    width: 100%;
+    align-items: center;
+  }
+
+  .t-tulo { font-size: clamp(1.8rem, 7vw, 2.6rem); letter-spacing: -1px; }
+  .subt-tulo { font-size: clamp(1.3rem, 5.5vw, 1.7rem); }
+  .paragraph { max-width: 100%; }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .saber-mais, .log-in {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #eye-progress {
+    min-height: auto;
+    padding: 24px 18px;
+  }
+
+  .eye-progress-head {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .chatbot-home-card-inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    padding: 24px 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .content-2 {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .type {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .smart-training-card { margin: 40px auto 30px; }
+  .smart-training-card h2 { font-size: clamp(1.6rem, 7vw, 2.1rem); }
+
+  .smart-training-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .ishihara-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+    padding: 24px 20px;
+  }
+
+  .servicos { padding: 24px 20px 40px; }
+  .services-wrapper { grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .frame-2 { flex-direction: column; gap: 28px; }
+  .paragraph-2 { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .services-wrapper { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   ABOUT / SOBRE — ajustes extra além dos já existentes em About.css
+   ============================================================ */
+@media (max-width: 768px) {
+  .container-principal-buttons,
+  .container-causas-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ============================================================
+   PERFIL / PROFILE (Profile.css)
+   ============================================================ */
+@media (max-width: 900px) {
+  .header-inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 20px;
+    gap: 24px;
+  }
+
+  .main-inner {
+    padding: 0 20px;
+  }
+
+  .points-card, .info-status-card {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-top-header { padding: 32px 0; }
+
+  .recent-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .tests-white-panel {
+    padding: 20px;
+  }
+
+  .tests-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .main-section-title { font-size: 1.5rem; margin-bottom: 22px; }
+
+  .modal-card {
+    width: 92%;
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tests-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .avatar-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-edit, .btn-logout {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   TREINO / TRAINING (Training.css)
+   ============================================================ */
+@media (max-width: 900px) {
+  .training-container {
+    padding: 0 20px;
+  }
+
+  .training-grid-layout {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .left-column {
+    justify-content: center;
+  }
+
+  .quizzes-modes {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .training-title { font-size: 2rem; margin-bottom: 30px; }
+  .quizzes-container { padding: 24px 16px; }
+  .btn-random-mode { width: 100%; }
+}
+
+/* ============================================================
+   TROPHIES / CONQUISTAS (Trophies.css)
+   ============================================================ */
+@media (max-width: 900px) {
+  .trophies-header-inner,
+  .showcase-inner {
+    padding: 0 20px;
+  }
+
+  .trophies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trophies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trophies-header h1 { font-size: 1.6rem; }
+}
+
+/* ============================================================
+   CHATBOT (chatbot.css) — complementos aos breakpoints já existentes
+   ============================================================ */
+@media (max-width: 560px) {
+  .chatbot-hero { gap: 16px; }
+}
+
+/* ============================================================
+   TESTE DE DALTONISMO / ISHIHARA (teste_daltonismo.css)
+   — esta página não tinha NENHUMA media query antes.
+   ============================================================ */
+@media (max-width: 900px) {
+  .app-container {
+    max-width: 100%;
+  }
+
+  .header h1 { font-size: 28px; }
+
+  .intro-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .result-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .keypads-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    max-width: 100%;
+  }
+
+  .keypad-section {
+    width: 100%;
+    max-width: 280px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 { font-size: 22px; }
+  .close-icon { font-size: 30px; }
+
+  .plate-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .keypad-section { max-width: 240px; }
+
+  .key-btn {
+    height: 40px;
+    font-size: 15px;
+  }
+
+  .btn-next, .btn-start, .btn-improve {
+    width: 100%;
+    padding: 14px 0;
+    text-align: center;
+  }
+
+  .intro-actions { width: 100%; }
+
+  .intro-questions h2 { font-size: 22px; }
+
+  table { font-size: 13px; }
+  th, td { padding: 8px; }
+}
+
+/* ============================================================
+   AUTH PAGES (LOGIN / REGISTO / RECUPERAR) — accounts.css
+   ============================================================ */
+@media (max-width: 768px) {
+  .registo-fullscreen {
+    height: auto;
+    min-height: 100vh;
+    padding: 36px 20px;
+    justify-content: flex-start;
+    gap: 24px;
+    overflow: visible;
+  }
+
+  .btn-fechar {
+    top: 18px;
+    right: 20px;
+    font-size: 1.5rem;
+  }
+
+  .titulo-formulario { font-size: 1.8rem; }
+
+  .form-bloco-central {
+    max-width: 100%;
+  }
+
+  /* Form de registo: colunas em duas metades (col-md-6) passam a 1 coluna */
+  #register-form .row {
+    flex-direction: column;
+  }
+
+  #register-form .col-md-6 {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #register-form .text-right {
+    text-align: center !important;
+  }
+
+  .btn-criar-conta {
+    width: 100%;
+  }
+
+  .zona-inferior-links {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   MUNDOS (Trânsito, Roupa, Comida, Desporto) — world.css
+   ============================================================ */
+@media (max-width: 900px) {
+  header h1 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+  header p { font-size: 15px; }
+
+  .btn-reset {
+    top: 16px;
+    right: 16px;
+  }
+
+  .bola-reset {
+    width: 42px;
+    height: 42px;
+  }
+
+  .cenario {
+    min-height: 65vh;
+    aspect-ratio: auto;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .ponto img {
+    width: 56px;
+  }
+
+  .p1 img {
+    width: 76px;
+  }
+
+  .modal {
+    width: 92%;
+    padding: 24px 18px;
+  }
+
+  .drop-zones,
+  .sort-bins,
+  .color-options,
+  .matching-grid,
+  .memory-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  header { padding: 16px; }
+  header h1 { font-size: 1.6rem; }
+
+  .cenario {
+    min-height: 60vh;
+    aspect-ratio: auto;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .ponto img {
+    width: 46px;
+  }
+
+  .p1 img {
+    width: 60px;
+  }
+}
+
+/* ============================================================
+   ADMIN PAGE (admin.css)
+   ============================================================ */
+@media (max-width: 768px) {
+  .admin-page {
+    padding: 20px 14px 50px;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .admin-header h1 { font-size: 1.5rem; }
+
+  .admin-header-actions {
+    width: 100%;
+  }
+
+  .admin-header-actions .btn {
+    flex: 1;
+  }
+
+  .admin-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+  }
+
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================================
+   FORMULÁRIOS GENÉRICOS / MODAIS GENÉRICOS
+   ============================================================ */
+@media (max-width: 480px) {
+  .modal-overlay .modal,
+  .modal-overlay .modal-card {
+    width: 94%;
+  }
+}

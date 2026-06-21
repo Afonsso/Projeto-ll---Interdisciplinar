@@ -118,6 +118,16 @@
   --text-muted: var(--color-neutral-muted-light);
   --accent-btn: var(--color-accent-btn-gray);
   --accent-hover: var(--color-accent-btn-hover-gray);
+
+  /* Legado de variáveis usadas em Home.css/Profile.css/Training.css/etc.
+     Definidas aqui como fallback global para que NENHUMA página fique
+     sem estas variáveis antes do CromaColorAdapter (colorutils.js) correr. */
+  --azul: var(--color-primary-navy);
+  --cinza-bg: var(--color-bg-main);
+  --cinza-footer: var(--color-neutral-muted-light);
+  --branco: var(--color-white);
+  --texto: var(--color-primary-navy);
+  --texto-suave: var(--color-neutral-muted);
 }
 
 * {
@@ -172,6 +182,18 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+/* Bootstrap (incluído em algumas páginas, ex. ChatBot e Perfil) define
+   a:hover { text-decoration: underline } com maior especificidade do que
+   a regra acima. Esta regra garante que os links da navbar nunca ficam
+   sublinhados ao passar o rato, independentemente da ordem de carregamento
+   das folhas de estilo externas. */
+.navbar a,
+.navbar a:hover,
+.navbar a:focus,
+.navbar a:active {
+  text-decoration: none !important;
 }
 
 /* Navar global */

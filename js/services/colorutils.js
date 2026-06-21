@@ -228,49 +228,168 @@
 
 
     function ensureGlobalAdaptationStyles() {
-        if (document.getElementById('croma-color-adaptation-style')) return;
+        const existing = document.getElementById('croma-color-adaptation-style');
+        if (existing) existing.remove();
 
         const style = document.createElement('style');
         style.id = 'croma-color-adaptation-style';
         style.textContent = `
+            /* Fundo e texto base da página */
             html[data-daltonism]:not([data-daltonism="normal"]) body {
                 background-color: var(--cinza-bg, var(--color-bg-main)) !important;
                 color: var(--texto, var(--color-neutral-dark)) !important;
             }
 
+            /* Containers de fundo CLARO conhecidos: usar a cor de texto escura da
+               paleta. NOTA: "section" e ".card" foram retirados desta lista de
+               propósito — são seletores genéricos usados em vários sítios da app
+               com fundos diferentes (ex.: .chatbot-panel é uma <section> de fundo
+               escuro; o .card do Bootstrap em About.html tem fundo claro). Aplicar
+               uma regra cega a esses seletores cria fundos brancos indevidos ou
+               texto invisível. Em vez disso, cada container é tratado de forma
+               explícita mais abaixo. */
             html[data-daltonism]:not([data-daltonism="normal"]) .navbar,
-            html[data-daltonism]:not([data-daltonism="normal"]) .header,
             html[data-daltonism]:not([data-daltonism="normal"]) .info-card,
             html[data-daltonism]:not([data-daltonism="normal"]) .table-container,
             html[data-daltonism]:not([data-daltonism="normal"]) .result-details,
             html[data-daltonism]:not([data-daltonism="normal"]) .modal-content,
+            html[data-daltonism]:not([data-daltonism="normal"]) .modal,
+            html[data-daltonism]:not([data-daltonism="normal"]) .modal-card,
+            html[data-daltonism]:not([data-daltonism="normal"]) .tests-white-panel,
+            html[data-daltonism]:not([data-daltonism="normal"]) .profile-top-header,
+            html[data-daltonism]:not([data-daltonism="normal"]) .points-card,
+            html[data-daltonism]:not([data-daltonism="normal"]) .info-status-card,
             html[data-daltonism]:not([data-daltonism="normal"]) .card,
-            html[data-daltonism]:not([data-daltonism="normal"]) section {
+            html[data-daltonism]:not([data-daltonism="normal"]) .form-grid,
+            html[data-daltonism]:not([data-daltonism="normal"]) .field {
                 background-color: var(--branco, var(--color-white)) !important;
                 color: var(--texto, var(--color-neutral-dark)) !important;
             }
 
-            html[data-daltonism]:not([data-daltonism="normal"]) h1,
-            html[data-daltonism]:not([data-daltonism="normal"]) h2,
-            html[data-daltonism]:not([data-daltonism="normal"]) h3,
-            html[data-daltonism]:not([data-daltonism="normal"]) h4,
-            html[data-daltonism]:not([data-daltonism="normal"]) p,
-            html[data-daltonism]:not([data-daltonism="normal"]) label,
-            html[data-daltonism]:not([data-daltonism="normal"]) th,
-            html[data-daltonism]:not([data-daltonism="normal"]) td,
-            html[data-daltonism]:not([data-daltonism="normal"]) a {
+            /* O texto destes containers claros adapta-se à paleta, mas sem tocar
+               em elementos que já têm o seu próprio fundo fixo (letras de opção
+               do quiz, teclados do teste de Ishihara), para não criar texto
+               escuro sobre fundo escuro dentro de um container claro. */
+            html[data-daltonism]:not([data-daltonism="normal"]) .navbar *:not(.quiz-option-letter):not(.key-btn):not(.key-btn.active):not(.opt-btn):not(.opt-btn.active),
+            html[data-daltonism]:not([data-daltonism="normal"]) .info-card *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .table-container *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .result-details *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .modal-content *:not(.quiz-option-letter):not(.key-btn):not(.key-btn.active):not(.opt-btn):not(.opt-btn.active),
+            html[data-daltonism]:not([data-daltonism="normal"]) .modal *:not(.quiz-option-letter):not(.key-btn):not(.key-btn.active):not(.opt-btn):not(.opt-btn.active),
+            html[data-daltonism]:not([data-daltonism="normal"]) .modal-card *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .tests-white-panel *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .profile-top-header *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .points-card *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .info-status-card *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .card *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .form-grid *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .field * {
+                color: var(--texto, var(--color-neutral-dark));
+            }
+
+            /* O círculo de letra (A/B/C/D) das opções do quiz tem fundo fixo
+               escuro por design — o texto dentro dele tem de continuar branco
+               mesmo dentro de um modal/container "claro". */
+            html[data-daltonism]:not([data-daltonism="normal"]) .quiz-option-letter {
+                background-color: var(--accent-btn, var(--color-accent-btn-gray)) !important;
+                color: var(--branco, var(--color-white)) !important;
+            }
+
+            /* Containers de fundo ESCURO conhecidos: o texto tem de continuar claro,
+               mesmo com uma paleta adaptada ativa. Sem isto, títulos e parágrafos
+               dentro destes cartões ficam ilegíveis (texto escuro sobre fundo escuro). */
+            html[data-daltonism]:not([data-daltonism="normal"]) .home-hero,
+            html[data-daltonism]:not([data-daltonism="normal"]) #eye-progress,
+            html[data-daltonism]:not([data-daltonism="normal"]) .smart-training-item,
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-home-card,
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-panel,
+            html[data-daltonism]:not([data-daltonism="normal"]) .recent-item-card,
+            html[data-daltonism]:not([data-daltonism="normal"]) .test-item-card,
+            html[data-daltonism]:not([data-daltonism="normal"]) .footer,
+            html[data-daltonism]:not([data-daltonism="normal"]) .modal-level-badge,
+            html[data-daltonism]:not([data-daltonism="normal"]) .navbar .badge {
+                color: var(--branco, var(--color-white)) !important;
+            }
+
+            html[data-daltonism]:not([data-daltonism="normal"]) .home-hero *,
+            html[data-daltonism]:not([data-daltonism="normal"]) #eye-progress *:not(canvas),
+            html[data-daltonism]:not([data-daltonism="normal"]) .smart-training-item *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-home-card *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-panel *:not(.chatbot-message-bot):not(.chatbot-message-bot *),
+            html[data-daltonism]:not([data-daltonism="normal"]) .recent-item-card *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .test-item-card *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .footer *,
+            html[data-daltonism]:not([data-daltonism="normal"]) .navbar .badge * {
+                color: var(--branco, var(--color-white)) !important;
+            }
+
+            /* A bolha de mensagem do bot tem fundo quase-branco fixo por
+               design — o texto dentro dela tem de continuar escuro mesmo
+               dentro do painel escuro do chatbot (.chatbot-panel). */
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-message-bot,
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-message-bot * {
                 color: var(--texto, var(--color-neutral-dark)) !important;
             }
 
-            html[data-daltonism]:not([data-daltonism="normal"]) button:not(.key-btn):not(.opt-btn),
+            /* Barra lateral do histórico do chatbot: fundo neutro claro fixo,
+               com itens semi-transparentes. O texto tem de seguir a cor de
+               texto escura da paleta, e o botão "Nova" mantém-se com a cor de
+               acento e texto branco para continuar legível. */
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-sidebar {
+                color: var(--texto, var(--color-neutral-dark)) !important;
+            }
+
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-sidebar-header h2,
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-recent-title,
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-recent-snippet,
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-recent-date {
+                color: var(--texto, var(--color-neutral-dark)) !important;
+            }
+
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-new-chat {
+                background-color: var(--accent-btn, var(--color-accent-btn-gray)) !important;
+                color: var(--branco, var(--color-white)) !important;
+            }
+
+            /* Botão "Log In" do rodapé global: fundo branco fixo com texto
+               cinza-claro fixo, ilegível com qualquer fundo. Passa a usar a
+               cor de texto escura da paleta sobre o seu fundo branco fixo. */
+            html[data-daltonism]:not([data-daltonism="normal"]) .text-2 {
+                color: var(--texto, var(--color-neutral-dark)) !important;
+            }
+
+            /* Botões genéricos da aplicação adaptam-se à paleta. Excluem-se
+               explicitamente os botões de quizzes/jogos, cujo feedback de
+               certo/errado (verde/vermelho) não deve ser substituído pela
+               cor de acento da paleta de daltonismo, e os itens de histórico
+               do chatbot, que têm o seu próprio fundo semi-transparente. */
+            html[data-daltonism]:not([data-daltonism="normal"]) button:not(.key-btn):not(.opt-btn):not(.quiz-option-btn):not(.color-btn):not(.chatbot-new-chat):not(.chatbot-recent-item),
             html[data-daltonism]:not([data-daltonism="normal"]) .btn-primary,
             html[data-daltonism]:not([data-daltonism="normal"]) .btn-secondary,
             html[data-daltonism]:not([data-daltonism="normal"]) .btn-start,
             html[data-daltonism]:not([data-daltonism="normal"]) .btn-next,
-            html[data-daltonism]:not([data-daltonism="normal"]) .btn-improve {
+            html[data-daltonism]:not([data-daltonism="normal"]) .btn-improve,
+            html[data-daltonism]:not([data-daltonism="normal"]) .btn-jogar,
+            html[data-daltonism]:not([data-daltonism="normal"]) .button-principal,
+            html[data-daltonism]:not([data-daltonism="normal"]) .game-submit-btn {
                 background-color: var(--accent-btn, var(--color-accent-btn-gray)) !important;
                 border-color: var(--accent-btn, var(--color-accent-btn-gray)) !important;
                 color: var(--branco, var(--color-white)) !important;
+            }
+
+            /* Item de histórico do chatbot: mantém o seu fundo semi-transparente
+               próprio (não escurece como um botão genérico), e o texto segue a
+               cor de texto escura da paleta para continuar legível. */
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-recent-item {
+                background: rgba(255, 255, 255, 0.38) !important;
+                color: var(--texto, var(--color-neutral-dark)) !important;
+            }
+
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-recent-item:hover,
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-recent-item:focus-visible,
+            html[data-daltonism]:not([data-daltonism="normal"]) .chatbot-recent-item.is-active {
+                background: rgba(255, 255, 255, 0.72) !important;
+                color: var(--texto, var(--color-neutral-dark)) !important;
             }
 
             html[data-daltonism]:not([data-daltonism="normal"]) .opt-btn.active,
@@ -278,6 +397,31 @@
                 background-color: var(--accent-btn, var(--color-accent-btn-gray)) !important;
                 border-color: var(--accent-btn, var(--color-accent-btn-gray)) !important;
                 color: var(--branco, var(--color-white)) !important;
+            }
+
+            /* Feedback de certo/errado nos quizzes e jogos: garante que estes
+               indicadores se mantêm visíveis e legíveis com qualquer paleta. */
+            html[data-daltonism]:not([data-daltonism="normal"]) .quiz-option-btn.correct,
+            html[data-daltonism]:not([data-daltonism="normal"]) .sort-bin.correct,
+            html[data-daltonism]:not([data-daltonism="normal"]) .drop-zone.filled,
+            html[data-daltonism]:not([data-daltonism="normal"]) .matching-card.matched,
+            html[data-daltonism]:not([data-daltonism="normal"]) .memory-card.matched {
+                background-color: var(--color-success, #dcfce7) !important;
+                border-color: var(--color-success-bright, #16a34a) !important;
+                color: var(--texto, var(--color-neutral-dark)) !important;
+            }
+
+            html[data-daltonism]:not([data-daltonism="normal"]) .quiz-option-btn.incorrect,
+            html[data-daltonism]:not([data-daltonism="normal"]) .sort-bin.incorrect {
+                background-color: var(--color-error, #fee2e2) !important;
+                border-color: var(--color-error-bright, #dc2626) !important;
+                color: var(--texto, var(--color-neutral-dark)) !important;
+            }
+
+            html[data-daltonism]:not([data-daltonism="normal"]) .quiz-option-btn.selected {
+                border-color: var(--accent-btn, var(--color-accent-btn-gray)) !important;
+                background-color: var(--color-bg-blue-light, #e0ebff) !important;
+                color: var(--texto, var(--color-neutral-dark)) !important;
             }
         `;
         document.head.appendChild(style);

@@ -403,7 +403,39 @@ Consigo ajudar melhor se me disseres o objetivo: confirmar se as cores combinam,
             return 'O histórico está ativo: cada conversa fica guardada no painel “Histórico”, à esquerda. Podes clicar numa conversa antiga para a abrir ou usar “Nova” para começar outra sem apagar as anteriores.';
         }
 
+        if (this._isOutOfScope(normalized)) {
+            return 'Sou um assistente dedicado só ao tema do daltonismo e perceção de cores na Croma (teste de Ishihara, tipos de daltonismo, contraste, combinações de cores, treino e perfil). Essa pergunta sai fora desse âmbito, por isso não vou conseguir ajudar com ela. Tens alguma dúvida sobre cores, daltonismo ou a aplicação Croma?';
+        }
+
         return 'Posso ajudar-te com dúvidas sobre daltonismo, combinações de cores, contraste, treino, quizzes, XP, conquistas e teste de Ishihara. Diz-me o contexto e eu respondo de forma prática.';
+    }
+
+    /**
+     * Deteta se a pergunta foge claramente ao âmbito de daltonismo/cor da
+     * aplicação (ex: matemática, geografia, programação, atualidades,
+     * piadas, receitas, etc.), para que o chatbot recuse em vez de tentar
+     * responder a qualquer assunto.
+     */
+    _isOutOfScope(normalizedText) {
+        // Tópicos claramente fora do âmbito de daltonismo/cor/Croma.
+        const outOfScopePatterns = [
+            /\b(capital de|presidente|primeiro[- ]ministro|guerra|historia mundial|história mundial)\b/,
+            /\b(equa[cç][aã]o|matematica|matemática|deriva|integral|raiz quadrada|teorema)\b/,
+            /\b(codigo|código|programar|programação|javascript|python|java\b|html|css\b|sql|bug|funcao|função)\b/,
+            /\b(piada|anedota|horoscopo|horóscopo|signo|previsao do tempo|previsão do tempo|meteorologia)\b/,
+            /\b(receita|cozinhar|culinaria|culinária|bolo|massa|ingrediente)\b/,
+            /\b(futebol|jogo de futebol|resultado do jogo|campeonato|liga dos campeoes|liga dos campeões)\b/,
+            /\b(filme|serie|série|musica|música|cantor|cantora|ator|atriz|netflix|spotify)\b/,
+            /\b(bolsa de valores|acoes|ações|bitcoin|criptomoeda|investir|economia mundial)\b/,
+            /\b(namoro|relacionamento amoroso|conselho de vida|terapia|psicologo|psicólogo)\b/
+        ];
+
+        // Se a frase também tocar em cor/daltonismo/Croma, não é considerada
+        // fora de âmbito (ex.: "qual filme tem boas combinações de cor?").
+        const inScopeHint = /(cor|cores|dalton|ishihara|protan|deuter|tritan|contraste|acessibilidade|croma|treino|perfil|xp)/.test(normalizedText);
+        if (inScopeHint) return false;
+
+        return outOfScopePatterns.some((pattern) => pattern.test(normalizedText));
     }
 
     _buildColorAdvice(normalizedText, originalText = '') {
